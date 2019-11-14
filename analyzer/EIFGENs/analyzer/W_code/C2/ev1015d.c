@@ -1,5 +1,5 @@
 /*
- * Class EV_CONTAINER_ACTION_SEQUENCES_I
+ * Class EV_TEXT_FIELD_ACTION_SEQUENCES_I
  */
 
 #include "eif_macros.h"
@@ -22,7 +22,7 @@ static const EIF_TYPE_INDEX egt_9_1015 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1015 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1015 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1015 [] = {0xFF01,1014,0xFFFF};
-static const EIF_TYPE_INDEX egt_13_1015 [] = {0xFF01,1141,0xFFFF};
+static const EIF_TYPE_INDEX egt_13_1015 [] = {0xFF01,1154,0xFFFF};
 
 
 static const struct desc_info desc_1015[] = {
@@ -58,14 +58,14 @@ static const struct desc_info desc_1015[] = {
 	{EIF_NON_GENERIC(0x07ED /*1014*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1015), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1015), 15036, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x08EB /*1141*/), 15037, 0},
+	{EIF_GENERIC(egt_13_1015), 15047, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x0905 /*1154*/), 15048, 0},
 };
 void Init1015(void)
 {
 	IDSC(desc_1015, 0, 1014);
 	IDSC(desc_1015 + 1, 1, 1014);
-	IDSC(desc_1015 + 32, 809, 1014);
+	IDSC(desc_1015 + 32, 804, 1014);
 }
 
 

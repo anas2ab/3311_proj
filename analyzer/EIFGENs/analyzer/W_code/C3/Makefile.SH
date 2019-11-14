@@ -59,11 +59,11 @@ OLDOBJECTS =  es1047.o es1047d.o es1043.o es1043d.o es1046.o es1046d.o es1045.o 
 	es1045d.o et1041.o et1041d.o et1039.o et1039d.o et1044.o et1044d.o \
 	es1042.o es1042d.o et1040.o et1040d.o et1038.o et1038d.o yy1036.o \
 	yy1036d.o ev1035.o ev1035d.o yy1034.o yy1034d.o ev1033.o ev1033d.o \
-	ev1032.o ev1032d.o gr1031.o gr1031d.o ev1029.o ev1029d.o ev1028.o \
-	ev1028d.o ev1027.o ev1027d.o ev1057.o ev1057d.o ki1052.o ki1052d.o \
+	ev1032.o ev1032d.o gr1031.o gr1031d.o ev1057.o ev1057d.o ev1030.o \
+	ev1030d.o ev1029.o ev1029d.o ev1027.o ev1027d.o ki1052.o ki1052d.o \
 	ev1056.o ev1056d.o ev1054.o ev1054d.o ev1053.o ev1053d.o ki1051.o \
 	ki1051d.o uc1050.o uc1050d.o uc1049.o uc1049d.o yy1037.o yy1037d.o \
-	ev1030.o ev1030d.o rt1055.o rt1055d.o uc1048.o uc1048d.o kl1025.o \
+	ev1028.o ev1028d.o rt1055.o rt1055d.o uc1048.o uc1048d.o kl1025.o \
 	kl1025d.o uc1026.o uc1026d.o 
 
 all: Cobj3.o

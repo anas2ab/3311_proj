@@ -10,12 +10,12 @@
 extern "C" {
 #endif
 
-extern void F1138_10122(EIF_REFERENCE, EIF_TYPED_VALUE);
 extern void F1138_10123(EIF_REFERENCE, EIF_TYPED_VALUE);
-extern EIF_TYPED_VALUE F1138_10124(EIF_REFERENCE, EIF_TYPED_VALUE);
-extern EIF_TYPED_VALUE F1138_10125(EIF_REFERENCE);
-extern void F1138_10126(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
-extern EIF_TYPED_VALUE F1138_10127(EIF_REFERENCE, EIF_TYPED_VALUE);
+extern void F1138_10124(EIF_REFERENCE, EIF_TYPED_VALUE);
+extern EIF_TYPED_VALUE F1138_10125(EIF_REFERENCE, EIF_TYPED_VALUE);
+extern EIF_TYPED_VALUE F1138_10126(EIF_REFERENCE);
+extern void F1138_10127(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
+extern EIF_TYPED_VALUE F1138_10128(EIF_REFERENCE, EIF_TYPED_VALUE);
 extern void EIF_Minit1138(void);
 
 #ifdef __cplusplus
@@ -38,7 +38,7 @@ extern "C" {
 #endif
 
 /* {EV_PND_ACTION_SEQUENCE}.call */
-void F1138_10122 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+void F1138_10123 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "call";
@@ -84,12 +84,12 @@ void F1138_10122 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU (SK_REF, &Current);
 	RTLU(SK_REF, &loc1);
 	
-	RTEAA(l_feature_name, 1137, Current, 1, 1, 16673);
+	RTEAA(l_feature_name, 1137, Current, 1, 1, 16674);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1137, Current, 16673);
+	RTDBGEAA(1137, Current, 16674);
 	if (arg1) {
 		{
 			static EIF_TYPE_INDEX typarr0[] = {0xFFF9,1,186,0xFF01,0,0xFFFF};
@@ -121,7 +121,7 @@ void F1138_10122 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 				RTHOOK(3);
 				tr3 = eif_boxed_item(arg1,1);
 				ur1 = RTCCL(tr3);
-				tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWF(7741, dtype))(Current, ur1x)).it_b);
+				tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWF(7742, dtype))(Current, ur1x)).it_b);
 				if (tb1) {
 					RTHOOK(4);
 					RTDBGAL(1, 0xF8000153, 0, 0); /* loc1 */
@@ -247,7 +247,7 @@ void F1138_10122 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 }
 
 /* {EV_PND_ACTION_SEQUENCE}.set_veto_pebble_function */
-void F1138_10123 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+void F1138_10124 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "set_veto_pebble_function";
@@ -269,12 +269,12 @@ void F1138_10123 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU(SK_REF,&arg1);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1137, Current, 0, 1, 16674);
+	RTEAA(l_feature_name, 1137, Current, 0, 1, 16675);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1137, Current, 16674);
+	RTDBGEAA(1137, Current, 16675);
 	if (arg1) {
 		{
 			static EIF_TYPE_INDEX typarr0[] = {273,0xFF01,0xFFF9,1,186,0xFF01,0,203,0xFFFF};
@@ -287,10 +287,10 @@ void F1138_10123 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	}
 	RTIV(Current, RTAL);
 	RTHOOK(1);
-	RTDBGAA(Current, dtype, 7739, 0xF8000111, 0); /* veto_pebble_function */
+	RTDBGAA(Current, dtype, 7740, 0xF8000111, 0); /* veto_pebble_function */
 	tr1 = RTCCL(arg1);
 	RTAR(Current, tr1);
-	*(EIF_REFERENCE *)(Current + RTWA(7739, dtype)) = (EIF_REFERENCE) tr1;
+	*(EIF_REFERENCE *)(Current + RTWA(7740, dtype)) = (EIF_REFERENCE) tr1;
 	RTVI(Current, RTAL);
 	RTRS;
 	RTHOOK(2);
@@ -303,7 +303,7 @@ void F1138_10123 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 }
 
 /* {EV_PND_ACTION_SEQUENCE}.accepts_pebble */
-EIF_TYPED_VALUE F1138_10124 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+EIF_TYPED_VALUE F1138_10125 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "accepts_pebble";
@@ -340,12 +340,12 @@ EIF_TYPED_VALUE F1138_10124 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU(SK_REF, &loc1);
 	RTLU(SK_REF, &loc2);
 	
-	RTEAA(l_feature_name, 1137, Current, 2, 1, 16675);
+	RTEAA(l_feature_name, 1137, Current, 2, 1, 16676);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1137, Current, 16675);
+	RTDBGEAA(1137, Current, 16676);
 	RTIV(Current, RTAL);
 	if ((RTAL & CK_REQUIRE) || RTAC) {
 		RTHOOK(1);
@@ -359,7 +359,7 @@ label_1:
 body:;
 	RTHOOK(2);
 	ur1 = RTCCL(arg1);
-	tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWF(7741, dtype))(Current, ur1x)).it_b);
+	tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWF(7742, dtype))(Current, ur1x)).it_b);
 	if (tb1) {
 		RTHOOK(3);
 		RTDBGAL(2, 0xF80000BA, 0, 0); /* loc2 */
@@ -417,17 +417,17 @@ body:;
 }
 
 /* {EV_PND_ACTION_SEQUENCE}.veto_pebble_function */
-EIF_TYPED_VALUE F1138_10125 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1138_10126 (EIF_REFERENCE Current)
 {
 	EIF_TYPED_VALUE r;
 	r.type = SK_REF;
-	r.it_r = *(EIF_REFERENCE *)(Current + RTWA(7739,Dtype(Current)));
+	r.it_r = *(EIF_REFERENCE *)(Current + RTWA(7740,Dtype(Current)));
 	return r;
 }
 
 
 /* {EV_PND_ACTION_SEQUENCE}.set_item_name */
-void F1138_10126 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
+void F1138_10127 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
 {
 	GTCX
 	char *l_feature_name = "set_item_name";
@@ -450,12 +450,12 @@ void F1138_10126 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE 
 	RTLU(SK_REF,&arg2);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1137, Current, 0, 2, 16677);
+	RTEAA(l_feature_name, 1137, Current, 0, 2, 16678);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1137, Current, 16677);
+	RTDBGEAA(1137, Current, 16678);
 	{
 		static EIF_TYPE_INDEX typarr0[] = {0xFF01,275,0xFF01,0xFFF9,1,186,0xFF01,0,0xFFFF};
 		EIF_TYPE typres0;
@@ -479,7 +479,7 @@ void F1138_10126 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE 
 }
 
 /* {EV_PND_ACTION_SEQUENCE}.veto_pebble_function_result */
-EIF_TYPED_VALUE F1138_10127 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+EIF_TYPED_VALUE F1138_10128 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "veto_pebble_function_result";
@@ -517,15 +517,15 @@ EIF_TYPED_VALUE F1138_10127 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU(SK_REF, &loc1);
 	RTLU(SK_REF, &loc2);
 	
-	RTEAA(l_feature_name, 1137, Current, 2, 1, 16678);
+	RTEAA(l_feature_name, 1137, Current, 2, 1, 16679);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1137, Current, 16678);
+	RTDBGEAA(1137, Current, 16679);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
-	tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(7739, dtype))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
+	tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(7740, dtype))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
 	loc2 = RTCCL(tr1);
 	if (EIF_TEST(loc2)) {
 		RTHOOK(2);

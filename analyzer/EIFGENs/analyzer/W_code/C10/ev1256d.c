@@ -61,14 +61,14 @@ static const struct desc_info desc_1256[] = {
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1256), 30, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_13_1256), 0x00, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_14_1256), 17557, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_15_1256), 17558, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_14_1256), 17558, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_15_1256), 17559, 0xFFFFFFFF},
 };
 void Init1256(void)
 {
 	IDSC(desc_1256, 0, 1255);
 	IDSC(desc_1256 + 1, 1, 1255);
-	IDSC(desc_1256 + 32, 917, 1255);
+	IDSC(desc_1256 + 32, 943, 1255);
 }
 
 

@@ -10,9 +10,9 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1571_15654(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1571_15655(EIF_REFERENCE);
-extern void F1571_15656(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1571_15656(EIF_REFERENCE);
+extern void F1571_15657(EIF_REFERENCE);
 extern void EIF_Minit1571(void);
 
 #ifdef __cplusplus
@@ -35,27 +35,27 @@ extern "C" {
 #endif
 
 /* {KL_BINARY_INPUT_FILE}.last_character */
-EIF_TYPED_VALUE F1571_15654 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1571_15655 (EIF_REFERENCE Current)
 {
 	EIF_TYPED_VALUE r;
 	r.type = SK_CHAR8;
-	r.it_c1 = *(EIF_CHARACTER_8 *)(Current + RTWA(11434,Dtype(Current)));
+	r.it_c1 = *(EIF_CHARACTER_8 *)(Current + RTWA(11435,Dtype(Current)));
 	return r;
 }
 
 
 /* {KL_BINARY_INPUT_FILE}.last_string */
-EIF_TYPED_VALUE F1571_15655 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1571_15656 (EIF_REFERENCE Current)
 {
 	EIF_TYPED_VALUE r;
 	r.type = SK_REF;
-	r.it_r = *(EIF_REFERENCE *)(Current + RTWA(11433,Dtype(Current)));
+	r.it_r = *(EIF_REFERENCE *)(Current + RTWA(11434,Dtype(Current)));
 	return r;
 }
 
 
 /* {KL_BINARY_INPUT_FILE}.old_open_read */
-void F1571_15656 (EIF_REFERENCE Current)
+void F1571_15657 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "old_open_read";
@@ -75,17 +75,17 @@ void F1571_15656 (EIF_REFERENCE Current)
 	RTLU (SK_VOID, NULL);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1570, Current, 0, 0, 21697);
+	RTEAA(l_feature_name, 1570, Current, 0, 0, 21699);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1570, Current, 21697);
+	RTDBGEAA(1570, Current, 21699);
 	RTIV(Current, RTAL);
 	if ((RTAL & CK_REQUIRE) || RTAC) {
 		RTHOOK(1);
 		RTCT("is_closed", EX_PRE);
-		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(11406, dtype))(Current)).it_b);
+		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(11407, dtype))(Current)).it_b);
 		RTTE(tb1, label_1);
 		RTCK;
 		RTJB;
@@ -118,7 +118,7 @@ body:;
 	if (RTAL & CK_ENSURE) {
 		RTHOOK(7);
 		RTCT("exists", EX_POST);
-		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(11412, dtype))(Current)).it_b);
+		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(11413, dtype))(Current)).it_b);
 		if (tb1) {
 			RTCK;
 		} else {
@@ -126,7 +126,7 @@ body:;
 		}
 		RTHOOK(8);
 		RTCT("open_read", EX_POST);
-		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(11429, dtype))(Current)).it_b);
+		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(11430, dtype))(Current)).it_b);
 		if (tb1) {
 			RTCK;
 		} else {

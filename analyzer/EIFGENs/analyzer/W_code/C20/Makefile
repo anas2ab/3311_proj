@@ -40,16 +40,16 @@ SYSTEM_IN_DYNAMIC_LIB = analyzer.so
 
 OBJECTS = big_file_C20_c.o 
 
-OLDOBJECTS =  ty1602.o ty1602d.o ty1606.o ty1606d.o et1612.o et1612d.o et1592.o \
-	et1592d.o da1586.o da1586d.o kl1613.o kl1613d.o kl1614.o kl1614d.o \
-	yy1591.o yy1591d.o et1590.o et1590d.o in1603.o in1603d.o kl1609.o \
-	kl1609d.o kl1617.o kl1617d.o kl1607.o kl1607d.o kl1615.o kl1615d.o \
-	yy1588.o yy1588d.o et1589.o et1589d.o ev1605.o ev1605d.o kl1608.o \
-	kl1608d.o kl1616.o kl1616d.o ev1618.o ev1618d.o ev1604.o ev1604d.o \
-	ev1597.o ev1597d.o ev1598.o ev1598d.o uc1595.o uc1595d.o ev1599.o \
-	ev1599d.o ev1610.o ev1610d.o ev1601.o ev1601d.o kl1594.o kl1594d.o \
-	ki1593.o ki1593d.o uc1596.o uc1596d.o uc1587.o uc1587d.o ev1600.o \
-	ev1600d.o ev1611.o ev1611d.o 
+OLDOBJECTS =  ty1599.o ty1599d.o ty1601.o ty1601d.o ac1615.o ac1615d.o et1616.o \
+	et1616d.o et1592.o et1592d.o da1586.o da1586d.o kl1617.o kl1617d.o \
+	yy1591.o yy1591d.o et1590.o et1590d.o in1600.o in1600d.o kl1604.o \
+	kl1604d.o kl1602.o kl1602d.o kl1618.o kl1618d.o yy1588.o yy1588d.o \
+	et1589.o et1589d.o ev1598.o ev1598d.o kl1612.o kl1612d.o kl1603.o \
+	kl1603d.o ev1597.o ev1597d.o ev1614.o ev1614d.o kl1613.o kl1613d.o \
+	ev1607.o ev1607d.o ev1609.o ev1609d.o uc1595.o uc1595d.o ev1605.o \
+	ev1605d.o ev1610.o ev1610d.o ev1608.o ev1608d.o kl1594.o kl1594d.o \
+	ki1593.o ki1593d.o uc1596.o uc1596d.o uc1587.o uc1587d.o ev1606.o \
+	ev1606d.o ev1611.o ev1611d.o 
 
 all: Cobj20.o
 

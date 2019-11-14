@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1579_15889(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1579_15890(EIF_REFERENCE);
 extern void EIF_Minit1579(void);
 
 #ifdef __cplusplus
@@ -33,8 +33,8 @@ extern "C" {
 #endif
 
 /* {KL_WINDOWS_FILE_SYSTEM_BACKSLASH_ONLY}.secondary_directory_separator */
-RTOID (F1579_15889)
-EIF_TYPED_VALUE F1579_15889 (EIF_REFERENCE Current)
+RTOID (F1579_15890)
+EIF_TYPED_VALUE F1579_15890 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "secondary_directory_separator";
@@ -45,7 +45,7 @@ EIF_TYPED_VALUE F1579_15889 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRB(EIF_CHARACTER_8)
-	RTOTDB(EIF_CHARACTER_8, F1579_15889);
+	RTOTDB(EIF_CHARACTER_8, F1579_15890);
 	dtype = Dtype(Current);
 
 	RTLI(1);
@@ -54,12 +54,12 @@ EIF_TYPED_VALUE F1579_15889 (EIF_REFERENCE Current)
 	RTLU (SK_CHAR8, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1578, Current, 0, 0, 21884);
+	RTEAA(l_feature_name, 1578, Current, 0, 0, 21885);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1578, Current, 21884);
+	RTDBGEAA(1578, Current, 21885);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -81,7 +81,7 @@ EIF_TYPED_VALUE F1579_15889 (EIF_REFERENCE Current)
 void EIF_Minit1579 (void)
 {
 	GTCX
-	RTOTS (15889,F1579_15889)
+	RTOTS (15890,F1579_15890)
 }
 
 

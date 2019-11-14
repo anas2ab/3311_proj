@@ -55,16 +55,16 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 
 OBJECTS = big_file_C17_c.o 
 
-OLDOBJECTS =  ev1500.o ev1500d.o ev1491.o ev1491d.o ev1508.o ev1508d.o ev1490.o \
-	ev1490d.o ev1507.o ev1507d.o ev1498.o ev1498d.o ev1501.o ev1501d.o \
-	ev1489.o ev1489d.o ev1506.o ev1506d.o ev1499.o ev1499d.o ev1493.o \
-	ev1493d.o ev1488.o ev1488d.o ev1505.o ev1505d.o ev1502.o ev1502d.o \
-	ev1513.o ev1513d.o ev1510.o ev1510d.o ev1518.o ev1518d.o ev1497.o \
-	ev1497d.o ev1496.o ev1496d.o ev1519.o ev1519d.o ev1495.o ev1495d.o \
-	ev1494.o ev1494d.o ev1516.o ev1516d.o ev1509.o ev1509d.o ev1514.o \
-	ev1514d.o ev1512.o ev1512d.o ev1492.o ev1492d.o ev1503.o ev1503d.o \
-	ev1515.o ev1515d.o ev1517.o ev1517d.o ev1511.o ev1511d.o ev1504.o \
-	ev1504d.o ev1487.o ev1487d.o 
+OLDOBJECTS =  ev1501.o ev1501d.o ev1491.o ev1491d.o ev1508.o ev1508d.o ev1498.o \
+	ev1498d.o ev1506.o ev1506d.o ev1489.o ev1489d.o ev1509.o ev1509d.o \
+	ev1492.o ev1492d.o ev1500.o ev1500d.o ev1488.o ev1488d.o ev1510.o \
+	ev1510d.o ev1497.o ev1497d.o ev1502.o ev1502d.o ev1493.o ev1493d.o \
+	ev1505.o ev1505d.o ev1518.o ev1518d.o ev1513.o ev1513d.o ev1499.o \
+	ev1499d.o ev1496.o ev1496d.o ev1519.o ev1519d.o ev1507.o ev1507d.o \
+	ev1495.o ev1495d.o ev1494.o ev1494d.o ev1516.o ev1516d.o ev1512.o \
+	ev1512d.o ev1490.o ev1490d.o ev1503.o ev1503d.o ev1514.o ev1514d.o \
+	ev1504.o ev1504d.o ev1511.o ev1511d.o ev1515.o ev1515d.o ev1517.o \
+	ev1517d.o ev1487.o ev1487d.o 
 
 all: Cobj17.o
 

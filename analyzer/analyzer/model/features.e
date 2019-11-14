@@ -10,4 +10,5 @@ deferred class
 feature -- Attributes
 	name : STRING
 	type : STRING
+
 end

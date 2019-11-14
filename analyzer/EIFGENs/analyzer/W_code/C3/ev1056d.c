@@ -1,5 +1,5 @@
 /*
- * Class EV_DRAWABLE_ACTION_SEQUENCES_I
+ * Class EV_GTK_DEPENDENT_ROUTINES
  */
 
 #include "eif_macros.h"
@@ -22,7 +22,6 @@ static const EIF_TYPE_INDEX egt_9_1056 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1056 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1056 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1056 [] = {0xFF01,1055,0xFFFF};
-static const EIF_TYPE_INDEX egt_13_1056 [] = {0xFF01,1151,0xFFFF};
 
 
 static const struct desc_info desc_1056[] = {
@@ -58,15 +57,19 @@ static const struct desc_info desc_1056[] = {
 	{EIF_NON_GENERIC(0x083F /*1055*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1056), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1056), 15445, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x08FF /*1151*/), 15446, 0},
-	{EIF_GENERIC(NULL), 15447, 0xFFFFFFFF},
+	{EIF_GENERIC(NULL), 15442, 0xFFFFFFFF},
+	{EIF_GENERIC(NULL), 15443, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01B5 /*218*/), 15444, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01C7 /*227*/), 15445, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01C7 /*227*/), 15446, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01B5 /*218*/), 15447, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01B5 /*218*/), 15448, 0xFFFFFFFF},
 };
 void Init1056(void)
 {
 	IDSC(desc_1056, 0, 1055);
 	IDSC(desc_1056 + 1, 1, 1055);
-	IDSC(desc_1056 + 32, 731, 1055);
+	IDSC(desc_1056 + 32, 748, 1055);
 }
 
 

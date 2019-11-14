@@ -22,7 +22,7 @@ static const EIF_TYPE_INDEX egt_9_1260 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1260 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1260 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1260 [] = {0xFF01,1259,0xFFFF};
-static const EIF_TYPE_INDEX egt_13_1260 [] = {0xFF01,1005,0xFFFF};
+static const EIF_TYPE_INDEX egt_13_1260 [] = {0xFF01,1006,0xFFFF};
 static const EIF_TYPE_INDEX egt_14_1260 [] = {0xFF01,1154,0xFFFF};
 
 
@@ -60,13 +60,13 @@ static const struct desc_info desc_1260[] = {
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1260), 30, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_13_1260), 0x00, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_14_1260), 17565, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_14_1260), 17566, 0xFFFFFFFF},
 };
 void Init1260(void)
 {
 	IDSC(desc_1260, 0, 1259);
 	IDSC(desc_1260 + 1, 1, 1259);
-	IDSC(desc_1260 + 32, 750, 1259);
+	IDSC(desc_1260 + 32, 729, 1259);
 }
 
 

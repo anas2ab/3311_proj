@@ -10,9 +10,9 @@
 extern "C" {
 #endif
 
-extern void F1154_10174(EIF_REFERENCE, EIF_TYPED_VALUE);
-extern void F1154_10175(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
-extern EIF_TYPED_VALUE F1154_10176(EIF_REFERENCE, EIF_TYPED_VALUE);
+extern void F1154_10175(EIF_REFERENCE, EIF_TYPED_VALUE);
+extern void F1154_10176(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
+extern EIF_TYPED_VALUE F1154_10177(EIF_REFERENCE, EIF_TYPED_VALUE);
 extern void EIF_Minit1154(void);
 extern EIF_REFERENCE _A1154_184_2_3_4_5_6_7_8_9();
 
@@ -36,7 +36,7 @@ extern "C" {
 #endif
 
 /* {EV_POINTER_BUTTON_ACTION_SEQUENCE}.force_extend */
-void F1154_10174 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+void F1154_10175 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "force_extend";
@@ -70,12 +70,12 @@ void F1154_10174 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU(SK_REF,&arg1);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1153, Current, 0, 1, 16724);
+	RTEAA(l_feature_name, 1153, Current, 0, 1, 16725);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1153, Current, 16724);
+	RTDBGEAA(1153, Current, 16725);
 	{
 		static EIF_TYPE_INDEX typarr0[] = {0xFF01,275,0xFF01,0xFFF9,0,186,0xFFFF};
 		EIF_TYPE typres0;
@@ -125,7 +125,7 @@ void F1154_10174 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 		static EIF_TYPE typcache0 = {INVALID_DTYPE, 0};
 		
 		typres0 = (typcache0.id != INVALID_DTYPE ? typcache0 : (typcache0 = eif_compound_id(dftype, typarr0)));
-		tr4= RTLNRW(typres0.id, 0, (EIF_POINTER) _A1154_184_2_3_4_5_6_7_8_9, (EIF_POINTER)(0),7758, tr2, 0, 1, -1, tr1, 8);
+		tr4= RTLNRW(typres0.id, 0, (EIF_POINTER) _A1154_184_2_3_4_5_6_7_8_9, (EIF_POINTER)(0),7759, tr2, 0, 1, -1, tr1, 8);
 	}
 	ur1 = RTCCL(tr4);
 	(FUNCTION_CAST(void, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWF(2339, dtype))(Current, ur1x);
@@ -143,7 +143,7 @@ void F1154_10174 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 }
 
 /* {EV_POINTER_BUTTON_ACTION_SEQUENCE}.wrapper */
-void F1154_10175 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x, EIF_TYPED_VALUE arg3x, EIF_TYPED_VALUE arg4x, EIF_TYPED_VALUE arg5x, EIF_TYPED_VALUE arg6x, EIF_TYPED_VALUE arg7x, EIF_TYPED_VALUE arg8x, EIF_TYPED_VALUE arg9x)
+void F1154_10176 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x, EIF_TYPED_VALUE arg3x, EIF_TYPED_VALUE arg4x, EIF_TYPED_VALUE arg5x, EIF_TYPED_VALUE arg6x, EIF_TYPED_VALUE arg7x, EIF_TYPED_VALUE arg8x, EIF_TYPED_VALUE arg9x)
 {
 	GTCX
 	char *l_feature_name = "wrapper";
@@ -192,12 +192,12 @@ void F1154_10175 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE 
 	RTLU(SK_REF,&arg9);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1153, Current, 0, 9, 16725);
+	RTEAA(l_feature_name, 1153, Current, 0, 9, 16726);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1153, Current, 16725);
+	RTDBGEAA(1153, Current, 16726);
 	{
 		static EIF_TYPE_INDEX typarr0[] = {0xFF01,275,0xFF01,0xFFF9,0,186,0xFFFF};
 		EIF_TYPE typres0;
@@ -247,7 +247,7 @@ void F1154_10175 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE 
 }
 
 /* {EV_POINTER_BUTTON_ACTION_SEQUENCE}.new_filled_list */
-EIF_TYPED_VALUE F1154_10176 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+EIF_TYPED_VALUE F1154_10177 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "new_filled_list";
@@ -275,12 +275,12 @@ EIF_TYPED_VALUE F1154_10176 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU(SK_INT32,&arg1);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1153, Current, 0, 1, 16726);
+	RTEAA(l_feature_name, 1153, Current, 0, 1, 16727);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1153, Current, 16726);
+	RTDBGEAA(1153, Current, 16727);
 	RTIV(Current, RTAL);
 	if ((RTAL & CK_REQUIRE) || RTAC) {
 		RTHOOK(1);

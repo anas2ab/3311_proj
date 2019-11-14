@@ -1,5 +1,5 @@
 /*
- * Code for class EV_MULTI_COLUMN_LIST_ROW_ACTION_SEQUENCES
+ * Code for class EV_LIST_ITEM_ACTION_SEQUENCES
  */
 
 #include "eif_eiffel.h"
@@ -10,8 +10,8 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1252_10870(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1252_10871(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1252_10873(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1252_10874(EIF_REFERENCE);
 extern void EIF_Minit1252(void);
 
 #ifdef __cplusplus
@@ -33,8 +33,8 @@ extern "C" {
 extern "C" {
 #endif
 
-/* {EV_MULTI_COLUMN_LIST_ROW_ACTION_SEQUENCES}.select_actions */
-EIF_TYPED_VALUE F1252_10870 (EIF_REFERENCE Current)
+/* {EV_LIST_ITEM_ACTION_SEQUENCES}.select_actions */
+EIF_TYPED_VALUE F1252_10873 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "select_actions";
@@ -61,18 +61,18 @@ EIF_TYPED_VALUE F1252_10870 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1251, Current, 0, 0, 17548);
+	RTEAA(l_feature_name, 1251, Current, 0, 0, 17551);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1251, Current, 17548);
+	RTDBGEAA(1251, Current, 17551);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(0, 0xF8000482, 0,0); /* Result */
-	tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(8313, dtype))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
+	tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(8316, dtype))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
 	RTNHOOK(1,1);
-	tr2 = ((up2x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6324, "select_actions", tr1))(tr1)), (((up2x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up2x.it_r = RTBU(up2x))), (up2x.type = SK_POINTER), up2x.it_r);
+	tr2 = ((up2x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6325, "select_actions", tr1))(tr1)), (((up2x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up2x.it_r = RTBU(up2x))), (up2x.type = SK_POINTER), up2x.it_r);
 	Result = (EIF_REFERENCE) RTCCL(tr2);
 	if (RTAL & CK_ENSURE) {
 		RTHOOK(2);
@@ -96,8 +96,8 @@ EIF_TYPED_VALUE F1252_10870 (EIF_REFERENCE Current)
 #undef up2
 }
 
-/* {EV_MULTI_COLUMN_LIST_ROW_ACTION_SEQUENCES}.deselect_actions */
-EIF_TYPED_VALUE F1252_10871 (EIF_REFERENCE Current)
+/* {EV_LIST_ITEM_ACTION_SEQUENCES}.deselect_actions */
+EIF_TYPED_VALUE F1252_10874 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "deselect_actions";
@@ -124,18 +124,18 @@ EIF_TYPED_VALUE F1252_10871 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1251, Current, 0, 0, 17549);
+	RTEAA(l_feature_name, 1251, Current, 0, 0, 17552);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1251, Current, 17549);
+	RTDBGEAA(1251, Current, 17552);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(0, 0xF8000482, 0,0); /* Result */
-	tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(8313, dtype))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
+	tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(8316, dtype))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
 	RTNHOOK(1,1);
-	tr2 = ((up2x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6326, "deselect_actions", tr1))(tr1)), (((up2x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up2x.it_r = RTBU(up2x))), (up2x.type = SK_POINTER), up2x.it_r);
+	tr2 = ((up2x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6327, "deselect_actions", tr1))(tr1)), (((up2x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up2x.it_r = RTBU(up2x))), (up2x.type = SK_POINTER), up2x.it_r);
 	Result = (EIF_REFERENCE) RTCCL(tr2);
 	if (RTAL & CK_ENSURE) {
 		RTHOOK(2);

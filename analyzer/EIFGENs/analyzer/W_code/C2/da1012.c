@@ -10,7 +10,6 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1012_8708(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1012_8709(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1012_8710(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1012_8711(EIF_REFERENCE);
@@ -18,6 +17,7 @@ extern EIF_TYPED_VALUE F1012_8712(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1012_8713(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1012_8714(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F1012_8715(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1012_8716(EIF_REFERENCE);
 extern void EIF_Minit1012(void);
 
 #ifdef __cplusplus
@@ -40,18 +40,18 @@ extern "C" {
 #endif
 
 /* {DATE_TIME_TOOLS}.name */
-RTOID (F1012_8708)
+RTOID (F1012_8709)
 
 
-EIF_TYPED_VALUE F1012_8708 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1012_8709 (EIF_REFERENCE Current)
 {
 	GTCX
-	RTOTC (F1012_8708,15028,RTMS_EX_H("English",7,257590376));
+	RTOTC (F1012_8709,15030,RTMS_EX_H("English",7,257590376));
 }
 
 /* {DATE_TIME_TOOLS}.days_text */
-RTOID (F1012_8709)
-EIF_TYPED_VALUE F1012_8709 (EIF_REFERENCE Current)
+RTOID (F1012_8710)
+EIF_TYPED_VALUE F1012_8710 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "days_text";
@@ -67,7 +67,7 @@ EIF_TYPED_VALUE F1012_8709 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1012_8709);
+	RTOTDR(F1012_8710);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -79,12 +79,12 @@ EIF_TYPED_VALUE F1012_8709 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1011, Current, 0, 0, 15028);
+	RTEAA(l_feature_name, 1011, Current, 0, 0, 15030);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1011, Current, 15028);
+	RTDBGEAA(1011, Current, 15030);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -140,8 +140,8 @@ EIF_TYPED_VALUE F1012_8709 (EIF_REFERENCE Current)
 }
 
 /* {DATE_TIME_TOOLS}.months_text */
-RTOID (F1012_8710)
-EIF_TYPED_VALUE F1012_8710 (EIF_REFERENCE Current)
+RTOID (F1012_8711)
+EIF_TYPED_VALUE F1012_8711 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "months_text";
@@ -157,7 +157,7 @@ EIF_TYPED_VALUE F1012_8710 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1012_8710);
+	RTOTDR(F1012_8711);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -169,12 +169,12 @@ EIF_TYPED_VALUE F1012_8710 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1011, Current, 0, 0, 15029);
+	RTEAA(l_feature_name, 1011, Current, 0, 0, 15023);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1011, Current, 15029);
+	RTDBGEAA(1011, Current, 15023);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -245,8 +245,8 @@ EIF_TYPED_VALUE F1012_8710 (EIF_REFERENCE Current)
 }
 
 /* {DATE_TIME_TOOLS}.long_days_text */
-RTOID (F1012_8711)
-EIF_TYPED_VALUE F1012_8711 (EIF_REFERENCE Current)
+RTOID (F1012_8712)
+EIF_TYPED_VALUE F1012_8712 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "long_days_text";
@@ -262,7 +262,7 @@ EIF_TYPED_VALUE F1012_8711 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1012_8711);
+	RTOTDR(F1012_8712);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -274,12 +274,12 @@ EIF_TYPED_VALUE F1012_8711 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1011, Current, 0, 0, 15022);
+	RTEAA(l_feature_name, 1011, Current, 0, 0, 15024);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1011, Current, 15022);
+	RTDBGEAA(1011, Current, 15024);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -335,8 +335,8 @@ EIF_TYPED_VALUE F1012_8711 (EIF_REFERENCE Current)
 }
 
 /* {DATE_TIME_TOOLS}.long_months_text */
-RTOID (F1012_8712)
-EIF_TYPED_VALUE F1012_8712 (EIF_REFERENCE Current)
+RTOID (F1012_8713)
+EIF_TYPED_VALUE F1012_8713 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "long_months_text";
@@ -352,7 +352,7 @@ EIF_TYPED_VALUE F1012_8712 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1012_8712);
+	RTOTDR(F1012_8713);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -364,12 +364,12 @@ EIF_TYPED_VALUE F1012_8712 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1011, Current, 0, 0, 15023);
+	RTEAA(l_feature_name, 1011, Current, 0, 0, 15025);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1011, Current, 15023);
+	RTDBGEAA(1011, Current, 15025);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -440,39 +440,38 @@ EIF_TYPED_VALUE F1012_8712 (EIF_REFERENCE Current)
 }
 
 /* {DATE_TIME_TOOLS}.date_default_format_string */
-RTOID (F1012_8713)
-
-
-EIF_TYPED_VALUE F1012_8713 (EIF_REFERENCE Current)
-{
-	GTCX
-	RTOTC (F1012_8713,15025,RTMS_EX_H("[0]mm/[0]dd/yyyy",16,1621628025));
-}
-
-/* {DATE_TIME_TOOLS}.time_default_format_string */
 RTOID (F1012_8714)
 
 
 EIF_TYPED_VALUE F1012_8714 (EIF_REFERENCE Current)
 {
 	GTCX
-	RTOTC (F1012_8714,15026,RTMS_EX_H("hh12:[0]mi:[0]ss.ff3 AM",23,629041741));
+	RTOTC (F1012_8714,15027,RTMS_EX_H("[0]mm/[0]dd/yyyy",16,1621628025));
 }
 
-/* {DATE_TIME_TOOLS}.default_format_string */
+/* {DATE_TIME_TOOLS}.time_default_format_string */
 RTOID (F1012_8715)
 
 
 EIF_TYPED_VALUE F1012_8715 (EIF_REFERENCE Current)
 {
 	GTCX
-	RTOTC (F1012_8715,15027,RTMS_EX_H("[0]mm/[0]dd/yyyy hh12:[0]mi:[0]ss.ff3 AM",40,2104244301));
+	RTOTC (F1012_8715,15028,RTMS_EX_H("hh12:[0]mi:[0]ss.ff3 AM",23,629041741));
+}
+
+/* {DATE_TIME_TOOLS}.default_format_string */
+RTOID (F1012_8716)
+
+
+EIF_TYPED_VALUE F1012_8716 (EIF_REFERENCE Current)
+{
+	GTCX
+	RTOTC (F1012_8716,15029,RTMS_EX_H("[0]mm/[0]dd/yyyy hh12:[0]mi:[0]ss.ff3 AM",40,2104244301));
 }
 
 void EIF_Minit1012 (void)
 {
 	GTCX
-	RTOTS (8708,F1012_8708)
 	RTOTS (8709,F1012_8709)
 	RTOTS (8710,F1012_8710)
 	RTOTS (8711,F1012_8711)
@@ -480,6 +479,7 @@ void EIF_Minit1012 (void)
 	RTOTS (8713,F1012_8713)
 	RTOTS (8714,F1012_8714)
 	RTOTS (8715,F1012_8715)
+	RTOTS (8716,F1012_8716)
 }
 
 

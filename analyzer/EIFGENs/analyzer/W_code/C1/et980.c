@@ -75,7 +75,7 @@ void F980_8512 (EIF_REFERENCE Current)
 	RTHOOK(3);
 	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWF(6302, dtype))(Current);
 	RTHOOK(4);
-	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTVF(8602, "launch", loc1))(loc1);
+	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTVF(8603, "launch", loc1))(loc1);
 	RTVI(Current, RTAL);
 	RTRS;
 	RTHOOK(5);
@@ -161,7 +161,7 @@ void F980_8514 (EIF_REFERENCE Current)
 	RTHOOK(1);
 	tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(6303, dtype))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
 	RTNHOOK(1,1);
-	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTVF(8850, "show", tr1))(tr1);
+	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTVF(8851, "show", tr1))(tr1);
 	RTVI(Current, RTAL);
 	RTRS;
 	RTHOOK(2);

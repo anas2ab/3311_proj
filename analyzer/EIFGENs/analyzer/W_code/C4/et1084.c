@@ -1,5 +1,5 @@
 /*
- * Code for class ETF_STR_PARAM
+ * Code for class ETF_VALUE_PARAM
  */
 
 #include "eif_eiffel.h"
@@ -10,9 +10,9 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1084_9393(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1084_9394(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1084_9395(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1084_9396(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1084_9397(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1084_9398(EIF_REFERENCE);
 extern void EIF_Minit1084(void);
 
 #ifdef __cplusplus
@@ -34,8 +34,8 @@ extern "C" {
 extern "C" {
 #endif
 
-/* {ETF_STR_PARAM}.eiffel_type */
-EIF_TYPED_VALUE F1084_9393 (EIF_REFERENCE Current)
+/* {ETF_VALUE_PARAM}.eiffel_type */
+EIF_TYPED_VALUE F1084_9396 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "eiffel_type";
@@ -58,12 +58,12 @@ EIF_TYPED_VALUE F1084_9393 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1083, Current, 0, 0, 15648);
+	RTEAA(l_feature_name, 1083, Current, 0, 0, 15651);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1083, Current, 15648);
+	RTDBGEAA(1083, Current, 15651);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(0, 0xF80000E8, 0,0); /* Result */
@@ -81,8 +81,8 @@ EIF_TYPED_VALUE F1084_9393 (EIF_REFERENCE Current)
 #undef up1
 }
 
-/* {ETF_STR_PARAM}.create_clause */
-EIF_TYPED_VALUE F1084_9394 (EIF_REFERENCE Current)
+/* {ETF_VALUE_PARAM}.create_clause */
+EIF_TYPED_VALUE F1084_9397 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "create_clause";
@@ -103,16 +103,16 @@ EIF_TYPED_VALUE F1084_9394 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1083, Current, 0, 0, 15649);
+	RTEAA(l_feature_name, 1083, Current, 0, 0, 15652);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1083, Current, 15649);
+	RTDBGEAA(1083, Current, 15652);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(0, 0xF80000E8, 0,0); /* Result */
-	tr1 = RTMS_EX_H("create {ETF_STR_PARAM}",22,1911793021);
+	tr1 = RTMS_EX_H("create {ETF_VALUE_PARAM}",24,883118973);
 	Result = (EIF_REFERENCE) tr1;
 	RTVI(Current, RTAL);
 	RTRS;
@@ -125,8 +125,8 @@ EIF_TYPED_VALUE F1084_9394 (EIF_REFERENCE Current)
 	{ EIF_TYPED_VALUE r; r.type = SK_REF; r.it_r = Result; return r; }
 }
 
-/* {ETF_STR_PARAM}.out */
-EIF_TYPED_VALUE F1084_9395 (EIF_REFERENCE Current)
+/* {ETF_VALUE_PARAM}.out */
+EIF_TYPED_VALUE F1084_9398 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "out";
@@ -147,16 +147,16 @@ EIF_TYPED_VALUE F1084_9395 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1083, Current, 0, 0, 15650);
+	RTEAA(l_feature_name, 1083, Current, 0, 0, 15653);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1083, Current, 15650);
+	RTDBGEAA(1083, Current, 15653);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(0, 0xF80000E8, 0,0); /* Result */
-	tr1 = RTMS_EX_H("STRING",6,1544365639);
+	tr1 = RTMS_EX_H("VALUE",5,1096182085);
 	Result = (EIF_REFERENCE) tr1;
 	if (RTAL & CK_ENSURE) {
 		RTHOOK(2);

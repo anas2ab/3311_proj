@@ -1,5 +1,5 @@
 /*
- * Class KL_ARRAY_ROUTINES [CHARACTER_8]
+ * Class KL_TYPE [REAL_32]
  */
 
 #include "eif_macros.h"
@@ -10,25 +10,21 @@ extern "C" {
 #endif
 
 static const EIF_TYPE_INDEX egt_0_1656 [] = {0xFF01,232,0xFFFF};
-static const EIF_TYPE_INDEX egt_1_1656 [] = {0xFF01,248,1655,197,0xFFFF};
-static const EIF_TYPE_INDEX egt_2_1656 [] = {0xFF01,1655,197,0xFFFF};
+static const EIF_TYPE_INDEX egt_1_1656 [] = {0xFF01,248,1655,191,0xFFFF};
+static const EIF_TYPE_INDEX egt_2_1656 [] = {0xFF01,1655,191,0xFFFF};
 static const EIF_TYPE_INDEX egt_3_1656 [] = {0,0xFFFF};
 static const EIF_TYPE_INDEX egt_4_1656 [] = {0,0xFFFF};
-static const EIF_TYPE_INDEX egt_5_1656 [] = {0xFF01,1655,197,0xFFFF};
-static const EIF_TYPE_INDEX egt_6_1656 [] = {0xFF01,1655,197,0xFFFF};
+static const EIF_TYPE_INDEX egt_5_1656 [] = {0xFF01,1655,191,0xFFFF};
+static const EIF_TYPE_INDEX egt_6_1656 [] = {0xFF01,1655,191,0xFFFF};
 static const EIF_TYPE_INDEX egt_7_1656 [] = {0,0xFFFF};
 static const EIF_TYPE_INDEX egt_8_1656 [] = {0xFF01,14,0xFFFF};
 static const EIF_TYPE_INDEX egt_9_1656 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1656 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1656 [] = {0xFF01,15,0xFFFF};
-static const EIF_TYPE_INDEX egt_12_1656 [] = {1655,197,0xFFFF};
-static const EIF_TYPE_INDEX egt_13_1656 [] = {0xFF01,1655,197,0xFFFF};
+static const EIF_TYPE_INDEX egt_12_1656 [] = {1655,191,0xFFFF};
+static const EIF_TYPE_INDEX egt_13_1656 [] = {0xFF01,1655,191,0xFFFF};
 static const EIF_TYPE_INDEX egt_14_1656 [] = {0xFF01,965,0xFFFF};
-static const EIF_TYPE_INDEX egt_15_1656 [] = {0xFF01,613,0xFFF8,1,0xFFFF};
-static const EIF_TYPE_INDEX egt_16_1656 [] = {0xFF01,613,0xFFF8,1,0xFFFF};
-static const EIF_TYPE_INDEX egt_17_1656 [] = {0xFF01,613,0xFFF8,1,0xFFFF};
-static const EIF_TYPE_INDEX egt_18_1656 [] = {0xFF01,613,0xFFF8,1,0xFFFF};
-static const EIF_TYPE_INDEX egt_19_1656 [] = {0xFFF8,1,0xFFFF};
+static const EIF_TYPE_INDEX egt_15_1656 [] = {0xFFF8,1,0xFFFF};
 
 
 static const struct desc_info desc_1656[] = {
@@ -64,24 +60,17 @@ static const struct desc_info desc_1656[] = {
 	{EIF_GENERIC(egt_12_1656), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_13_1656), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_14_1656), 17077, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_15_1656), 17265, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_16_1656), 17266, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x0197 /*203*/), 17267, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x0197 /*203*/), 17268, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_17_1656), 17260, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_18_1656), 17261, 0xFFFFFFFF},
-	{EIF_GENERIC(NULL), 17262, 0xFFFFFFFF},
-	{EIF_GENERIC(NULL), 17263, 0xFFFFFFFF},
-	{EIF_GENERIC(NULL), 17264, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_19_1656), 0x00, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_14_1656), 17078, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x0197 /*203*/), 21380, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x0197 /*203*/), 21381, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_15_1656), 0x00, 0xFFFFFFFF},
 };
 void Init1656(void)
 {
 	IDSC(desc_1656, 0, 1655);
 	IDSC(desc_1656 + 1, 1, 1655);
 	IDSC(desc_1656 + 32, 594, 1655);
-	IDSC(desc_1656 + 33, 513, 1655);
+	IDSC(desc_1656 + 33, 512, 1655);
 }
 
 

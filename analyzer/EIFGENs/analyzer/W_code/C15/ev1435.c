@@ -1,5 +1,5 @@
 /*
- * Code for class EV_COLOR_DIALOG_I
+ * Code for class EV_FONT_DIALOG_I
  */
 
 #include "eif_eiffel.h"

@@ -40,14 +40,14 @@ SYSTEM_IN_DYNAMIC_LIB = analyzer.so
 
 OBJECTS = big_file_C16_c.o 
 
-OLDOBJECTS =  ev1472.o ev1472d.o ev1468.o ev1468d.o ev1483.o ev1483d.o ev1456.o \
-	ev1456d.o ev1459.o ev1459d.o ev1460.o ev1460d.o ev1464.o ev1464d.o \
-	ev1455.o ev1455d.o ev1458.o ev1458d.o ev1481.o ev1481d.o ev1484.o \
-	ev1484d.o ev1470.o ev1470d.o ev1474.o ev1474d.o ev1465.o ev1465d.o \
-	ev1461.o ev1461d.o ev1475.o ev1475d.o ev1471.o ev1471d.o ev1482.o \
-	ev1482d.o ev1476.o ev1476d.o ev1454.o ev1454d.o ev1457.o ev1457d.o \
-	ev1466.o ev1466d.o ev1473.o ev1473d.o ev1480.o ev1480d.o ev1485.o \
-	ev1485d.o ev1462.o ev1462d.o ev1469.o ev1469d.o ev1479.o ev1479d.o \
+OLDOBJECTS =  ev1472.o ev1472d.o ev1468.o ev1468d.o ev1470.o ev1470d.o ev1484.o \
+	ev1484d.o ev1456.o ev1456d.o ev1459.o ev1459d.o ev1465.o ev1465d.o \
+	ev1461.o ev1461d.o ev1481.o ev1481d.o ev1460.o ev1460d.o ev1464.o \
+	ev1464d.o ev1471.o ev1471d.o ev1475.o ev1475d.o ev1458.o ev1458d.o \
+	ev1455.o ev1455d.o ev1483.o ev1483d.o ev1474.o ev1474d.o ev1457.o \
+	ev1457d.o ev1480.o ev1480d.o ev1476.o ev1476d.o ev1454.o ev1454d.o \
+	ev1473.o ev1473d.o ev1466.o ev1466d.o ev1482.o ev1482d.o ev1485.o \
+	ev1485d.o ev1469.o ev1469d.o ev1462.o ev1462d.o ev1479.o ev1479d.o \
 	ev1463.o ev1463d.o ev1467.o ev1467d.o ev1478.o ev1478d.o ev1477.o \
 	ev1477d.o ev1486.o ev1486d.o 
 

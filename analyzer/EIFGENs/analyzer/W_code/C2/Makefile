@@ -42,11 +42,11 @@ OBJECTS = big_file_C2_c.o
 
 OLDOBJECTS =  kl1024.o kl1024d.o da1012.o da1012d.o kl1023.o kl1023d.o ev1022.o \
 	ev1022d.o ev1021.o ev1021d.o ev1020.o ev1020d.o ev1019.o ev1019d.o \
-	ev1018.o ev1018d.o ev1017.o ev1017d.o ev1003.o ev1003d.o ev1016.o \
-	ev1016d.o ev1015.o ev1015d.o ev1014.o ev1014d.o ev1013.o ev1013d.o \
+	ev1018.o ev1018d.o ev1017.o ev1017d.o ev1016.o ev1016d.o ev1002.o \
+	ev1002d.o ev1015.o ev1015d.o ev1014.o ev1014d.o ev1013.o ev1013d.o \
 	da1011.o da1011d.o kl1010.o kl1010d.o kl1009.o kl1009d.o ki1008.o \
 	ki1008d.o ev1007.o ev1007d.o ev1006.o ev1006d.o ev1005.o ev1005d.o \
-	ev1004.o ev1004d.o ev1002.o ev1002d.o ev1001.o ev1001d.o ev1000.o \
+	ev1004.o ev1004d.o ev1003.o ev1003d.o ev1001.o ev1001d.o ev1000.o \
 	ev1000d.o uc999.o uc999d.o kl998.o kl998d.o ev997.o ev997d.o ev996.o \
 	ev996d.o kl995.o kl995d.o uc994.o uc994d.o ev993.o ev993d.o ev992.o \
 	ev992d.o 

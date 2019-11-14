@@ -1,5 +1,5 @@
 /*
- * Class EV_MONITOR_DPI_DETECTOR
+ * Class EV_MONITOR_DPI_DETECTOR_IMP
  */
 
 #include "eif_macros.h"
@@ -57,14 +57,14 @@ static const struct desc_info desc_1002[] = {
 	{EIF_NON_GENERIC(0x07D3 /*1001*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1002), 30, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x01A9 /*212*/), 0x00, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x01B5 /*218*/), 14952, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01A9 /*212*/), 14998, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01B5 /*218*/), 14997, 0xFFFFFFFF},
 };
 void Init1002(void)
 {
 	IDSC(desc_1002, 0, 1001);
 	IDSC(desc_1002 + 1, 1, 1001);
-	IDSC(desc_1002 + 32, 879, 1001);
+	IDSC(desc_1002 + 32, 881, 1001);
 }
 
 

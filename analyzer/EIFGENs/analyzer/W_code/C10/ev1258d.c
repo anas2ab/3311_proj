@@ -22,8 +22,8 @@ static const EIF_TYPE_INDEX egt_9_1258 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1258 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1258 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1258 [] = {0xFF01,1257,0xFFFF};
-static const EIF_TYPE_INDEX egt_13_1258 [] = {0xFF01,1000,0xFFFF};
-static const EIF_TYPE_INDEX egt_14_1258 [] = {0xFF01,1149,0xFFFF};
+static const EIF_TYPE_INDEX egt_13_1258 [] = {0xFF01,1005,0xFFFF};
+static const EIF_TYPE_INDEX egt_14_1258 [] = {0xFF01,1151,0xFFFF};
 static const EIF_TYPE_INDEX egt_15_1258 [] = {0xFF01,1153,0xFFFF};
 static const EIF_TYPE_INDEX egt_16_1258 [] = {0xFF01,1153,0xFFFF};
 
@@ -70,7 +70,7 @@ void Init1258(void)
 {
 	IDSC(desc_1258, 0, 1257);
 	IDSC(desc_1258 + 1, 1, 1257);
-	IDSC(desc_1258 + 32, 803, 1257);
+	IDSC(desc_1258 + 32, 784, 1257);
 }
 
 

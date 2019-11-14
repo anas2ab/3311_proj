@@ -40,16 +40,16 @@ SYSTEM_IN_DYNAMIC_LIB = analyzer.so
 
 OBJECTS = big_file_C21_c.o 
 
-OLDOBJECTS =  fu1649.o fu1649d.o ha1626.o ha1626d.o he1640.o he1640d.o he1638.o \
-	he1638d.o tr1643.o tr1643d.o bi1641.o bi1641d.o in1622.o in1622d.o \
-	bi1637.o bi1637d.o ta1629.o ta1629d.o pr1639.o pr1639d.o ha1630.o \
-	ha1630d.o tr1642.o tr1642d.o ac1619.o ac1619d.o ac1621.o ac1621d.o \
-	ta1628.o ta1628d.o li1644.o li1644d.o ta1627.o ta1627d.o kl1625.o \
-	kl1625d.o kl1636.o kl1636d.o kl1651.o kl1651d.o kl1623.o kl1623d.o \
-	kl1634.o kl1634d.o kl1647.o kl1647d.o kl1650.o kl1650d.o ki1632.o \
-	ki1632d.o ki1645.o ki1645d.o kl1624.o kl1624d.o kl1635.o kl1635d.o \
-	ev1620.o ev1620d.o kl1648.o kl1648d.o ki1631.o ki1631d.o ki1646.o \
-	ki1646d.o kl1633.o kl1633d.o 
+OLDOBJECTS =  fu1643.o fu1643d.o ha1622.o ha1622d.o he1636.o he1636d.o he1634.o \
+	he1634d.o tr1639.o tr1639d.o bi1637.o bi1637d.o bi1633.o bi1633d.o \
+	ta1625.o ta1625d.o pr1621.o pr1621d.o pr1635.o pr1635d.o ha1626.o \
+	ha1626d.o tr1638.o tr1638d.o ta1624.o ta1624d.o li1640.o li1640d.o \
+	ta1623.o ta1623d.o kl1648.o kl1648d.o kl1651.o kl1651d.o kl1620.o \
+	kl1620d.o kl1632.o kl1632d.o kl1645.o kl1645d.o kl1630.o kl1630d.o \
+	kl1649.o kl1649d.o kl1644.o kl1644d.o ki1628.o ki1628d.o ki1641.o \
+	ki1641d.o kl1619.o kl1619d.o kl1631.o kl1631d.o kl1650.o kl1650d.o \
+	kl1646.o kl1646d.o ki1627.o ki1627d.o ki1642.o ki1642d.o ki1647.o \
+	ki1647d.o kl1629.o kl1629d.o 
 
 all: Cobj21.o
 

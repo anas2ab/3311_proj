@@ -10,9 +10,9 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1419_13244(EIF_REFERENCE);
-static EIF_TYPED_VALUE F1419_13247_body(EIF_REFERENCE);
-extern EIF_TYPED_VALUE F1419_13247(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1419_13245(EIF_REFERENCE);
+static EIF_TYPED_VALUE F1419_13248_body(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1419_13248(EIF_REFERENCE);
 extern void EIF_Minit1419(void);
 
 #ifdef __cplusplus
@@ -35,7 +35,7 @@ extern "C" {
 #endif
 
 /* {EV_SELECTABLE_I}.is_selectable */
-EIF_TYPED_VALUE F1419_13244 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1419_13245 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "is_selectable";
@@ -53,12 +53,12 @@ EIF_TYPED_VALUE F1419_13244 (EIF_REFERENCE Current)
 	RTLU (SK_BOOL, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1418, Current, 0, 0, 19710);
+	RTEAA(l_feature_name, 1418, Current, 0, 0, 19711);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1418, Current, 19710);
+	RTDBGEAA(1418, Current, 19711);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(0, 0x04000000, 1,0); /* Result */
@@ -75,7 +75,7 @@ EIF_TYPED_VALUE F1419_13244 (EIF_REFERENCE Current)
 }
 
 /* {EV_SELECTABLE_I}.interface */
-static EIF_TYPED_VALUE F1419_13247_body (EIF_REFERENCE Current)
+static EIF_TYPED_VALUE F1419_13248_body (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "interface";
@@ -93,12 +93,12 @@ static EIF_TYPED_VALUE F1419_13247_body (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1418, Current, 0, 0, 19711);
+	RTEAA(l_feature_name, 1418, Current, 0, 0, 19712);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1418, Current, 19711);
+	RTDBGEAA(1418, Current, 19712);
 	RTIV(Current, RTAL);
 	RTVI(Current, RTAL);
 	RTRS;
@@ -111,20 +111,20 @@ static EIF_TYPED_VALUE F1419_13247_body (EIF_REFERENCE Current)
 	{ EIF_TYPED_VALUE r; r.type = SK_REF; r.it_r = Result; return r; }
 }
 
-EIF_TYPED_VALUE F1419_13247 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1419_13248 (EIF_REFERENCE Current)
 {
 	EIF_TYPED_VALUE r;
 	r.type = SK_REF;
-	r.it_r = *(EIF_REFERENCE *)(Current + RTWA(9342,Dtype(Current)));
+	r.it_r = *(EIF_REFERENCE *)(Current + RTWA(9343,Dtype(Current)));
 	if (!r.it_r) {
-		if (RTAT(RTWCT(9342, Dtype(Current), Dftype(Current)))) {
+		if (RTAT(RTWCT(9343, Dtype(Current), Dftype(Current)))) {
 			GTCX
 			RTLD;
 			RTLI(1);
 			RTLR(0,Current);
 			RTLIU(1);
-			r.it_r = (F1419_13247_body (Current)).it_r;
-			*(EIF_REFERENCE *)(Current + RTWA(9342,Dtype(Current))) = r.it_r;
+			r.it_r = (F1419_13248_body (Current)).it_r;
+			*(EIF_REFERENCE *)(Current + RTWA(9343,Dtype(Current))) = r.it_r;
 			RTAR(Current, r.it_r);
 			RTLE;
 		}

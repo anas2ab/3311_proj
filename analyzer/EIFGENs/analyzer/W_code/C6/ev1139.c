@@ -10,9 +10,9 @@
 extern "C" {
 #endif
 
-extern void F1139_10129(EIF_REFERENCE, EIF_TYPED_VALUE);
-extern void F1139_10130(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
-extern EIF_TYPED_VALUE F1139_10131(EIF_REFERENCE, EIF_TYPED_VALUE);
+extern void F1139_10130(EIF_REFERENCE, EIF_TYPED_VALUE);
+extern void F1139_10131(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
+extern EIF_TYPED_VALUE F1139_10132(EIF_REFERENCE, EIF_TYPED_VALUE);
 extern void EIF_Minit1139(void);
 extern EIF_REFERENCE _A1139_184_2();
 
@@ -36,7 +36,7 @@ extern "C" {
 #endif
 
 /* {EV_COLUMN_ACTION_SEQUENCE}.force_extend */
-void F1139_10129 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+void F1139_10130 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "force_extend";
@@ -70,12 +70,12 @@ void F1139_10129 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU(SK_REF,&arg1);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1138, Current, 0, 1, 16679);
+	RTEAA(l_feature_name, 1138, Current, 0, 1, 16680);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1138, Current, 16679);
+	RTDBGEAA(1138, Current, 16680);
 	{
 		static EIF_TYPE_INDEX typarr0[] = {0xFF01,275,0xFF01,0xFFF9,0,186,0xFFFF};
 		EIF_TYPE typres0;
@@ -118,7 +118,7 @@ void F1139_10129 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 		static EIF_TYPE typcache0 = {INVALID_DTYPE, 0};
 		
 		typres0 = (typcache0.id != INVALID_DTYPE ? typcache0 : (typcache0 = eif_compound_id(dftype, typarr0)));
-		tr4= RTLNRW(typres0.id, 0, (EIF_POINTER) _A1139_184_2, (EIF_POINTER)(0),7743, tr2, 0, 1, -1, tr1, 1);
+		tr4= RTLNRW(typres0.id, 0, (EIF_POINTER) _A1139_184_2, (EIF_POINTER)(0),7744, tr2, 0, 1, -1, tr1, 1);
 	}
 	ur1 = RTCCL(tr4);
 	(FUNCTION_CAST(void, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWF(2339, dtype))(Current, ur1x);
@@ -136,7 +136,7 @@ void F1139_10129 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 }
 
 /* {EV_COLUMN_ACTION_SEQUENCE}.wrapper */
-void F1139_10130 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
+void F1139_10131 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
 {
 	GTCX
 	char *l_feature_name = "wrapper";
@@ -164,12 +164,12 @@ void F1139_10130 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE 
 	RTLU(SK_REF,&arg2);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1138, Current, 0, 2, 16680);
+	RTEAA(l_feature_name, 1138, Current, 0, 2, 16681);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1138, Current, 16680);
+	RTDBGEAA(1138, Current, 16681);
 	{
 		static EIF_TYPE_INDEX typarr0[] = {0xFF01,275,0xFF01,0xFFF9,0,186,0xFFFF};
 		EIF_TYPE typres0;
@@ -205,7 +205,7 @@ void F1139_10130 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE 
 }
 
 /* {EV_COLUMN_ACTION_SEQUENCE}.new_filled_list */
-EIF_TYPED_VALUE F1139_10131 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+EIF_TYPED_VALUE F1139_10132 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "new_filled_list";
@@ -233,12 +233,12 @@ EIF_TYPED_VALUE F1139_10131 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU(SK_INT32,&arg1);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1138, Current, 0, 1, 16681);
+	RTEAA(l_feature_name, 1138, Current, 0, 1, 16682);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1138, Current, 16681);
+	RTDBGEAA(1138, Current, 16682);
 	RTIV(Current, RTAL);
 	if ((RTAL & CK_REQUIRE) || RTAC) {
 		RTHOOK(1);

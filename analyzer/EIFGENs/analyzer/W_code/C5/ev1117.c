@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1117_9802(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1117_9803(EIF_REFERENCE);
 extern void EIF_Minit1117(void);
 
 #ifdef __cplusplus
@@ -34,7 +34,7 @@ extern "C" {
 #endif
 
 /* {EV_GTK_TREE_ITER_STRUCT}.structure_size */
-EIF_TYPED_VALUE F1117_9802 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1117_9803 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "structure_size";
@@ -52,11 +52,11 @@ EIF_TYPED_VALUE F1117_9802 (EIF_REFERENCE Current)
 	RTLU (SK_INT32, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1116, Current, 0, 0, 16051);
+	RTEAA(l_feature_name, 1116, Current, 0, 0, 16052);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 1);
-	RTDBGEAA(1116, Current, 16051);
+	RTDBGEAA(1116, Current, 16052);
 	RTIV(Current, RTAL);
 	Result = (EIF_INTEGER_32) sizeof(GtkTreeIter);
 	if (RTAL & CK_ENSURE) {

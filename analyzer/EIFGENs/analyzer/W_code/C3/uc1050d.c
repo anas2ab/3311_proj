@@ -58,7 +58,7 @@ static const struct desc_info desc_1050[] = {
 	{EIF_NON_GENERIC(0x0833 /*1049*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1050), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1050), 15383, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_13_1050), 15384, 0xFFFFFFFF},
 };
 void Init1050(void)
 {

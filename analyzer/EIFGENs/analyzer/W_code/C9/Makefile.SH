@@ -59,8 +59,8 @@ OLDOBJECTS =  ki1234.o ki1234d.o ki1227.o ki1227d.o kl1235.o kl1235d.o ev1241.o 
 	ev1241d.o ev1246.o ev1246d.o ki1232.o ki1232d.o ki1229.o ki1229d.o \
 	ki1228.o ki1228d.o ev1242.o ev1242d.o ev1237.o ev1237d.o ev1244.o \
 	ev1244d.o kl1226.o kl1226d.o kl1225.o kl1225d.o kl1231.o kl1231d.o \
-	ev1239.o ev1239d.o ev1240.o ev1240d.o ki1233.o ki1233d.o ev1236.o \
-	ev1236d.o ev1238.o ev1238d.o uc1243.o uc1243d.o kl1245.o kl1245d.o \
+	ev1239.o ev1239d.o ev1240.o ev1240d.o ki1233.o ki1233d.o ev1238.o \
+	ev1238d.o ev1236.o ev1236d.o uc1243.o uc1243d.o kl1245.o kl1245d.o \
 	uc1224.o uc1224d.o uc1223.o uc1223d.o kl1230.o kl1230d.o ev1255.o \
 	ev1255d.o ev1254.o ev1254d.o ev1253.o ev1253d.o ev1252.o ev1252d.o \
 	ev1251.o ev1251d.o ev1250.o ev1250d.o ev1249.o ev1249d.o ev1248.o \

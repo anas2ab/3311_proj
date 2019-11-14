@@ -1,5 +1,5 @@
 /*
- * Class EV_MULTI_COLUMN_LIST_ROW_ACTION_SEQUENCES
+ * Class EV_LIST_ITEM_ACTION_SEQUENCES
  */
 
 #include "eif_macros.h"
@@ -61,14 +61,14 @@ static const struct desc_info desc_1252[] = {
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1252), 30, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_13_1252), 0x00, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_14_1252), 17548, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_15_1252), 17549, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_14_1252), 17551, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_15_1252), 17552, 0xFFFFFFFF},
 };
 void Init1252(void)
 {
 	IDSC(desc_1252, 0, 1251);
 	IDSC(desc_1252 + 1, 1, 1251);
-	IDSC(desc_1252 + 32, 990, 1251);
+	IDSC(desc_1252 + 32, 992, 1251);
 }
 
 

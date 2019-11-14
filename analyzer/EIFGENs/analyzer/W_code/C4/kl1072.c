@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1072_9359(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1072_9360(EIF_REFERENCE);
 extern void EIF_Minit1072(void);
 
 #ifdef __cplusplus
@@ -33,8 +33,8 @@ extern "C" {
 #endif
 
 /* {KL_SHARED_STANDARD_FILES}.std */
-RTOID (F1072_9359)
-EIF_TYPED_VALUE F1072_9359 (EIF_REFERENCE Current)
+RTOID (F1072_9360)
+EIF_TYPED_VALUE F1072_9360 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "std";
@@ -46,7 +46,7 @@ EIF_TYPED_VALUE F1072_9359 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1072_9359);
+	RTOTDR(F1072_9360);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -56,12 +56,12 @@ EIF_TYPED_VALUE F1072_9359 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1071, Current, 0, 0, 15616);
+	RTEAA(l_feature_name, 1071, Current, 0, 0, 15617);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1071, Current, 15616);
+	RTDBGEAA(1071, Current, 15617);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -95,7 +95,7 @@ EIF_TYPED_VALUE F1072_9359 (EIF_REFERENCE Current)
 void EIF_Minit1072 (void)
 {
 	GTCX
-	RTOTS (9359,F1072_9359)
+	RTOTS (9360,F1072_9360)
 }
 
 

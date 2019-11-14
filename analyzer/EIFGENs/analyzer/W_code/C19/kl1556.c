@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1556_15356(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1556_15357(EIF_REFERENCE);
 extern void EIF_Minit1556(void);
 
 #ifdef __cplusplus
@@ -33,7 +33,7 @@ extern "C" {
 #endif
 
 /* {KL_CLONABLE}.cloned_object */
-EIF_TYPED_VALUE F1556_15356 (EIF_REFERENCE Current)
+EIF_TYPED_VALUE F1556_15357 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "cloned_object";
@@ -63,12 +63,12 @@ EIF_TYPED_VALUE F1556_15356 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1555, Current, 0, 0, 21459);
+	RTEAA(l_feature_name, 1555, Current, 0, 0, 21460);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1555, Current, 21459);
+	RTDBGEAA(1555, Current, 21460);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAL(0, 0xF8000613, 0,0); /* Result */
@@ -84,7 +84,7 @@ EIF_TYPED_VALUE F1556_15356 (EIF_REFERENCE Current)
 		}
 		RTHOOK(3);
 		RTCT("same_type", EX_POST);
-		tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(7967, dtype))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
+		tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(7968, dtype))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
 		RTNHOOK(3,1);
 		ur1 = RTCCL(Result);
 		ur2 = RTCCL(Current);

@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1221_10482(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1221_10483(EIF_REFERENCE);
 extern void EIF_Minit1221(void);
 
 #ifdef __cplusplus
@@ -33,8 +33,8 @@ extern "C" {
 #endif
 
 /* {KL_IMPORTED_ANY_ROUTINES}.any_ */
-RTOID (F1221_10482)
-EIF_TYPED_VALUE F1221_10482 (EIF_REFERENCE Current)
+RTOID (F1221_10483)
+EIF_TYPED_VALUE F1221_10483 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "any_";
@@ -46,7 +46,7 @@ EIF_TYPED_VALUE F1221_10482 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1221_10482);
+	RTOTDR(F1221_10483);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -56,12 +56,12 @@ EIF_TYPED_VALUE F1221_10482 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1220, Current, 0, 0, 17077);
+	RTEAA(l_feature_name, 1220, Current, 0, 0, 17078);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1220, Current, 17077);
+	RTDBGEAA(1220, Current, 17078);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -95,7 +95,7 @@ EIF_TYPED_VALUE F1221_10482 (EIF_REFERENCE Current)
 void EIF_Minit1221 (void)
 {
 	GTCX
-	RTOTS (10482,F1221_10482)
+	RTOTS (10483,F1221_10483)
 }
 
 

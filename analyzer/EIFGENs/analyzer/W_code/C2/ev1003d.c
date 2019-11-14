@@ -1,5 +1,5 @@
 /*
- * Class EV_MONITOR_DPI_DETECTOR_IMP
+ * Class EV_MENU_ITEM_LIST_ACTION_SEQUENCES_I
  */
 
 #include "eif_macros.h"
@@ -22,6 +22,7 @@ static const EIF_TYPE_INDEX egt_9_1003 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1003 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1003 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1003 [] = {0xFF01,1002,0xFFFF};
+static const EIF_TYPE_INDEX egt_13_1003 [] = {0xFF01,1141,0xFFFF};
 
 
 static const struct desc_info desc_1003[] = {
@@ -57,14 +58,14 @@ static const struct desc_info desc_1003[] = {
 	{EIF_NON_GENERIC(0x07D5 /*1002*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1003), 30, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x01A9 /*212*/), 14953, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x01B5 /*218*/), 14952, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_13_1003), 14999, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x08EB /*1141*/), 15000, 0},
 };
 void Init1003(void)
 {
 	IDSC(desc_1003, 0, 1002);
 	IDSC(desc_1003 + 1, 1, 1002);
-	IDSC(desc_1003 + 32, 879, 1002);
+	IDSC(desc_1003 + 32, 877, 1002);
 }
 
 

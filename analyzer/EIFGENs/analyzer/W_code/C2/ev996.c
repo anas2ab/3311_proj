@@ -10,7 +10,6 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F996_8578(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F996_8579(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F996_8580(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F996_8581(EIF_REFERENCE);
@@ -25,6 +24,7 @@ extern EIF_TYPED_VALUE F996_8589(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F996_8590(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F996_8591(EIF_REFERENCE);
 extern EIF_TYPED_VALUE F996_8592(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F996_8593(EIF_REFERENCE);
 extern void EIF_Minit996(void);
 
 #ifdef __cplusplus
@@ -47,8 +47,8 @@ extern "C" {
 #endif
 
 /* {EV_DIALOG_NAMES}.ev_ok */
-RTOID (F996_8578)
-EIF_TYPED_VALUE F996_8578 (EIF_REFERENCE Current)
+RTOID (F996_8579)
+EIF_TYPED_VALUE F996_8579 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_ok";
@@ -63,7 +63,7 @@ EIF_TYPED_VALUE F996_8578 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8578);
+	RTOTDR(F996_8579);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -75,12 +75,12 @@ EIF_TYPED_VALUE F996_8578 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14925);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14927);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14925);
+	RTDBGEAA(995, Current, 14927);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -106,8 +106,8 @@ EIF_TYPED_VALUE F996_8578 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_open */
-RTOID (F996_8579)
-EIF_TYPED_VALUE F996_8579 (EIF_REFERENCE Current)
+RTOID (F996_8580)
+EIF_TYPED_VALUE F996_8580 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_open";
@@ -122,7 +122,7 @@ EIF_TYPED_VALUE F996_8579 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8579);
+	RTOTDR(F996_8580);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -134,12 +134,12 @@ EIF_TYPED_VALUE F996_8579 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14926);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14928);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14926);
+	RTDBGEAA(995, Current, 14928);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -165,8 +165,8 @@ EIF_TYPED_VALUE F996_8579 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_save */
-RTOID (F996_8580)
-EIF_TYPED_VALUE F996_8580 (EIF_REFERENCE Current)
+RTOID (F996_8581)
+EIF_TYPED_VALUE F996_8581 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_save";
@@ -181,7 +181,7 @@ EIF_TYPED_VALUE F996_8580 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8580);
+	RTOTDR(F996_8581);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -193,12 +193,12 @@ EIF_TYPED_VALUE F996_8580 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14927);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14929);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14927);
+	RTDBGEAA(995, Current, 14929);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -224,8 +224,8 @@ EIF_TYPED_VALUE F996_8580 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_print */
-RTOID (F996_8581)
-EIF_TYPED_VALUE F996_8581 (EIF_REFERENCE Current)
+RTOID (F996_8582)
+EIF_TYPED_VALUE F996_8582 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_print";
@@ -240,7 +240,7 @@ EIF_TYPED_VALUE F996_8581 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8581);
+	RTOTDR(F996_8582);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -252,12 +252,12 @@ EIF_TYPED_VALUE F996_8581 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14928);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14930);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14928);
+	RTDBGEAA(995, Current, 14930);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -283,8 +283,8 @@ EIF_TYPED_VALUE F996_8581 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_cancel */
-RTOID (F996_8582)
-EIF_TYPED_VALUE F996_8582 (EIF_REFERENCE Current)
+RTOID (F996_8583)
+EIF_TYPED_VALUE F996_8583 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_cancel";
@@ -299,7 +299,7 @@ EIF_TYPED_VALUE F996_8582 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8582);
+	RTOTDR(F996_8583);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -311,12 +311,12 @@ EIF_TYPED_VALUE F996_8582 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14929);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14931);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14929);
+	RTDBGEAA(995, Current, 14931);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -342,8 +342,8 @@ EIF_TYPED_VALUE F996_8582 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_yes */
-RTOID (F996_8583)
-EIF_TYPED_VALUE F996_8583 (EIF_REFERENCE Current)
+RTOID (F996_8584)
+EIF_TYPED_VALUE F996_8584 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_yes";
@@ -358,7 +358,7 @@ EIF_TYPED_VALUE F996_8583 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8583);
+	RTOTDR(F996_8584);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -370,12 +370,12 @@ EIF_TYPED_VALUE F996_8583 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14930);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14932);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14930);
+	RTDBGEAA(995, Current, 14932);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -401,8 +401,8 @@ EIF_TYPED_VALUE F996_8583 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_no */
-RTOID (F996_8584)
-EIF_TYPED_VALUE F996_8584 (EIF_REFERENCE Current)
+RTOID (F996_8585)
+EIF_TYPED_VALUE F996_8585 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_no";
@@ -417,7 +417,7 @@ EIF_TYPED_VALUE F996_8584 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8584);
+	RTOTDR(F996_8585);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -429,12 +429,12 @@ EIF_TYPED_VALUE F996_8584 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14931);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14933);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14931);
+	RTDBGEAA(995, Current, 14933);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -460,8 +460,8 @@ EIF_TYPED_VALUE F996_8584 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_abort */
-RTOID (F996_8585)
-EIF_TYPED_VALUE F996_8585 (EIF_REFERENCE Current)
+RTOID (F996_8586)
+EIF_TYPED_VALUE F996_8586 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_abort";
@@ -476,7 +476,7 @@ EIF_TYPED_VALUE F996_8585 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8585);
+	RTOTDR(F996_8586);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -488,12 +488,12 @@ EIF_TYPED_VALUE F996_8585 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14932);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14934);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14932);
+	RTDBGEAA(995, Current, 14934);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -519,8 +519,8 @@ EIF_TYPED_VALUE F996_8585 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_retry */
-RTOID (F996_8586)
-EIF_TYPED_VALUE F996_8586 (EIF_REFERENCE Current)
+RTOID (F996_8587)
+EIF_TYPED_VALUE F996_8587 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_retry";
@@ -535,7 +535,7 @@ EIF_TYPED_VALUE F996_8586 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8586);
+	RTOTDR(F996_8587);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -547,12 +547,12 @@ EIF_TYPED_VALUE F996_8586 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14933);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14920);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14933);
+	RTDBGEAA(995, Current, 14920);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -578,8 +578,8 @@ EIF_TYPED_VALUE F996_8586 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_ignore */
-RTOID (F996_8587)
-EIF_TYPED_VALUE F996_8587 (EIF_REFERENCE Current)
+RTOID (F996_8588)
+EIF_TYPED_VALUE F996_8588 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_ignore";
@@ -594,7 +594,7 @@ EIF_TYPED_VALUE F996_8587 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8587);
+	RTOTDR(F996_8588);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -606,12 +606,12 @@ EIF_TYPED_VALUE F996_8587 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14919);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14921);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14919);
+	RTDBGEAA(995, Current, 14921);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -637,8 +637,8 @@ EIF_TYPED_VALUE F996_8587 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_warning_dialog_title */
-RTOID (F996_8588)
-EIF_TYPED_VALUE F996_8588 (EIF_REFERENCE Current)
+RTOID (F996_8589)
+EIF_TYPED_VALUE F996_8589 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_warning_dialog_title";
@@ -653,7 +653,7 @@ EIF_TYPED_VALUE F996_8588 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8588);
+	RTOTDR(F996_8589);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -665,12 +665,12 @@ EIF_TYPED_VALUE F996_8588 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14920);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14922);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14920);
+	RTDBGEAA(995, Current, 14922);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -696,8 +696,8 @@ EIF_TYPED_VALUE F996_8588 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_question_dialog_title */
-RTOID (F996_8589)
-EIF_TYPED_VALUE F996_8589 (EIF_REFERENCE Current)
+RTOID (F996_8590)
+EIF_TYPED_VALUE F996_8590 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_question_dialog_title";
@@ -712,7 +712,7 @@ EIF_TYPED_VALUE F996_8589 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8589);
+	RTOTDR(F996_8590);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -724,12 +724,12 @@ EIF_TYPED_VALUE F996_8589 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14921);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14923);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14921);
+	RTDBGEAA(995, Current, 14923);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -755,8 +755,8 @@ EIF_TYPED_VALUE F996_8589 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_information_dialog_title */
-RTOID (F996_8590)
-EIF_TYPED_VALUE F996_8590 (EIF_REFERENCE Current)
+RTOID (F996_8591)
+EIF_TYPED_VALUE F996_8591 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_information_dialog_title";
@@ -771,7 +771,7 @@ EIF_TYPED_VALUE F996_8590 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8590);
+	RTOTDR(F996_8591);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -783,12 +783,12 @@ EIF_TYPED_VALUE F996_8590 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14922);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14924);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14922);
+	RTDBGEAA(995, Current, 14924);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -814,8 +814,8 @@ EIF_TYPED_VALUE F996_8590 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_error_dialog_title */
-RTOID (F996_8591)
-EIF_TYPED_VALUE F996_8591 (EIF_REFERENCE Current)
+RTOID (F996_8592)
+EIF_TYPED_VALUE F996_8592 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_error_dialog_title";
@@ -830,7 +830,7 @@ EIF_TYPED_VALUE F996_8591 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8591);
+	RTOTDR(F996_8592);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -842,12 +842,12 @@ EIF_TYPED_VALUE F996_8591 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14923);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14925);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14923);
+	RTDBGEAA(995, Current, 14925);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -873,8 +873,8 @@ EIF_TYPED_VALUE F996_8591 (EIF_REFERENCE Current)
 }
 
 /* {EV_DIALOG_NAMES}.ev_confirmation_dialog_title */
-RTOID (F996_8592)
-EIF_TYPED_VALUE F996_8592 (EIF_REFERENCE Current)
+RTOID (F996_8593)
+EIF_TYPED_VALUE F996_8593 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "ev_confirmation_dialog_title";
@@ -889,7 +889,7 @@ EIF_TYPED_VALUE F996_8592 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F996_8592);
+	RTOTDR(F996_8593);
 	dtype = Dtype(Current);
 
 	RTLI(4);
@@ -901,12 +901,12 @@ EIF_TYPED_VALUE F996_8592 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 995, Current, 0, 0, 14924);
+	RTEAA(l_feature_name, 995, Current, 0, 0, 14926);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(995, Current, 14924);
+	RTDBGEAA(995, Current, 14926);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -934,7 +934,6 @@ EIF_TYPED_VALUE F996_8592 (EIF_REFERENCE Current)
 void EIF_Minit996 (void)
 {
 	GTCX
-	RTOTS (8578,F996_8578)
 	RTOTS (8579,F996_8579)
 	RTOTS (8580,F996_8580)
 	RTOTS (8581,F996_8581)
@@ -949,6 +948,7 @@ void EIF_Minit996 (void)
 	RTOTS (8590,F996_8590)
 	RTOTS (8591,F996_8591)
 	RTOTS (8592,F996_8592)
+	RTOTS (8593,F996_8593)
 }
 
 

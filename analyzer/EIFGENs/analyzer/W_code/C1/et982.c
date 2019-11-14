@@ -11,7 +11,7 @@ extern "C" {
 #endif
 
 extern EIF_TYPED_VALUE F982_8516(EIF_REFERENCE);
-extern void F982_16470(EIF_REFERENCE, int);
+extern void F982_16471(EIF_REFERENCE, int);
 extern void EIF_Minit982(void);
 
 #ifdef __cplusplus
@@ -85,7 +85,7 @@ EIF_TYPED_VALUE F982_8516 (EIF_REFERENCE Current)
 }
 
 /* {ETF_MODEL_ACCESS}._invariant */
-void F982_16470 (EIF_REFERENCE Current, int where)
+void F982_16471 (EIF_REFERENCE Current, int where)
 {
 	GTCX
 	char *l_feature_name = "_invariant";
@@ -107,7 +107,7 @@ void F982_16470 (EIF_REFERENCE Current, int where)
 	RTLIU(3);
 	RTLU (SK_VOID, NULL);
 	RTLU (SK_REF, &Current);
-	RTEAINV(l_feature_name, 981, Current, 0, 16469);
+	RTEAINV(l_feature_name, 981, Current, 0, 16470);
 	RTSA(dtype);
 	RTME(dtype, 0);
 	RTIT("m = m", Current);

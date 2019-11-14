@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1049_9088(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1049_9089(EIF_REFERENCE);
 extern void EIF_Minit1049(void);
 
 #ifdef __cplusplus
@@ -33,8 +33,8 @@ extern "C" {
 #endif
 
 /* {UC_IMPORTED_UTF32_ROUTINES}.utf32 */
-RTOID (F1049_9088)
-EIF_TYPED_VALUE F1049_9088 (EIF_REFERENCE Current)
+RTOID (F1049_9089)
+EIF_TYPED_VALUE F1049_9089 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "utf32";
@@ -46,7 +46,7 @@ EIF_TYPED_VALUE F1049_9088 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1049_9088);
+	RTOTDR(F1049_9089);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -56,12 +56,12 @@ EIF_TYPED_VALUE F1049_9088 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1048, Current, 0, 0, 15382);
+	RTEAA(l_feature_name, 1048, Current, 0, 0, 15383);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1048, Current, 15382);
+	RTDBGEAA(1048, Current, 15383);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -95,7 +95,7 @@ EIF_TYPED_VALUE F1049_9088 (EIF_REFERENCE Current)
 void EIF_Minit1049 (void)
 {
 	GTCX
-	RTOTS (9088,F1049_9088)
+	RTOTS (9089,F1049_9089)
 }
 
 

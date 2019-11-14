@@ -1,5 +1,5 @@
 /*
- * Class EV_TITLED_WINDOW_ACTION_SEQUENCES_I
+ * Class EV_BUTTON_ACTION_SEQUENCES_I
  */
 
 #include "eif_macros.h"
@@ -23,8 +23,6 @@ static const EIF_TYPE_INDEX egt_10_1018 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1018 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1018 [] = {0xFF01,1017,0xFFFF};
 static const EIF_TYPE_INDEX egt_13_1018 [] = {0xFF01,1154,0xFFFF};
-static const EIF_TYPE_INDEX egt_14_1018 [] = {0xFF01,1154,0xFFFF};
-static const EIF_TYPE_INDEX egt_15_1018 [] = {0xFF01,1154,0xFFFF};
 
 
 static const struct desc_info desc_1018[] = {
@@ -60,12 +58,9 @@ static const struct desc_info desc_1018[] = {
 	{EIF_NON_GENERIC(0x07F3 /*1017*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1018), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1018), 15057, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x0905 /*1154*/), 15058, 0},
-	{EIF_GENERIC(egt_14_1018), 15059, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x0905 /*1154*/), 15060, 8},
-	{EIF_GENERIC(egt_15_1018), 15061, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x0905 /*1154*/), 15062, 16},
+	{EIF_GENERIC(egt_13_1018), 15068, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x0905 /*1154*/), 15069, 0},
+	{EIF_GENERIC(NULL), 15070, 0xFFFFFFFF},
 };
 void Init1018(void)
 {

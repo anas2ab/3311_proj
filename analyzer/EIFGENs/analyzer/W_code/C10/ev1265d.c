@@ -1,5 +1,5 @@
 /*
- * Class EV_TITLED_WINDOW_ACTION_SEQUENCES
+ * Class EV_BUTTON_ACTION_SEQUENCES
  */
 
 #include "eif_macros.h"
@@ -24,8 +24,6 @@ static const EIF_TYPE_INDEX egt_11_1265 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1265 [] = {0xFF01,1264,0xFFFF};
 static const EIF_TYPE_INDEX egt_13_1265 [] = {0xFF01,1017,0xFFFF};
 static const EIF_TYPE_INDEX egt_14_1265 [] = {0xFF01,1154,0xFFFF};
-static const EIF_TYPE_INDEX egt_15_1265 [] = {0xFF01,1154,0xFFFF};
-static const EIF_TYPE_INDEX egt_16_1265 [] = {0xFF01,1154,0xFFFF};
 
 
 static const struct desc_info desc_1265[] = {
@@ -63,14 +61,12 @@ static const struct desc_info desc_1265[] = {
 	{EIF_GENERIC(egt_12_1265), 30, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_13_1265), 0x00, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_14_1265), 17575, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_15_1265), 17576, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_16_1265), 17574, 0xFFFFFFFF},
 };
 void Init1265(void)
 {
 	IDSC(desc_1265, 0, 1264);
 	IDSC(desc_1265 + 1, 1, 1264);
-	IDSC(desc_1265 + 32, 646, 1264);
+	IDSC(desc_1265 + 32, 645, 1264);
 }
 
 

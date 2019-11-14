@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1160_10204(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
+extern EIF_TYPED_VALUE F1160_10205(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
 extern void EIF_Minit1160(void);
 
 #ifdef __cplusplus
@@ -33,7 +33,7 @@ extern "C" {
 #endif
 
 /* {KL_CASE_INSENSITIVE_STRING_EQUALITY_TESTER}.test */
-EIF_TYPED_VALUE F1160_10204 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
+EIF_TYPED_VALUE F1160_10205 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
 {
 	GTCX
 	char *l_feature_name = "test";
@@ -69,12 +69,12 @@ EIF_TYPED_VALUE F1160_10204 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_T
 	RTLU(SK_REF,&arg2);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1159, Current, 0, 2, 16773);
+	RTEAA(l_feature_name, 1159, Current, 0, 2, 16774);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1159, Current, 16773);
+	RTDBGEAA(1159, Current, 16774);
 	if (arg1) {
 		RTCC(arg1, 1159, l_feature_name, 1, eif_new_type(232, 0x00), 0x00);
 	}
@@ -102,11 +102,11 @@ EIF_TYPED_VALUE F1160_10204 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_T
 			} else {
 				RTHOOK(7);
 				RTDBGAL(0, 0x04000000, 1,0); /* Result */
-				tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(7772, dtype))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
+				tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(7773, dtype))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
 				RTNHOOK(7,1);
 				ur1 = RTCCL(arg1);
 				ur2 = RTCCL(arg2);
-				tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE)) RTVF(8089, "same_case_insensitive", tr1))(tr1, ur1x, ur2x)).it_b);
+				tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE)) RTVF(8090, "same_case_insensitive", tr1))(tr1, ur1x, ur2x)).it_b);
 				Result = (EIF_BOOLEAN) tb1;
 			}
 		}

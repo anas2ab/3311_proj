@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1024_8770(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1024_8771(EIF_REFERENCE);
 extern void EIF_Minit1024(void);
 
 #ifdef __cplusplus
@@ -33,8 +33,8 @@ extern "C" {
 #endif
 
 /* {KL_SHARED_PLATFORM}.platform */
-RTOID (F1024_8770)
-EIF_TYPED_VALUE F1024_8770 (EIF_REFERENCE Current)
+RTOID (F1024_8771)
+EIF_TYPED_VALUE F1024_8771 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "platform";
@@ -46,7 +46,7 @@ EIF_TYPED_VALUE F1024_8770 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1024_8770);
+	RTOTDR(F1024_8771);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -56,12 +56,12 @@ EIF_TYPED_VALUE F1024_8770 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1023, Current, 0, 0, 15084);
+	RTEAA(l_feature_name, 1023, Current, 0, 0, 15085);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1023, Current, 15084);
+	RTDBGEAA(1023, Current, 15085);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -95,7 +95,7 @@ EIF_TYPED_VALUE F1024_8770 (EIF_REFERENCE Current)
 void EIF_Minit1024 (void)
 {
 	GTCX
-	RTOTS (8770,F1024_8770)
+	RTOTS (8771,F1024_8771)
 }
 
 

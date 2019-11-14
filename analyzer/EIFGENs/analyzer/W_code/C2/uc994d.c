@@ -58,7 +58,7 @@ static const struct desc_info desc_994[] = {
 	{EIF_NON_GENERIC(0x07C3 /*993*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_994), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_994), 14916, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_13_994), 14917, 0xFFFFFFFF},
 };
 void Init994(void)
 {

@@ -1,5 +1,5 @@
 /*
- * Class EV_TREE_ACTION_SEQUENCES
+ * Class EV_MULTI_COLUMN_LIST_ACTION_SEQUENCES
  */
 
 #include "eif_macros.h"
@@ -23,8 +23,11 @@ static const EIF_TYPE_INDEX egt_10_1251 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1251 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1251 [] = {0xFF01,1250,0xFFFF};
 static const EIF_TYPE_INDEX egt_13_1251 [] = {0xFF01,989,0xFFFF};
-static const EIF_TYPE_INDEX egt_14_1251 [] = {0xFF01,1154,0xFFFF};
-static const EIF_TYPE_INDEX egt_15_1251 [] = {0xFF01,1154,0xFFFF};
+static const EIF_TYPE_INDEX egt_14_1251 [] = {0xFF01,1139,0xFFFF};
+static const EIF_TYPE_INDEX egt_15_1251 [] = {0xFF01,1139,0xFFFF};
+static const EIF_TYPE_INDEX egt_16_1251 [] = {0xFF01,1138,0xFFFF};
+static const EIF_TYPE_INDEX egt_17_1251 [] = {0xFF01,1138,0xFFFF};
+static const EIF_TYPE_INDEX egt_18_1251 [] = {0xFF01,1138,0xFFFF};
 
 
 static const struct desc_info desc_1251[] = {
@@ -63,12 +66,15 @@ static const struct desc_info desc_1251[] = {
 	{EIF_GENERIC(egt_13_1251), 0x00, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_14_1251), 17546, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_15_1251), 17547, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_16_1251), 17548, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_17_1251), 17549, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_18_1251), 17550, 0xFFFFFFFF},
 };
 void Init1251(void)
 {
 	IDSC(desc_1251, 0, 1250);
 	IDSC(desc_1251 + 1, 1, 1250);
-	IDSC(desc_1251 + 32, 993, 1250);
+	IDSC(desc_1251 + 32, 995, 1250);
 }
 
 

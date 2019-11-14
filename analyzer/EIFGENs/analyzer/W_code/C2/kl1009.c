@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1009_8698(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1009_8699(EIF_REFERENCE);
 extern void EIF_Minit1009(void);
 
 #ifdef __cplusplus
@@ -33,8 +33,8 @@ extern "C" {
 #endif
 
 /* {KL_IMPORTED_CHARACTER_ROUTINES}.character_ */
-RTOID (F1009_8698)
-EIF_TYPED_VALUE F1009_8698 (EIF_REFERENCE Current)
+RTOID (F1009_8699)
+EIF_TYPED_VALUE F1009_8699 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "character_";
@@ -46,7 +46,7 @@ EIF_TYPED_VALUE F1009_8698 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1009_8698);
+	RTOTDR(F1009_8699);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -56,12 +56,12 @@ EIF_TYPED_VALUE F1009_8698 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1008, Current, 0, 0, 15020);
+	RTEAA(l_feature_name, 1008, Current, 0, 0, 15021);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1008, Current, 15020);
+	RTDBGEAA(1008, Current, 15021);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -95,7 +95,7 @@ EIF_TYPED_VALUE F1009_8698 (EIF_REFERENCE Current)
 void EIF_Minit1009 (void)
 {
 	GTCX
-	RTOTS (8698,F1009_8698)
+	RTOTS (8699,F1009_8699)
 }
 
 

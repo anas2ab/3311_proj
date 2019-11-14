@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1130_9987(EIF_REFERENCE, EIF_TYPED_VALUE);
+extern EIF_TYPED_VALUE F1130_9988(EIF_REFERENCE, EIF_TYPED_VALUE);
 extern void EIF_Minit1130(void);
 
 #ifdef __cplusplus
@@ -33,7 +33,7 @@ extern "C" {
 #endif
 
 /* {KI_DIRECTORY}.valid_unread_entry */
-EIF_TYPED_VALUE F1130_9987 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+EIF_TYPED_VALUE F1130_9988 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "valid_unread_entry";
@@ -57,12 +57,12 @@ EIF_TYPED_VALUE F1130_9987 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU(SK_REF,&arg1);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1129, Current, 0, 1, 16229);
+	RTEAA(l_feature_name, 1129, Current, 0, 1, 16230);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1129, Current, 16229);
+	RTDBGEAA(1129, Current, 16230);
 	RTCC(arg1, 1129, l_feature_name, 1, eif_new_type(232, 0x01), 0x01);
 	RTIV(Current, RTAL);
 	RTHOOK(1);

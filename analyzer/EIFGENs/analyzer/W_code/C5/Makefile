@@ -46,9 +46,9 @@ OLDOBJECTS =  et1106.o et1106d.o es1107.o es1107d.o es1109.o es1109d.o es1108.o 
 	et1100d.o ti1122.o ti1122d.o da1121.o da1121d.o et1099.o et1099d.o \
 	et1098.o et1098d.o et1097.o et1097d.o et1096.o et1096d.o et1092.o \
 	et1092d.o et1094.o et1094d.o et1095.o et1095d.o du1119.o du1119d.o \
-	da1120.o da1120d.o et1105.o et1105d.o ev1113.o ev1113d.o ev1112.o \
-	ev1112d.o ev1115.o ev1115d.o ev1111.o ev1111d.o ev1118.o ev1118d.o \
-	ev1116.o ev1116d.o ev1114.o ev1114d.o kl1123.o kl1123d.o ev1117.o \
+	da1120.o da1120d.o ev1115.o ev1115d.o ev1113.o ev1113d.o ev1112.o \
+	ev1112d.o et1105.o et1105d.o ev1116.o ev1116d.o ev1111.o ev1111d.o \
+	ev1118.o ev1118d.o ev1114.o ev1114d.o kl1123.o kl1123d.o ev1117.o \
 	ev1117d.o kl1110.o kl1110d.o 
 
 all: Cobj5.o

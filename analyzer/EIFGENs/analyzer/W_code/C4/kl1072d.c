@@ -58,7 +58,7 @@ static const struct desc_info desc_1072[] = {
 	{EIF_NON_GENERIC(0x085F /*1071*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1072), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1072), 15616, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_13_1072), 15617, 0xFFFFFFFF},
 };
 void Init1072(void)
 {
