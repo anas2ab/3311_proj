@@ -1,0 +1,80 @@
+  Status: OK.
+  Number of classes being specified: 0
+->add_class("Account")
+  Status: OK.
+  Number of classes being specified: 1
+    Account
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("Account","balance","INTEGER")
+  Status: OK.
+  Number of classes being specified: 1
+    Account
+      Number of attributes: 1
+        + balance: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->add_command("Account","set_balance",<<["new_balance", "INTEGER"]>>)
+  Status: OK.
+  Number of classes being specified: 1
+    Account
+      Number of attributes: 1
+        + balance: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_balance(INTEGER)
+->add_query("Account","get_balance",<<>>,"INTEGER")
+  Status: OK.
+  Number of classes being specified: 1
+    Account
+      Number of attributes: 1
+        + balance: INTEGER
+      Number of queries: 1
+        + get_balance: INTEGER
+      Number of commands: 1
+        + set_balance(INTEGER)
+->add_assignment_instruction("Account","set_balance","balance")
+  Status: OK.
+  Number of classes being specified: 1
+    Account
+      Number of attributes: 1
+        + balance: INTEGER
+      Number of queries: 1
+        + get_balance: INTEGER
+      Number of commands: 1
+        + set_balance(INTEGER)
+  Routine currently being implemented: {Account}.set_balance
+  Assignment being specified: balance := ?
+->add_call_chain(<<"new_balance">>)
+  Status: OK.
+  Number of classes being specified: 1
+    Account
+      Number of attributes: 1
+        + balance: INTEGER
+      Number of queries: 1
+        + get_balance: INTEGER
+      Number of commands: 1
+        + set_balance(INTEGER)
+->add_assignment_instruction("Account","get_balance","Result")
+  Status: OK.
+  Number of classes being specified: 1
+    Account
+      Number of attributes: 1
+        + balance: INTEGER
+      Number of queries: 1
+        + get_balance: INTEGER
+      Number of commands: 1
+        + set_balance(INTEGER)
+  Routine currently being implemented: {Account}.get_balance
+  Assignment being specified: Result := ?
+->add_call_chain(<<"balance">>)
+  Status: OK.
+  Number of classes being specified: 1
+    Account
+      Number of attributes: 1
+        + balance: INTEGER
+      Number of queries: 1
+        + get_balance: INTEGER
+      Number of commands: 1
+        + set_balance(INTEGER)

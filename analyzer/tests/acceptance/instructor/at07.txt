@@ -1,0 +1,21 @@
+add_class("A")
+
+add_query("A", "qa", <<>>, "INTEGER")
+add_command("A", "ca", <<>>)
+
+-- Error: add implementation to some non-existing routine in class A.
+add_assignment_instruction("A", "qb", "x")
+add_assignment_instruction("A", "cb", "y")
+
+add_attribute("A", "att", "BOOLEAN")
+
+-- Error: add implementation to an attribute
+add_assignment_instruction("A", "att", "z")
+
+add_assignment_instruction("A", "qa", "att")
+
+-- Error: add an empty call chain as assignment RHS
+add_call_chain(<<>>)
+
+-- After this, the current assignment instruction `att = ?` is completed (i.e., `att = True`).
+bool_value(True)

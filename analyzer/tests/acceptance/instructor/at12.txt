@@ -1,0 +1,21 @@
+-- A simple bank account example 
+
+generate_java_code
+add_class("Account")
+generate_java_code
+add_attribute("Account", "balance", "INTEGER")
+generate_java_code
+add_command("Account", "set_balance", <<["new_balance", "INTEGER"]>>)
+generate_java_code
+add_query("Account", "get_balance", <<>>, "INTEGER")
+generate_java_code
+
+add_assignment_instruction("Account", "set_balance", "balance")
+generate_java_code
+add_call_chain(<<"new_balance">>)
+generate_java_code
+
+add_assignment_instruction("Account", "get_balance", "Result")
+generate_java_code
+add_call_chain(<<"balance">>)
+generate_java_code

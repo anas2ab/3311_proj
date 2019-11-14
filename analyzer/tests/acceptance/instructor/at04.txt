@@ -1,0 +1,9 @@
+add_class("A")
+add_class("B")
+
+-- Error: Clashing parameter names with existing classes and primitive types.
+-- Add command `ca(int A, boolean B)` to class `A`.
+add_command ("A", "ca", <<["A", "INTEGER"], ["B", "BOOLEAN"]>>)
+-- Add query `int cb(A INTEGER, B BOOLEAN)` to class `B`.
+add_query ("B", "cb", <<["INTEGER", "A"], ["BOOLEAN", "B"]>>, "INTEGER")
+

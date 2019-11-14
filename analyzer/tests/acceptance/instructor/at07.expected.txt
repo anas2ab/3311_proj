@@ -1,0 +1,98 @@
+  Status: OK.
+  Number of classes being specified: 0
+->add_class("A")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_query("A","qa",<<>>,"INTEGER")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 1
+        + qa: INTEGER
+      Number of commands: 0
+->add_command("A","ca",<<>>)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 1
+        + qa: INTEGER
+      Number of commands: 1
+        + ca
+->add_assignment_instruction("A","qb","x")
+  Status: Error (qb is not an existing feature name in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 1
+        + qa: INTEGER
+      Number of commands: 1
+        + ca
+->add_assignment_instruction("A","cb","y")
+  Status: Error (cb is not an existing feature name in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 1
+        + qa: INTEGER
+      Number of commands: 1
+        + ca
+->add_attribute("A","att","BOOLEAN")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + qa: INTEGER
+      Number of commands: 1
+        + ca
+->add_assignment_instruction("A","att","z")
+  Status: Error (Attribute att in class A cannot be specified with an implementation).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + qa: INTEGER
+      Number of commands: 1
+        + ca
+->add_assignment_instruction("A","qa","att")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + qa: INTEGER
+      Number of commands: 1
+        + ca
+  Routine currently being implemented: {A}.qa
+  Assignment being specified: att := ?
+->add_call_chain(<<>>)
+  Status: Error (Call chain is empty).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + qa: INTEGER
+      Number of commands: 1
+        + ca
+  Routine currently being implemented: {A}.qa
+  Assignment being specified: att := ?
+->bool_value(True)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + qa: INTEGER
+      Number of commands: 1
+        + ca

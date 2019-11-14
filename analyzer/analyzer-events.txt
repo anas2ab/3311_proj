@@ -1,0 +1,73 @@
+system analyzer
+
+type VAR_NAME     = STRING -- variable names are strings
+type FEATURE_NAME = STRING -- feature (attribute, query, command) names are strings
+type CLASS_NAME   = STRING -- class names are strings
+
+type_check
+  -- Is the specified program type-correct?
+  
+generate_java_code
+  -- For the program specified, generate Java-like code.
+
+add_class(cn: CLASS_NAME)
+  -- Add a new class with name `cn`.
+
+add_attribute(
+	cn: CLASS_NAME;    -- context class
+	fn: FEATURE_NAME;  -- name of attribute
+	ft: CLASS_NAME     -- attribute type
+)
+  -- Add to class `cn` a new attribute `fn` with type `ft`.
+	
+add_command(
+	cn: CLASS_NAME;                                 -- context class
+	fn: FEATURE_NAME;                               -- name of command
+	ps: ARRAY[TUPLE[pn: VAR_NAME; ft: CLASS_NAME]]  -- parameters
+)
+  -- Add to class `cn` a new command `fn` with a list of parameters `ps`.
+  -- Each parameter is a tuple with parameter name `pn` and type `ft`.
+
+add_query(	
+	cn: CLASS_NAME;                                  -- context class
+	fn: FEATURE_NAME;                                -- name of query
+	ps: ARRAY[TUPLE[pn: VAR_NAME; pt: CLASS_NAME]];  -- parameters
+	rt: CLASS_NAME                                   -- return type
+)
+  -- Add to class `cn` a new query `fn` with a list of parameters `ps` 
+  -- and return type `rt`.
+  -- Each parameter is a tuple with parameter name `pn` and type `ft`.
+
+add_assignment_instruction (cn: CLASS_NAME; fn: FEATURE_NAME; n: VAR_NAME)
+  -- Assign to variable with name `n`, in the context of routine `fn` in class `cn`.
+  -- Here `n` should either be `Result` (in the context of a query),
+  -- or an attribute name in the current class.
+
+-- Below are all events related to specifying expressions for Assignment RHS.
+
+add_call_chain(chain: ARRAY[VAR_NAME])
+  -- Add a chain of calls to attributes (not queries or commands).
+
+-- Events of users adding constants
+bool_value (c: BOOLEAN)
+int_value (c: INTEGER)
+
+-- Events of users adding binary arithmetic operations
+addition
+subtraction
+multiplication
+quotient
+modulo
+
+-- Events of users adding binary logical operations
+conjunction
+disjunction
+
+-- Events of users adding binary relational operations
+equals
+greater_than
+less_than
+
+-- Events of users adding unary numerical or logical operations
+numerical_negation
+logical_negation

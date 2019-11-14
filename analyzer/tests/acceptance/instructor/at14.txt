@@ -1,0 +1,48 @@
+-- Type checking on expressions
+
+add_class("A")
+add_attribute("A", "att", "BOOLEAN")
+add_query("A", "q", <<["b", "BOOLEAN"]>>, "INTEGER")
+
+-- RHS `(b || ((2 < 3) && b))` is type correct.
+-- And types of LHS and RHS match.
+add_assignment_instruction("A", "q", "att") 
+disjunction
+add_call_chain(<<"b">>)
+conjunction
+less_than
+int_value(2)
+int_value(3)
+add_call_chain(<<"b">>)
+
+generate_java_code
+type_check
+
+-- LHS of assignment `x` does not exist in class `A`.
+add_assignment_instruction("A", "q", "x") 
+int_value(23)
+
+generate_java_code
+type_check
+
+-- Types of LHS (Result of type int) and RHS (parameter `b` of type boolean) do not match. 
+add_assignment_instruction("A", "q", "Result") 
+add_call_chain(<<"b">>)
+
+generate_java_code
+type_check
+
+-- RHS `(((2 < 3) && b) + (5 * 7))` is not type correct (adding Boolean and integer)
+add_assignment_instruction("A", "q", "Result") 
+addition
+conjunction
+less_than
+int_value(2)
+int_value(3)
+add_call_chain(<<"b">>)
+multiplication
+int_value(5)
+int_value(7)
+
+generate_java_code
+type_check

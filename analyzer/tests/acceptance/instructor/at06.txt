@@ -1,0 +1,19 @@
+add_class("A")
+add_class("B")
+
+-- Error: Duplicated parameter names.
+
+-- Users are expected to use INTEGER and BOOLEAN to specify the primitive types, not int and boolean.
+add_command ("A", "ca", <<["x", "int"], ["y", "boolean"], ["z", "C"]>>)
+
+-- Here the return type is non-existing (should be INTEGER instead),
+-- but this error has lower priority (see the table in instructions).
+add_query ("A", "ca", <<["x", "int"], ["y", "boolean"], ["z", "C"]>>, "int")
+add_query ("A", "cq", <<["x", "int"], ["y", "boolean"], ["z", "C"]>>, "C")
+
+-- Error: non-existing return type for attributes and queries
+add_attribute ("A", "att", "C")
+add_query ("A", "ca", <<["x", "INTEGER"], ["y", "BOOLEAN"], ["z", "A"]>>, "C")
+
+
+

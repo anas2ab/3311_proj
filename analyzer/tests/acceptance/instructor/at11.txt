@@ -1,0 +1,10 @@
+add_class("Account")
+add_attribute("Account", "balance", "INTEGER")
+add_command("Account", "set_balance", <<["new_balance", "INTEGER"]>>)
+add_query("Account", "get_balance", <<>>, "INTEGER")
+
+add_assignment_instruction("Account", "set_balance", "balance")
+add_call_chain(<<"new_balance">>)
+
+add_assignment_instruction("Account", "get_balance", "Result")
+add_call_chain(<<"balance">>)

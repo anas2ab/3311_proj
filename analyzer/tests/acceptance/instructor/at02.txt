@@ -1,0 +1,33 @@
+-- Error: add classes/features/assignments or type check when an assignment instruction is currently being specified
+
+add_class("A")
+
+-- Add a command `c` with no parameters to class "FOO".
+add_command("A", "c", <<>>)
+
+-- Add a variable assignment to implement command `c` in class `FOO`.
+-- The variable being assigned is `x`.
+add_assignment_instruction("A", "c", "x")
+
+-- RHS of the current assignment not fully specified yet, so type checking is not allowed.
+type_check
+
+-- Now the system is expected an expression to be specified for the RHS of assignment `x = ?`.
+
+add_class("B")
+-- adding an existing class, but a lower priority error (see message table in instructions)
+add_class("A") 
+
+-- unknown return type `int` (should be INTEGER), but with lower priority
+add_attribute("A", "att", "int") 
+-- unknown class `B`, but with lower priority
+add_attribute("B", "att", "INTEGER") 
+
+-- clashing name with existing command, but with lower priority
+add_command("A", "c", <<>>) 
+add_command("A", "c2", <<>>)
+
+-- unknown class `B`, but with lower priority
+add_assignment_instruction("B", "c", "x") 
+-- unknown command `d`, but with lower priority
+add_assignment_instruction("A", "d", "x") 

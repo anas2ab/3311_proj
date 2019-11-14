@@ -1,0 +1,75 @@
+  Status: OK.
+  Number of classes being specified: 0
+->add_class("A")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_class("B")
+  Status: OK.
+  Number of classes being specified: 2
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_command("A","ca",<<["x", "int"], ["y", "boolean"], ["z", "C"]>>)
+  Status: Error (Parameter types do not refer to primitive types or existing classes: int, boolean, C).
+  Number of classes being specified: 2
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_query("A","ca",<<["x", "int"], ["y", "boolean"], ["z", "C"]>>,"int")
+  Status: Error (Parameter types do not refer to primitive types or existing classes: int, boolean, C).
+  Number of classes being specified: 2
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_query("A","cq",<<["x", "int"], ["y", "boolean"], ["z", "C"]>>,"C")
+  Status: Error (Parameter types do not refer to primitive types or existing classes: int, boolean, C).
+  Number of classes being specified: 2
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("A","att","C")
+  Status: Error (Return type does not refer to a primitive type or an existing class: C).
+  Number of classes being specified: 2
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_query("A","ca",<<["x", "INTEGER"], ["y", "BOOLEAN"], ["z", "A"]>>,"C")
+  Status: Error (Return type does not refer to a primitive type or an existing class: C).
+  Number of classes being specified: 2
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0

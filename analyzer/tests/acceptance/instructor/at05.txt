@@ -1,0 +1,13 @@
+add_class("A")
+add_class("B")
+
+-- Error: Duplicated parameter names.
+
+-- Add command `ca(int x, boolean y, A x, B y)` to class `A`.
+-- Report in the order in which the duplicates are found.
+-- Here the 3rd and 4th parameters are duplicates
+add_command ("A", "ca", <<["x", "INTEGER"], ["y", "BOOLEAN"], ["x", "A"], ["y", "B"]>>)
+-- Add query `cq(B x, int y, A y, boolean x)` to class `A`.
+-- Here the 3rd and 4th parameters are duplicates.
+add_command ("A", "cq", <<["x", "B"], ["y", "INTEGER"], ["y", "A"], ["x", "BOOLEAN"]>>)
+

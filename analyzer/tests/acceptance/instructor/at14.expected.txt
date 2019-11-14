@@ -1,0 +1,316 @@
+  Status: OK.
+  Number of classes being specified: 0
+->add_class("A")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("A","att","BOOLEAN")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 0
+      Number of commands: 0
+->add_query("A","q",<<["b", "BOOLEAN"]>>,"INTEGER")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+->add_assignment_instruction("A","q","att")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: att := ?
+->disjunction
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: att := (? || nil)
+->add_call_chain(<<"b">>)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: att := (b || ?)
+->conjunction
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: att := (b || (? && nil))
+->less_than
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: att := (b || ((? < nil) && nil))
+->int_value(2)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: att := (b || ((2 < ?) && nil))
+->int_value(3)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: att := (b || ((2 < 3) && ?))
+->add_call_chain(<<"b">>)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+->generate_java_code
+  class A {
+    bool att;
+    int q(bool b) {
+      int Result = 0;
+      att = (b || ((2 < 3) && b));
+      return Result;
+    }
+  }
+->type_check
+  class A is type-correct.
+->add_assignment_instruction("A","q","x")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: x := ?
+->int_value(23)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+->generate_java_code
+  class A {
+    bool att;
+    int q(bool b) {
+      int Result = 0;
+      att = (b || ((2 < 3) && b));
+      x = 23;
+      return Result;
+    }
+  }
+->type_check
+  class A is not type-correct:
+    x = 23 in routine q is not type-correct.
+->add_assignment_instruction("A","q","Result")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: Result := ?
+->add_call_chain(<<"b">>)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+->generate_java_code
+  class A {
+    bool att;
+    int q(bool b) {
+      int Result = 0;
+      att = (b || ((2 < 3) && b));
+      x = 23;
+      Result = b;
+      return Result;
+    }
+  }
+->type_check
+  class A is not type-correct:
+    x = 23 in routine q is not type-correct.
+    Result = b in routine q is not type-correct.
+->add_assignment_instruction("A","q","Result")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: Result := ?
+->addition
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: Result := (? + nil)
+->conjunction
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: Result := ((? && nil) + nil)
+->less_than
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: Result := (((? < nil) && nil) + nil)
+->int_value(2)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: Result := (((2 < ?) && nil) + nil)
+->int_value(3)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: Result := (((2 < 3) && ?) + nil)
+->add_call_chain(<<"b">>)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: Result := (((2 < 3) && b) + ?)
+->multiplication
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: Result := (((2 < 3) && b) + (? * nil))
+->int_value(5)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+  Routine currently being implemented: {A}.q
+  Assignment being specified: Result := (((2 < 3) && b) + (5 * ?))
+->int_value(7)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + att: BOOLEAN
+      Number of queries: 1
+        + q(BOOLEAN): INTEGER
+      Number of commands: 0
+->generate_java_code
+  class A {
+    bool att;
+    int q(bool b) {
+      int Result = 0;
+      att = (b || ((2 < 3) && b));
+      x = 23;
+      Result = b;
+      Result = (((2 < 3) && b) + (5 * 7));
+      return Result;
+    }
+  }
+->type_check
+  class A is not type-correct:
+    x = 23 in routine q is not type-correct.
+    Result = b in routine q is not type-correct.
+    Result = (((2 < 3) && b) + (5 * 7)) in routine q is not type-correct.

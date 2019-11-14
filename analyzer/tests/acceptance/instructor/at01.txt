@@ -1,0 +1,15 @@
+-- Error: add expressions when an assignment instruction is not currently being specified
+
+-- Expression 1 
+addition
+
+-- Expression 2: empty call chain (which has lower priority in the message table; see instructions)
+add_call_chain(<<>>)
+
+-- Expression 3: call chain a
+add_call_chain(<<"a">>)
+
+-- Expression 4: call chain a.b
+add_call_chain(<<"a", "b">>)
+
+-- And similarly for all other expression-related events.

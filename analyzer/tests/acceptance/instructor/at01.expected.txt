@@ -1,0 +1,14 @@
+  Status: OK.
+  Number of classes being specified: 0
+->addition
+  Status: Error (An assignment instruction is not currently being specified).
+  Number of classes being specified: 0
+->add_call_chain(<<>>)
+  Status: Error (An assignment instruction is not currently being specified).
+  Number of classes being specified: 0
+->add_call_chain(<<"a">>)
+  Status: Error (An assignment instruction is not currently being specified).
+  Number of classes being specified: 0
+->add_call_chain(<<"a", "b">>)
+  Status: Error (An assignment instruction is not currently being specified).
+  Number of classes being specified: 0

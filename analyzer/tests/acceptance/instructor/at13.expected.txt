@@ -1,0 +1,649 @@
+  Status: OK.
+  Number of classes being specified: 0
+->add_class("A")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_class("B")
+  Status: OK.
+  Number of classes being specified: 2
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_class("C")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+    C
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("A","b","B")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 1
+        + b: B
+      Number of queries: 0
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+    C
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("A","c","C")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+    C
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_command("A","ca",<<["pa", "A"], ["pb", "B"]>>)
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+    C
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("B","a","A")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 1
+        + a: A
+      Number of queries: 0
+      Number of commands: 0
+    C
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("B","c","C")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 0
+    C
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_command("B","cb",<<>>)
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("C","a","A")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 1
+        + a: A
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("C","b","B")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 0
+->add_command("C","cc",<<>>)
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+->add_assignment_instruction("A","ca","b")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+  Routine currently being implemented: {A}.ca
+  Assignment being specified: b := ?
+->add_call_chain(<<"c", "b", "a", "b">>)
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+->add_assignment_instruction("A","ca","b")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+  Routine currently being implemented: {A}.ca
+  Assignment being specified: b := ?
+->add_call_chain(<<"pa", "b">>)
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+->add_assignment_instruction("A","ca","b")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+  Routine currently being implemented: {A}.ca
+  Assignment being specified: b := ?
+->add_call_chain(<<"b">>)
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+->add_assignment_instruction("A","ca","b")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+  Routine currently being implemented: {A}.ca
+  Assignment being specified: b := ?
+->add_call_chain(<<"pb">>)
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+->add_assignment_instruction("A","ca","b")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+  Routine currently being implemented: {A}.ca
+  Assignment being specified: b := ?
+->add_call_chain(<<"b", "c", "a", "b">>)
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+->add_assignment_instruction("A","ca","b")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+  Routine currently being implemented: {A}.ca
+  Assignment being specified: b := ?
+->add_call_chain(<<"a", "b">>)
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+->add_assignment_instruction("A","ca","b")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+  Routine currently being implemented: {A}.ca
+  Assignment being specified: b := ?
+->add_call_chain(<<"b", "b", "c", "b">>)
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+->add_assignment_instruction("A","ca","b")
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+  Routine currently being implemented: {A}.ca
+  Assignment being specified: b := ?
+->add_call_chain(<<"a", "b", "c">>)
+  Status: OK.
+  Number of classes being specified: 3
+    A
+      Number of attributes: 2
+        + b: B
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + ca(A, B)
+    B
+      Number of attributes: 2
+        + a: A
+        + c: C
+      Number of queries: 0
+      Number of commands: 1
+        + cb
+    C
+      Number of attributes: 2
+        + a: A
+        + b: B
+      Number of queries: 0
+      Number of commands: 1
+        + cc
+->generate_java_code
+  class A {
+    B b;
+    C c;
+    void ca(A pa, B pb) {
+      b = c.b.a.b;
+      b = pa.b;
+      b = b;
+      b = pb;
+      b = b.c.a.b;
+      b = a.b;
+      b = b.b.c.b;
+      b = a.b.c;
+    }
+  }
+  class B {
+    A a;
+    C c;
+    void cb() {
+    }
+  }
+  class C {
+    A a;
+    B b;
+    void cc() {
+    }
+  }
+->type_check
+  class A is not type-correct:
+    b = a.b in routine ca is not type-correct.
+    b = b.b.c.b in routine ca is not type-correct.
+    b = a.b.c in routine ca is not type-correct.
+  class B is type-correct.
+  class C is type-correct.

@@ -1,0 +1,244 @@
+  Status: OK.
+  Number of classes being specified: 0
+->add_class("A")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->generate_java_code
+  class A {
+  }
+->add_class("B")
+  Status: OK.
+  Number of classes being specified: 2
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->generate_java_code
+  class A {
+  }
+  class B {
+  }
+->add_attribute("A","b","B")
+  Status: OK.
+  Number of classes being specified: 2
+    A
+      Number of attributes: 1
+        + b: B
+      Number of queries: 0
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->generate_java_code
+  class A {
+    B b;
+  }
+  class B {
+  }
+->add_query("A","q1",<<["i", "INTEGER"]>>,"A")
+  Status: OK.
+  Number of classes being specified: 2
+    A
+      Number of attributes: 1
+        + b: B
+      Number of queries: 1
+        + q1(INTEGER): A
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->generate_java_code
+  class A {
+    B b;
+    A q1(int i) {
+      A Result = null;
+      return Result;
+    }
+  }
+  class B {
+  }
+->add_assignment_instruction("A","q1","Result")
+  Status: OK.
+  Number of classes being specified: 2
+    A
+      Number of attributes: 1
+        + b: B
+      Number of queries: 1
+        + q1(INTEGER): A
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+  Routine currently being implemented: {A}.q1
+  Assignment being specified: Result := ?
+->generate_java_code
+  class A {
+    B b;
+    A q1(int i) {
+      A Result = null;
+      Result = ?;
+      return Result;
+    }
+  }
+  class B {
+  }
+->add_call_chain(<<"b", "a">>)
+  Status: OK.
+  Number of classes being specified: 2
+    A
+      Number of attributes: 1
+        + b: B
+      Number of queries: 1
+        + q1(INTEGER): A
+      Number of commands: 0
+    B
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->generate_java_code
+  class A {
+    B b;
+    A q1(int i) {
+      A Result = null;
+      Result = b.a;
+      return Result;
+    }
+  }
+  class B {
+  }
+->type_check
+  class A is not type-correct:
+    Result = b.a in routine q1 is not type-correct.
+  class B is type-correct.
+->add_attribute("B","a","A")
+  Status: OK.
+  Number of classes being specified: 2
+    A
+      Number of attributes: 1
+        + b: B
+      Number of queries: 1
+        + q1(INTEGER): A
+      Number of commands: 0
+    B
+      Number of attributes: 1
+        + a: A
+      Number of queries: 0
+      Number of commands: 0
+->generate_java_code
+  class A {
+    B b;
+    A q1(int i) {
+      A Result = null;
+      Result = b.a;
+      return Result;
+    }
+  }
+  class B {
+    A a;
+  }
+->add_command("B","c1",<<>>)
+  Status: OK.
+  Number of classes being specified: 2
+    A
+      Number of attributes: 1
+        + b: B
+      Number of queries: 1
+        + q1(INTEGER): A
+      Number of commands: 0
+    B
+      Number of attributes: 1
+        + a: A
+      Number of queries: 0
+      Number of commands: 1
+        + c1
+->generate_java_code
+  class A {
+    B b;
+    A q1(int i) {
+      A Result = null;
+      Result = b.a;
+      return Result;
+    }
+  }
+  class B {
+    A a;
+    void c1() {
+    }
+  }
+->add_assignment_instruction("B","c1","a")
+  Status: OK.
+  Number of classes being specified: 2
+    A
+      Number of attributes: 1
+        + b: B
+      Number of queries: 1
+        + q1(INTEGER): A
+      Number of commands: 0
+    B
+      Number of attributes: 1
+        + a: A
+      Number of queries: 0
+      Number of commands: 1
+        + c1
+  Routine currently being implemented: {B}.c1
+  Assignment being specified: a := ?
+->generate_java_code
+  class A {
+    B b;
+    A q1(int i) {
+      A Result = null;
+      Result = b.a;
+      return Result;
+    }
+  }
+  class B {
+    A a;
+    void c1() {
+      a = ?;
+    }
+  }
+->add_call_chain(<<"b", "a">>)
+  Status: OK.
+  Number of classes being specified: 2
+    A
+      Number of attributes: 1
+        + b: B
+      Number of queries: 1
+        + q1(INTEGER): A
+      Number of commands: 0
+    B
+      Number of attributes: 1
+        + a: A
+      Number of queries: 0
+      Number of commands: 1
+        + c1
+->generate_java_code
+  class A {
+    B b;
+    A q1(int i) {
+      A Result = null;
+      Result = b.a;
+      return Result;
+    }
+  }
+  class B {
+    A a;
+    void c1() {
+      a = b.a;
+    }
+  }
+->type_check
+  class A is type-correct.
+  class B is not type-correct:
+    a = b.a in routine c1 is not type-correct.

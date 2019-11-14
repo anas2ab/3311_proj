@@ -1,0 +1,164 @@
+  Status: OK.
+  Number of classes being specified: 0
+->add_class("A")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("A","i","INTEGER")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->add_command("A","set_i",<<["x", "INTEGER"], ["y", "INTEGER"]>>)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_i(INTEGER, INTEGER)
+->add_assignment_instruction("A","set_i","i")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_i(INTEGER, INTEGER)
+  Routine currently being implemented: {A}.set_i
+  Assignment being specified: i := ?
+->multiplication
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_i(INTEGER, INTEGER)
+  Routine currently being implemented: {A}.set_i
+  Assignment being specified: i := (? * nil)
+->addition
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_i(INTEGER, INTEGER)
+  Routine currently being implemented: {A}.set_i
+  Assignment being specified: i := ((? + nil) * nil)
+->int_value(1)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_i(INTEGER, INTEGER)
+  Routine currently being implemented: {A}.set_i
+  Assignment being specified: i := ((1 + ?) * nil)
+->int_value(2)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_i(INTEGER, INTEGER)
+  Routine currently being implemented: {A}.set_i
+  Assignment being specified: i := ((1 + 2) * ?)
+->int_value(3)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_i(INTEGER, INTEGER)
+->add_assignment_instruction("A","set_i","i")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_i(INTEGER, INTEGER)
+  Routine currently being implemented: {A}.set_i
+  Assignment being specified: i := ?
+->addition
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_i(INTEGER, INTEGER)
+  Routine currently being implemented: {A}.set_i
+  Assignment being specified: i := (? + nil)
+->add_call_chain(<<"i">>)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_i(INTEGER, INTEGER)
+  Routine currently being implemented: {A}.set_i
+  Assignment being specified: i := (i + ?)
+->subtraction
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_i(INTEGER, INTEGER)
+  Routine currently being implemented: {A}.set_i
+  Assignment being specified: i := (i + (? - nil))
+->add_call_chain(<<"x">>)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_i(INTEGER, INTEGER)
+  Routine currently being implemented: {A}.set_i
+  Assignment being specified: i := (i + (x - ?))
+->add_call_chain(<<"y">>)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 1
+        + set_i(INTEGER, INTEGER)
+->type_check
+  class A is type-correct.
+->generate_java_code
+  class A {
+    int i;
+    void set_i(int x, int y) {
+      i = ((1 + 2) * 3);
+      i = (i + (x - y));
+    }
+  }

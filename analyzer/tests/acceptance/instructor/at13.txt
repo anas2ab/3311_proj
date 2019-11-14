@@ -1,0 +1,40 @@
+-- Type checking on call chains
+
+add_class("A")
+add_class("B")
+add_class("C")
+
+add_attribute("A", "b", "B")
+add_attribute("A", "c", "C")
+add_command("A", "ca", <<["pa", "A"], ["pb", "B"]>>)
+
+add_attribute("B", "a", "A")
+add_attribute("B", "c", "C")
+add_command("B", "cb", <<>>)
+
+add_attribute("C", "a", "A")
+add_attribute("C", "b", "B")
+add_command("C", "cc", <<>>)
+
+-- type-correct assignments 
+add_assignment_instruction("A", "ca", "b")
+add_call_chain(<<"c", "b", "a", "b">>)
+add_assignment_instruction("A", "ca", "b")
+add_call_chain(<<"pa", "b">>)
+add_assignment_instruction("A", "ca", "b")
+add_call_chain(<<"b">>)
+add_assignment_instruction("A", "ca", "b")
+add_call_chain(<<"pb">>)
+add_assignment_instruction("A", "ca", "b")
+add_call_chain(<<"b", "c", "a", "b">>)
+
+-- type-incorrect assignments
+add_assignment_instruction("A", "ca", "b")
+add_call_chain(<<"a", "b">>) -- `a` does not exist in current class A
+add_assignment_instruction("A", "ca", "b")
+add_call_chain(<<"b", "b", "c", "b">>) -- second `b` does not exist in class B
+add_assignment_instruction("A", "ca", "b")
+add_call_chain(<<"a", "b", "c">>) -- type of RHS is C but LHS is B
+
+generate_java_code
+type_check

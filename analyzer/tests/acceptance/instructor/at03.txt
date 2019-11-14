@@ -1,0 +1,27 @@
+add_class("A")
+
+-- Error: adding an existing class
+add_class("A")
+
+-- Error: the context class does not exist
+
+-- Add an attribute `int att` in class `B`.
+add_attribute("B", "att", "INTEGER")
+
+-- Add a command `c()` in class `B`.
+add_command("B", "c", <<>>)
+
+-- Add a query `boolean q()` in class `B`.
+add_query("B", "q", <<>>, "BOOLEAN")
+
+-- Add the assignment instruction `x = ?` to routine `c` in class `B`.
+-- Here routine `c` and variable `x` do not exist, but with a lower priority.
+add_assignment_instruction("B", "c", "x")
+
+-- Add a feature with name `f` into class `A`.
+add_attribute("A", "f", "INTEGER")
+
+-- Add another feature with clashing name `f` into class `A`.
+add_attribute("A", "f", "BOOLEAN") -- add `boolean f`
+add_command("A", "f", <<>>) -- add `f()`
+add_query("A", "f", <<>>, "A") -- add `A f()`

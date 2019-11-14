@@ -1,0 +1,29 @@
+-- Typing checking a simple program. 
+add_class("A")
+add_class("B")
+
+-- Add attribute `B b` in class `A`.
+add_attribute("A", "b", "B")
+-- Add query `A q1(int i)` in class `A`.
+add_query("A", "q1", <<["i", "INTEGER"]>>, "A")
+
+-- Specify the assignment `Result = b.a` in {A}.q1
+add_assignment_instruction("A", "q1", "Result")
+add_call_chain(<<"b", "a">>)
+
+-- RHS fully specified, we can then type-check
+type_check -- at this point b.a in class `A` is not type correct, because attribute `A a` is not added yet to class `B`. 
+generate_java_code
+
+-- Add attribute `A a` in class `B`.
+add_attribute("B", "a", "A")
+-- Add command `void c1()` in class `B`.
+add_command("B", "c1", <<>>)
+
+-- Specify the assignment `a = b.a` in {B}.c1
+add_assignment_instruction("B", "c1", "a")
+add_call_chain(<<"b", "a">>)
+
+-- RHS fully specified, we can then type-check
+type_check -- at this point b.a in class `A` is type correct, because attribute `A a` is added to class `B`. 
+generate_java_code
