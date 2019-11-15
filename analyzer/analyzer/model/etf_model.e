@@ -22,11 +22,17 @@ feature {NONE} -- Initialization
 		do
 			create s.make_empty
 			i := 0
+
+
+			create class_list.make_empty
+			count := class_list.count
 		end
 
 feature -- model attributes
 	s : STRING
 	i : INTEGER
+	class_list : ARRAY[MY_CLASS]
+	count : INTEGER
 
 feature -- model operations
 	default_update
@@ -42,7 +48,38 @@ feature -- model operations
 		end
 	addition
 		do
-			
+
+		end
+	add_class (nc: STRING)
+		do
+			class_list.force (create {MY_CLASS}.make (nc), count + 1)
+			count := count + 1
+		end
+
+	add_attribute (cn: STRING; fn: STRING; ft: STRING)
+		do
+			across
+				class_list is cl
+			loop
+				if
+					cl.name ~ cn
+				then
+					cl.add_attribute(fn, ft)
+				end
+			end
+		end
+
+	add_command(cn: STRING ; fn: STRING ; ps: ARRAY[TUPLE[pn: STRING; ft: STRING]])
+		do
+			across
+				class_list is cl
+			loop
+				if
+					cl.name ~ cn
+				then
+					
+				end
+			end
 		end
 feature -- queries
 	out : STRING
@@ -51,6 +88,9 @@ feature -- queries
 			Result.append ("System State: default model state ")
 			Result.append ("(")
 			Result.append (i.out)
+--			if count > 0 and class_list[1].count > 0 then
+--				Result.append(class_list[1].feature_list[1].type)
+--			end
 			Result.append (")")
 		end
 
