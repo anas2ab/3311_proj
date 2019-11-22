@@ -1,5 +1,5 @@
 /*
- * Code for class ETF_MULTIPLICATION_INTERFACE
+ * Code for class ETF_CONJUNCTION_INTERFACE
  */
 
 #include "eif_eiffel.h"
@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern void F1199_10398(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
+extern void F1199_10420(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
 extern void EIF_Minit1199(void);
 extern EIF_REFERENCE _A1199_50();
 
@@ -33,8 +33,8 @@ extern "C" {
 extern "C" {
 #endif
 
-/* {ETF_MULTIPLICATION_INTERFACE}.make */
-void F1199_10398 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x, EIF_TYPED_VALUE arg3x)
+/* {ETF_CONJUNCTION_INTERFACE}.make */
+void F1199_10420 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x, EIF_TYPED_VALUE arg3x)
 {
 	GTCX
 	char *l_feature_name = "make";
@@ -76,12 +76,12 @@ void F1199_10398 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE 
 	RTLU(SK_REF,&arg3);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1198, Current, 0, 3, 16951);
+	RTEAA(l_feature_name, 1198, Current, 0, 3, 16976);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1198, Current, 16951);
+	RTDBGEAA(1198, Current, 16976);
 	RTCC(arg1, 1198, l_feature_name, 1, eif_new_type(232, 0x01), 0x01);
 	{
 		static EIF_TYPE_INDEX typarr0[] = {0xFF01,0xFFF9,0,186,0xFFFF};
@@ -91,15 +91,15 @@ void F1199_10398 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE 
 		typres0 = (typcache0.id != INVALID_DTYPE ? typcache0 : (typcache0 = eif_compound_id(dftype, typarr0)));
 		RTCC(arg2, 1198, l_feature_name, 2, typres0, 0x01);
 	}
-	RTCC(arg3, 1198, l_feature_name, 3, eif_new_type(1039, 0x01), 0x01);
+	RTCC(arg3, 1198, l_feature_name, 3, eif_new_type(1040, 0x01), 0x01);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	ur1 = RTCCL(arg1);
 	ur2 = RTCCL(arg2);
 	ur3 = RTCCL(arg3);
-	(FUNCTION_CAST(void, (EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE)) RTWF(7891, 1172))(Current, ur1x, ur2x, ur3x);
+	(FUNCTION_CAST(void, (EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE, EIF_TYPED_VALUE)) RTWF(7922, 1178))(Current, ur1x, ur2x, ur3x);
 	RTHOOK(2);
-	RTDBGAA(Current, dtype, 7894, 0xF8000113, 0); /* etf_cmd_routine */
+	RTDBGAA(Current, dtype, 7925, 0xF8000113, 0); /* etf_cmd_routine */
 	{
 		EIF_TYPE_INDEX typarr0[] = {0xFFF9,1,186,0xFF01,0,0xFFFF};
 		EIF_TYPE typres0;
@@ -117,27 +117,27 @@ void F1199_10398 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE 
 		static EIF_TYPE typcache0 = {INVALID_DTYPE, 0};
 		
 		typres0 = (typcache0.id != INVALID_DTYPE ? typcache0 : (typcache0 = eif_compound_id(dftype, typarr0)));
-		tr2= RTLNRW(typres0.id, 0, (EIF_POINTER) _A1199_50, (EIF_POINTER)(0),7917, 0, 0, 1, -1, tr1, 0);
+		tr2= RTLNRW(typres0.id, 0, (EIF_POINTER) _A1199_50, (EIF_POINTER)(0),7945, 0, 0, 1, -1, tr1, 0);
 	}
 	tr1 = RTCCL(tr2);
 	RTAR(Current, tr1);
-	*(EIF_REFERENCE *)(Current + RTWA(7894, dtype)) = (EIF_REFERENCE) tr1;
+	*(EIF_REFERENCE *)(Current + RTWA(7925, dtype)) = (EIF_REFERENCE) tr1;
 	RTHOOK(3);
-	tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(7894, dtype))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
+	tr1 = ((up1x = (FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTWF(7925, dtype))(Current)), (((up1x.type & SK_HEAD) == SK_REF)? (EIF_REFERENCE) 0: (up1x.it_r = RTBU(up1x))), (up1x.type = SK_POINTER), up1x.it_r);
 	RTNHOOK(3,1);
 	ur1 = RTCCL(arg2);
 	(FUNCTION_CAST(void, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTVF(4609, "set_operands", tr1))(tr1, ur1x);
 	RTHOOK(4);
 	if ((EIF_BOOLEAN) 1) {
 		RTHOOK(5);
-		RTDBGAA(Current, dtype, 7902, 0xF80000E8, 0); /* out */
-		tr1 = RTMS_EX_H("multiplication",14,1287684974);
+		RTDBGAA(Current, dtype, 7933, 0xF80000E8, 0); /* out */
+		tr1 = RTMS_EX_H("conjunction",11,545172846);
 		RTAR(Current, tr1);
-		*(EIF_REFERENCE *)(Current + RTWA(7902, dtype)) = (EIF_REFERENCE) tr1;
+		*(EIF_REFERENCE *)(Current + RTWA(7933, dtype)) = (EIF_REFERENCE) tr1;
 	} else {
 		RTHOOK(6);
-		RTDBGAA(Current, dtype, 7896, 0x04000000, 1); /* etf_cmd_error */
-		*(EIF_BOOLEAN *)(Current + RTWA(7896, dtype)) = (EIF_BOOLEAN) (EIF_BOOLEAN) 1;
+		RTDBGAA(Current, dtype, 7927, 0x04000000, 1); /* etf_cmd_error */
+		*(EIF_BOOLEAN *)(Current + RTWA(7927, dtype)) = (EIF_BOOLEAN) (EIF_BOOLEAN) 1;
 	}
 	RTVI(Current, RTAL);
 	RTRS;

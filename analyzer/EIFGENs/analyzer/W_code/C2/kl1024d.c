@@ -1,5 +1,5 @@
 /*
- * Class KL_SHARED_PLATFORM
+ * Class KL_ANY
  */
 
 #include "eif_macros.h"
@@ -22,7 +22,6 @@ static const EIF_TYPE_INDEX egt_9_1024 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1024 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1024 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1024 [] = {0xFF01,1023,0xFFFF};
-static const EIF_TYPE_INDEX egt_13_1024 [] = {0xFF01,1130,0xFFFF};
 
 
 static const struct desc_info desc_1024[] = {
@@ -58,13 +57,11 @@ static const struct desc_info desc_1024[] = {
 	{EIF_NON_GENERIC(0x07FF /*1023*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1024), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1024), 15085, 0xFFFFFFFF},
 };
 void Init1024(void)
 {
 	IDSC(desc_1024, 0, 1023);
 	IDSC(desc_1024 + 1, 1, 1023);
-	IDSC(desc_1024 + 32, 598, 1023);
 }
 
 

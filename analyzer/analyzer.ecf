@@ -13,6 +13,7 @@
 		</option>
 		<setting name="dead_code_removal" value="feature"/>
 		<capability>
+			<catcall_detection support="none"/>
 			<concurrency support="scoop"/>
 			<void_safety support="all" use="all"/>
 		</capability>
@@ -36,9 +37,18 @@
 		<library name="parse_skl" location="$ISE_LIBRARY\contrib\library\gobo\library\parse\src\library_skl.ecf"/>
 		<library name="time" location="$ISE_LIBRARY\library\time\time.ecf"/>
 		<library name="vision2" location="$ISE_LIBRARY\library\vision2\vision2.ecf"/>
-		<cluster name="analyzer" location=".\analyzer\" recursive="true"/>
+		<cluster name="analyzer" location=".\analyzer\" recursive="true">
+			<file_rule>
+				<exclude>^model/operation$</exclude>
+			</file_rule>
+			<file_rule>
+				<exclude>^model/structure$</exclude>
+			</file_rule>
+			<file_rule>
+				<exclude>^model/operation$</exclude>
+			</file_rule>
+		</cluster>
 		<cluster name="generated_code" location=".\generated_code\" recursive="true"/>
 		<cluster name="root" location=".\root\" recursive="true"/>
 	</target>
 </system>
-

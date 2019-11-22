@@ -40,9 +40,10 @@ SYSTEM_IN_DYNAMIC_LIB = analyzer.so
 
 OBJECTS = big_file_C22_c.o 
 
-OLDOBJECTS =  in1659.o in1659d.o ac1658.o ac1658d.o kl1652.o kl1652d.o kl1653.o \
-	kl1653d.o kl1656.o kl1656d.o kl1654.o kl1654d.o kl1655.o kl1655d.o \
-	ev1657.o ev1657d.o 
+OLDOBJECTS =  kl1660.o kl1660d.o kl1661.o kl1661d.o kl1655.o kl1655d.o kl1658.o \
+	kl1658d.o kl1654.o kl1654d.o kl1657.o kl1657d.o kl1662.o kl1662d.o \
+	kl1664.o kl1664d.o kl1656.o kl1656d.o kl1659.o kl1659d.o ki1652.o \
+	ki1652d.o kl1663.o kl1663d.o kl1665.o kl1665d.o kl1653.o kl1653d.o 
 
 all: Cobj22.o
 

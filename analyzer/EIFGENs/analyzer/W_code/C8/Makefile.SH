@@ -55,16 +55,16 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 
 OBJECTS = big_file_C8_c.o 
 
-OLDOBJECTS =  et1218.o et1218d.o et1216.o et1216d.o et1214.o et1214d.o et1212.o \
-	et1212d.o et1210.o et1210d.o et1208.o et1208d.o et1206.o et1206d.o \
-	et1204.o et1204d.o et1202.o et1202d.o et1200.o et1200d.o et1198.o \
-	et1198d.o et1196.o et1196d.o et1194.o et1194d.o et1192.o et1192d.o \
-	et1190.o et1190d.o va1219.o va1219d.o va1220.o va1220d.o et1217.o \
-	et1217d.o et1215.o et1215d.o et1213.o et1213d.o et1211.o et1211d.o \
-	et1209.o et1209d.o et1207.o et1207d.o et1205.o et1205d.o et1203.o \
-	et1203d.o et1201.o et1201d.o et1199.o et1199d.o et1197.o et1197d.o \
-	et1195.o et1195d.o et1193.o et1193d.o et1191.o et1191d.o kl1221.o \
-	kl1221d.o uc1222.o uc1222d.o 
+OLDOBJECTS =  et1222.o et1222d.o et1220.o et1220d.o et1218.o et1218d.o et1216.o \
+	et1216d.o et1214.o et1214d.o et1212.o et1212d.o et1210.o et1210d.o \
+	et1208.o et1208d.o et1206.o et1206d.o et1204.o et1204d.o et1202.o \
+	et1202d.o et1200.o et1200d.o et1198.o et1198d.o et1196.o et1196d.o \
+	et1194.o et1194d.o et1192.o et1192d.o et1190.o et1190d.o et1221.o \
+	et1221d.o et1219.o et1219d.o et1217.o et1217d.o et1215.o et1215d.o \
+	et1213.o et1213d.o et1211.o et1211d.o et1209.o et1209d.o et1207.o \
+	et1207d.o et1205.o et1205d.o et1203.o et1203d.o et1201.o et1201d.o \
+	et1199.o et1199d.o et1197.o et1197d.o et1195.o et1195d.o et1193.o \
+	et1193d.o et1191.o et1191d.o 
 
 all: Cobj8.o
 

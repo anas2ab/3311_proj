@@ -1,5 +1,5 @@
 /*
- * Class EV_NOTEBOOK_ACTION_SEQUENCES_I
+ * Class EV_GAUGE_ACTION_SEQUENCES_I
  */
 
 #include "eif_macros.h"
@@ -22,7 +22,7 @@ static const EIF_TYPE_INDEX egt_9_993 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_993 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_993 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_993 [] = {0xFF01,992,0xFFFF};
-static const EIF_TYPE_INDEX egt_13_993 [] = {0xFF01,1154,0xFFFF};
+static const EIF_TYPE_INDEX egt_13_993 [] = {0xFF01,1146,0xFFFF};
 
 
 static const struct desc_info desc_993[] = {
@@ -58,14 +58,14 @@ static const struct desc_info desc_993[] = {
 	{EIF_NON_GENERIC(0x07C1 /*992*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_993), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_993), 14912, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x0905 /*1154*/), 14913, 0},
+	{EIF_GENERIC(egt_13_993), 14933, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x08F5 /*1146*/), 14934, 0},
 };
 void Init993(void)
 {
 	IDSC(desc_993, 0, 992);
 	IDSC(desc_993 + 1, 1, 992);
-	IDSC(desc_993 + 32, 961, 992);
+	IDSC(desc_993 + 32, 970, 992);
 }
 
 

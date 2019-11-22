@@ -22,9 +22,9 @@ static const EIF_TYPE_INDEX egt_9_972 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_972 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_972 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_972 [] = {0xFF01,971,0xFFFF};
-static const EIF_TYPE_INDEX egt_13_972 [] = {0xFF01,1230,0xFFFF};
-static const EIF_TYPE_INDEX egt_14_972 [] = {0xFF01,1166,0xFFFF};
-static const EIF_TYPE_INDEX egt_15_972 [] = {0xFF01,1165,0xFFFF};
+static const EIF_TYPE_INDEX egt_13_972 [] = {0xFF01,1236,0xFFFF};
+static const EIF_TYPE_INDEX egt_14_972 [] = {0xFF01,1171,0xFFFF};
+static const EIF_TYPE_INDEX egt_15_972 [] = {0xFF01,1172,0xFFFF};
 
 
 static const struct desc_info desc_972[] = {
@@ -68,7 +68,7 @@ void Init972(void)
 {
 	IDSC(desc_972, 0, 971);
 	IDSC(desc_972 + 1, 1, 971);
-	IDSC(desc_972 + 32, 600, 971);
+	IDSC(desc_972 + 32, 606, 971);
 }
 
 

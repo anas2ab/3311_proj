@@ -1,5 +1,5 @@
 /*
- * Code for class KI_TEXT_OUTPUT_FILE
+ * Code for class KI_OUTPUT_FILE
  */
 
 #include "eif_eiffel.h"

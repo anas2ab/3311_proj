@@ -67,7 +67,7 @@ void F978_8466 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE ar
 	RTGC;
 	RTDBGEAA(977, Current, 14767);
 	RTCC(arg1, 977, l_feature_name, 1, eif_new_type(232, 0x01), 0x01);
-	RTCC(arg2, 977, l_feature_name, 2, eif_new_type(1072, 0x01), 0x01);
+	RTCC(arg2, 977, l_feature_name, 2, eif_new_type(1078, 0x01), 0x01);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
 	RTDBGAA(Current, dtype, 6255, 0xF80000E8, 0); /* name */
@@ -75,7 +75,7 @@ void F978_8466 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE ar
 	RTAR(Current, tr1);
 	*(EIF_REFERENCE *)(Current + RTWA(6255, dtype)) = (EIF_REFERENCE) tr1;
 	RTHOOK(2);
-	RTDBGAA(Current, dtype, 6256, 0xF8000430, 0); /* type */
+	RTDBGAA(Current, dtype, 6256, 0xF8000436, 0); /* type */
 	tr1 = RTCCL(arg2);
 	RTAR(Current, tr1);
 	*(EIF_REFERENCE *)(Current + RTWA(6256, dtype)) = (EIF_REFERENCE) tr1;

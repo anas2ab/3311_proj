@@ -68,9 +68,9 @@ EIF_TYPED_VALUE F972_8387 (EIF_REFERENCE Current)
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
-	RTDBGAL(0, 0xF80004CE, 0,0); /* Result */
-	tr1 = RTLN(eif_new_type(1230, 0x01).id);
-	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWC(8145, Dtype(tr1)))(tr1);
+	RTDBGAL(0, 0xF80004D4, 0,0); /* Result */
+	tr1 = RTLN(eif_new_type(1236, 0x01).id);
+	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWC(8176, Dtype(tr1)))(tr1);
 	RTNHOOK(1,1);
 	Result = (EIF_REFERENCE) RTCCL(tr1);
 	if (RTAL & CK_ENSURE) {
@@ -83,7 +83,7 @@ EIF_TYPED_VALUE F972_8387 (EIF_REFERENCE Current)
 		}
 		RTHOOK(3);
 		RTCT("file_open_read", EX_POST);
-		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6940, "is_open_read", Result))(Result)).it_b);
+		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6963, "is_open_read", Result))(Result)).it_b);
 		if (tb1) {
 			RTCK;
 		} else {
@@ -137,9 +137,9 @@ EIF_TYPED_VALUE F972_8388 (EIF_REFERENCE Current)
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
-	RTDBGAL(0, 0xF800048E, 0,0); /* Result */
-	tr1 = RTLN(eif_new_type(1166, 0x01).id);
-	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWC(7799, Dtype(tr1)))(tr1);
+	RTDBGAL(0, 0xF8000493, 0,0); /* Result */
+	tr1 = RTLN(eif_new_type(1171, 0x01).id);
+	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWC(7828, Dtype(tr1)))(tr1);
 	RTNHOOK(1,1);
 	Result = (EIF_REFERENCE) RTCCL(tr1);
 	if (RTAL & CK_ENSURE) {
@@ -152,7 +152,7 @@ EIF_TYPED_VALUE F972_8388 (EIF_REFERENCE Current)
 		}
 		RTHOOK(3);
 		RTCT("file_open_write", EX_POST);
-		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6359, "is_open_write", Result))(Result)).it_b);
+		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6382, "is_open_write", Result))(Result)).it_b);
 		if (tb1) {
 			RTCK;
 		} else {
@@ -206,9 +206,9 @@ EIF_TYPED_VALUE F972_8389 (EIF_REFERENCE Current)
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
-	RTDBGAL(0, 0xF800048D, 0,0); /* Result */
-	tr1 = RTLN(eif_new_type(1165, 0x01).id);
-	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWC(7797, Dtype(tr1)))(tr1);
+	RTDBGAL(0, 0xF8000494, 0,0); /* Result */
+	tr1 = RTLN(eif_new_type(1172, 0x01).id);
+	(FUNCTION_CAST(void, (EIF_REFERENCE)) RTWC(7830, Dtype(tr1)))(tr1);
 	RTNHOOK(1,1);
 	Result = (EIF_REFERENCE) RTCCL(tr1);
 	if (RTAL & CK_ENSURE) {
@@ -221,7 +221,7 @@ EIF_TYPED_VALUE F972_8389 (EIF_REFERENCE Current)
 		}
 		RTHOOK(3);
 		RTCT("file_open_write", EX_POST);
-		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6359, "is_open_write", Result))(Result)).it_b);
+		tb1 = (((FUNCTION_CAST(EIF_TYPED_VALUE, (EIF_REFERENCE)) RTVF(6382, "is_open_write", Result))(Result)).it_b);
 		if (tb1) {
 			RTCK;
 		} else {

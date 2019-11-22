@@ -40,16 +40,16 @@ SYSTEM_IN_DYNAMIC_LIB = analyzer.so
 
 OBJECTS = big_file_C4_c.o 
 
-OLDOBJECTS =  et1090.o et1090d.o et1089.o et1089d.o et1088.o et1088d.o ti1065.o \
-	ti1065d.o et1087.o et1087d.o et1086.o et1086d.o et1073.o et1073d.o \
-	et1085.o et1085d.o et1084.o et1084d.o et1075.o et1075d.o et1083.o \
-	et1083d.o et1082.o et1082d.o et1081.o et1081d.o et1076.o et1076d.o \
-	et1080.o et1080d.o et1079.o et1079d.o et1078.o et1078d.o et1077.o \
-	et1077d.o ti1064.o ti1064d.o da1066.o da1066d.o ti1063.o ti1063d.o \
-	da1068.o da1068d.o da1069.o da1069d.o et1074.o et1074d.o kl1072.o \
-	kl1072d.o kl1071.o kl1071d.o ev1060.o ev1060d.o co1070.o co1070d.o \
-	ti1062.o ti1062d.o da1067.o da1067d.o ev1061.o ev1061d.o ev1059.o \
-	ev1059d.o ev1058.o ev1058d.o 
+OLDOBJECTS =  qu1078.o qu1078d.o ti1066.o ti1066d.o et1081.o et1081d.o et1090.o \
+	et1090d.o et1089.o et1089d.o et1088.o et1088d.o et1079.o et1079d.o \
+	et1087.o et1087d.o et1086.o et1086d.o et1085.o et1085d.o et1084.o \
+	et1084d.o et1083.o et1083d.o et1082.o et1082d.o ro1076.o ro1076d.o \
+	fe1074.o fe1074d.o at1075.o at1075d.o co1077.o co1077d.o ti1065.o \
+	ti1065d.o da1067.o da1067d.o ti1064.o ti1064d.o da1069.o da1069d.o \
+	da1070.o da1070d.o et1080.o et1080d.o kl1073.o kl1073d.o kl1072.o \
+	kl1072d.o ev1059.o ev1059d.o co1071.o co1071d.o ti1063.o ti1063d.o \
+	da1068.o da1068d.o ev1062.o ev1062d.o ev1061.o ev1061d.o ev1060.o \
+	ev1060d.o ev1058.o ev1058d.o 
 
 all: Cobj4.o
 

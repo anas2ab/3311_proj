@@ -117,7 +117,7 @@ void egc_init_plug (void)
 	egc_compiler_tag = 38;
 	egc_project_version = 1572217753;
 	egc_has_old_special_semantic = 0;
-	scount = 1659;
+	scount = 1665;
 
 	egc_rcount = 1;
 	egc_ridx = 0;
@@ -127,7 +127,7 @@ void egc_init_plug (void)
 	egc_rcarg = (int32 *) eif_malloc (sizeof(int32)*egc_rcount);
 	egc_rlist[0] = "ROOT.make";
 	egc_rcdt[0] = 0;
-	egc_rcrid[0] = 7697;
+	egc_rcrid[0] = 7728;
 	egc_rcarg[0] = 0;
 	
 	
@@ -140,7 +140,7 @@ void egc_init_plug (void)
 void egc_rcdt_init (void)
 {
 	if (egc_rcdt[0] == 0) {
-		egc_rcdt[0] = 1133; /* ROOT */
+		egc_rcdt[0] = 1139; /* ROOT */
 	}
 }
 

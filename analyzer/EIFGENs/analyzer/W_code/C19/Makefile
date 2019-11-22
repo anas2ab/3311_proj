@@ -40,16 +40,16 @@ SYSTEM_IN_DYNAMIC_LIB = analyzer.so
 
 OBJECTS = big_file_C19_c.o 
 
-OLDOBJECTS =  ti1583.o ti1583d.o da1581.o da1581d.o da1561.o da1561d.o ti1582.o \
-	ti1582d.o da1580.o da1580d.o kl1570.o kl1570d.o da1585.o da1585d.o \
-	fi1560.o fi1560d.o da1584.o da1584d.o kl1569.o kl1569d.o yy1559.o \
-	yy1559d.o kl1564.o kl1564d.o yy1558.o yy1558d.o kl1571.o kl1571d.o \
-	kl1566.o kl1566d.o kl1562.o kl1562d.o yy1557.o yy1557d.o ev1574.o \
-	ev1574d.o kl1565.o kl1565d.o kl1576.o kl1576d.o kl1579.o kl1579d.o \
-	kl1577.o kl1577d.o kl1578.o kl1578d.o kl1563.o kl1563d.o ki1575.o \
-	ki1575d.o kl1573.o kl1573d.o kl1568.o kl1568d.o kl1567.o kl1567d.o \
-	kl1572.o kl1572d.o kl1556.o kl1556d.o uc1555.o uc1555d.o uc1554.o \
-	uc1554d.o uc1553.o uc1553d.o 
+OLDOBJECTS =  da1567.o da1567d.o kl1576.o kl1576d.o fi1566.o fi1566d.o kl1575.o \
+	kl1575d.o yy1565.o yy1565d.o ev1556.o ev1556d.o kl1570.o kl1570d.o \
+	yy1564.o yy1564d.o ev1555.o ev1555d.o ev1554.o ev1554d.o kl1577.o \
+	kl1577d.o kl1572.o kl1572d.o kl1568.o kl1568d.o yy1563.o yy1563d.o \
+	ev1580.o ev1580d.o kl1571.o kl1571d.o kl1585.o kl1585d.o kl1583.o \
+	kl1583d.o kl1584.o kl1584d.o kl1582.o kl1582d.o kl1569.o kl1569d.o \
+	kl1579.o kl1579d.o kl1574.o kl1574d.o kl1578.o kl1578d.o kl1573.o \
+	kl1573d.o ki1581.o ki1581d.o uc1561.o uc1561d.o kl1562.o kl1562d.o \
+	ev1553.o ev1553d.o uc1560.o uc1560d.o uc1559.o uc1559d.o uc1558.o \
+	uc1558d.o uc1557.o uc1557d.o 
 
 all: Cobj19.o
 

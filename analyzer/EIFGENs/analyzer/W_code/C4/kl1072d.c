@@ -1,5 +1,5 @@
 /*
- * Class KL_SHARED_STANDARD_FILES
+ * Class KL_IMPORTED_SPECIAL_ROUTINES
  */
 
 #include "eif_macros.h"
@@ -22,7 +22,11 @@ static const EIF_TYPE_INDEX egt_9_1072 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1072 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1072 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1072 [] = {0xFF01,1071,0xFFFF};
-static const EIF_TYPE_INDEX egt_13_1072 [] = {0xFF01,971,0xFFFF};
+static const EIF_TYPE_INDEX egt_13_1072 [] = {0xFF01,1608,0xFF01,0,0xFFFF};
+static const EIF_TYPE_INDEX egt_14_1072 [] = {0xFF01,1659,203,0xFFFF};
+static const EIF_TYPE_INDEX egt_15_1072 [] = {0xFF01,1637,197,0xFFFF};
+static const EIF_TYPE_INDEX egt_16_1072 [] = {0xFF01,1660,218,0xFFFF};
+static const EIF_TYPE_INDEX egt_17_1072 [] = {0xFF01,1608,0xFF01,232,0xFFFF};
 
 
 static const struct desc_info desc_1072[] = {
@@ -58,13 +62,17 @@ static const struct desc_info desc_1072[] = {
 	{EIF_NON_GENERIC(0x085F /*1071*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1072), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1072), 15617, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_13_1072), 15635, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_14_1072), 15636, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_15_1072), 15637, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_16_1072), 15638, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_17_1072), 15639, 0xFFFFFFFF},
 };
 void Init1072(void)
 {
 	IDSC(desc_1072, 0, 1071);
 	IDSC(desc_1072 + 1, 1, 1071);
-	IDSC(desc_1072 + 32, 518, 1071);
+	IDSC(desc_1072 + 32, 525, 1071);
 }
 
 

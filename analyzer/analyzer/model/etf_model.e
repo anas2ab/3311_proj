@@ -26,6 +26,7 @@ feature {NONE} -- Initialization
 
 			create class_list.make_empty
 			count := class_list.count
+			status:=TRUE
 		end
 
 feature -- model attributes
@@ -33,6 +34,8 @@ feature -- model attributes
 	i : INTEGER
 	class_list : ARRAY[MY_CLASS]
 	count : INTEGER
+	has_assignment_instruction:BOOLEAN
+	status:BOOLEAN
 
 feature -- model operations
 	default_update
@@ -55,7 +58,10 @@ feature -- model operations
 			class_list.force (create {MY_CLASS}.make (nc), count + 1)
 			count := count + 1
 		end
+	add_query(cn: STRING ; fn: STRING ; ps: ARRAY[TUPLE[pn: STRING; pt: STRING]] ; rt: STRING)
+		do
 
+		end
 	add_attribute (cn: STRING; fn: STRING; ft: STRING)
 		do
 			across
@@ -77,17 +83,48 @@ feature -- model operations
 				if
 					cl.name ~ cn
 				then
-					
+					cl.add_command(cn, ps)
+				end
+			end
+		end
+
+	add_assignment_instruction(cn: STRING ; fn: STRING ; n: STRING)
+		local
+			q : QUERY_FEATURE
+			c : COMMAND_FEATURE
+		do
+			across
+				class_list is cl
+			loop
+				check attached {QUERY_FEATURE} cl.get_query_feature(fn) as q1
+				then
+					q := q1
+					q.set_rt(n)
+				end
+
+				-- still gotta check for command feature
+				check attached {COMMAND_FEATURE} cl.get_command_feature(fn) as q1
+				then
+					c := q1
+					-- c.set_rt(n) don't know what to set it as
 				end
 			end
 		end
 feature -- queries
 	out : STRING
 		do
-			create Result.make_from_string ("  ")
-			Result.append ("System State: default model state ")
-			Result.append ("(")
-			Result.append (i.out)
+			create Result.make_from_string ("")
+			Result.append ("  Status: ")
+			Result.append (status.out)
+			Result.append ("%N  Number of classes being specified: ")
+			Result.append (count.out)
+			Result.append ("    "+ class_list[class_list.upper].name)
+			Result.append ("%N")
+			Result.append ("Number of attributes: ")
+			Result.append (class_list[class_list.upper].attr_count.out)
+			Result.append (class_list[class_list.upper].attr_count.out)
+			Result.append ("Number of queries: ")
+			Result.append ("Number of commands: ")
 --			if count > 0 and class_list[1].count > 0 then
 --				Result.append(class_list[1].feature_list[1].type)
 --			end

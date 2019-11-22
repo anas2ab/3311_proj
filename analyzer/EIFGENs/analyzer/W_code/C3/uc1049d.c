@@ -1,5 +1,5 @@
 /*
- * Class UC_IMPORTED_UTF32_ROUTINES
+ * Class UC_STRING_HANDLER
  */
 
 #include "eif_macros.h"
@@ -22,7 +22,6 @@ static const EIF_TYPE_INDEX egt_9_1049 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1049 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1049 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1049 [] = {0xFF01,1048,0xFFFF};
-static const EIF_TYPE_INDEX egt_13_1049 [] = {0xFF01,1222,0xFFFF};
 
 
 static const struct desc_info desc_1049[] = {
@@ -58,13 +57,11 @@ static const struct desc_info desc_1049[] = {
 	{EIF_NON_GENERIC(0x0831 /*1048*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1049), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1049), 15383, 0xFFFFFFFF},
 };
 void Init1049(void)
 {
 	IDSC(desc_1049, 0, 1048);
 	IDSC(desc_1049 + 1, 1, 1048);
-	IDSC(desc_1049 + 32, 834, 1048);
 }
 
 

@@ -1,5 +1,5 @@
 /*
- * Class ETF_INT_PARAM
+ * Class ETF_COMPOSITE_PARAM_TYPE
  */
 
 #include "eif_macros.h"
@@ -49,7 +49,7 @@ static const struct desc_info desc_1080[] = {
 	{EIF_GENERIC(NULL), 18, 0xFFFFFFFF},
 	{EIF_GENERIC(NULL), 19, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_8_1080), 20, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_9_1080), 15637, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_9_1080), 21, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_10_1080), 22, 0xFFFFFFFF},
 	{EIF_GENERIC(NULL), 23, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_11_1080), 24, 0xFFFFFFFF},
@@ -59,14 +59,14 @@ static const struct desc_info desc_1080[] = {
 	{EIF_NON_GENERIC(0x086F /*1079*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1080), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1080), 15635, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_14_1080), 15636, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_13_1080), 0x00, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_14_1080), 0x00, 0xFFFFFFFF},
 };
 void Init1080(void)
 {
 	IDSC(desc_1080, 0, 1079);
 	IDSC(desc_1080 + 1, 1, 1079);
-	IDSC(desc_1080 + 32, 436, 1079);
+	IDSC(desc_1080 + 32, 444, 1079);
 }
 
 

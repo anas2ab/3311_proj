@@ -66,11 +66,11 @@ void F976_8450 (EIF_REFERENCE Current)
 	RTDBGEAA(975, Current, 14750);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
-	RTDBGAA(Current, dtype, 6239, 0x800004C2, 1); /* epsilon */
-	tr1 = RTLN(eif_new_type(1218, 0x00).id);
+	RTDBGAA(Current, dtype, 6239, 0x800004C8, 1); /* epsilon */
+	tr1 = RTLN(eif_new_type(1224, 0x00).id);
 	tr2 = RTMS_EX_H("0.0",3,3157552);
 	ur1 = tr2;
-	(FUNCTION_CAST(void, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWC(7937, Dtype(tr1)))(tr1, ur1x);
+	(FUNCTION_CAST(void, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWC(7968, Dtype(tr1)))(tr1, ur1x);
 	RTNHOOK(1,1);
 	tr1 = RTRCL(tr1);
 	RTXA(tr1, (Current + RTWA(6239, dtype)));
@@ -130,10 +130,10 @@ void F976_8452 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTCC(arg1, 975, l_feature_name, 1, eif_new_type(232, 0x01), 0x01);
 	RTIV(Current, RTAL);
 	RTHOOK(1);
-	RTDBGAA(Current, dtype, 6239, 0x800004C2, 1); /* epsilon */
-	tr1 = RTLN(eif_new_type(1218, 0x00).id);
+	RTDBGAA(Current, dtype, 6239, 0x800004C8, 1); /* epsilon */
+	tr1 = RTLN(eif_new_type(1224, 0x00).id);
 	ur1 = RTCCL(arg1);
-	(FUNCTION_CAST(void, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWC(7937, Dtype(tr1)))(tr1, ur1x);
+	(FUNCTION_CAST(void, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWC(7968, Dtype(tr1)))(tr1, ur1x);
 	RTNHOOK(1,1);
 	tr1 = RTRCL(tr1);
 	RTXA(tr1, (Current + RTWA(6239, dtype)));

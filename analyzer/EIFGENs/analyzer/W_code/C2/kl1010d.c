@@ -58,13 +58,13 @@ static const struct desc_info desc_1010[] = {
 	{EIF_NON_GENERIC(0x07E3 /*1009*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1010), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1010), 15022, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_13_1010), 15044, 0xFFFFFFFF},
 };
 void Init1010(void)
 {
 	IDSC(desc_1010, 0, 1009);
 	IDSC(desc_1010 + 1, 1, 1009);
-	IDSC(desc_1010 + 32, 829, 1009);
+	IDSC(desc_1010 + 32, 840, 1009);
 }
 
 

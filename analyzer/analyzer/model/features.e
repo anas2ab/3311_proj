@@ -9,6 +9,6 @@ deferred class
 
 feature -- Attributes
 	name : STRING
-	type : STRING
+--	type : STRING
 
 end

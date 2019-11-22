@@ -1,5 +1,5 @@
 /*
- * Code for class EV_INTEGER_ACTION_SEQUENCE
+ * Code for class EV_VALUE_CHANGE_ACTION_SEQUENCE
  */
 
 #include "eif_eiffel.h"
@@ -10,9 +10,9 @@
 extern "C" {
 #endif
 
-extern void F1147_10154(EIF_REFERENCE, EIF_TYPED_VALUE);
-extern void F1147_10155(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
-extern EIF_TYPED_VALUE F1147_10156(EIF_REFERENCE, EIF_TYPED_VALUE);
+extern void F1147_10167(EIF_REFERENCE, EIF_TYPED_VALUE);
+extern void F1147_10168(EIF_REFERENCE, EIF_TYPED_VALUE, EIF_TYPED_VALUE);
+extern EIF_TYPED_VALUE F1147_10169(EIF_REFERENCE, EIF_TYPED_VALUE);
 extern void EIF_Minit1147(void);
 extern EIF_REFERENCE _A1147_184_2();
 
@@ -35,8 +35,8 @@ extern "C" {
 extern "C" {
 #endif
 
-/* {EV_INTEGER_ACTION_SEQUENCE}.force_extend */
-void F1147_10154 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+/* {EV_VALUE_CHANGE_ACTION_SEQUENCE}.force_extend */
+void F1147_10167 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "force_extend";
@@ -70,12 +70,12 @@ void F1147_10154 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU(SK_REF,&arg1);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1146, Current, 0, 1, 16704);
+	RTEAA(l_feature_name, 1146, Current, 0, 1, 16719);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1146, Current, 16704);
+	RTDBGEAA(1146, Current, 16719);
 	{
 		static EIF_TYPE_INDEX typarr0[] = {0xFF01,275,0xFF01,0xFFF9,0,186,0xFFFF};
 		EIF_TYPE typres0;
@@ -118,7 +118,7 @@ void F1147_10154 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 		static EIF_TYPE typcache0 = {INVALID_DTYPE, 0};
 		
 		typres0 = (typcache0.id != INVALID_DTYPE ? typcache0 : (typcache0 = eif_compound_id(dftype, typarr0)));
-		tr4= RTLNRW(typres0.id, 0, (EIF_POINTER) _A1147_184_2, (EIF_POINTER)(0),7752, tr2, 0, 1, -1, tr1, 1);
+		tr4= RTLNRW(typres0.id, 0, (EIF_POINTER) _A1147_184_2, (EIF_POINTER)(0),7777, tr2, 0, 1, -1, tr1, 1);
 	}
 	ur1 = RTCCL(tr4);
 	(FUNCTION_CAST(void, (EIF_REFERENCE, EIF_TYPED_VALUE)) RTWF(2339, dtype))(Current, ur1x);
@@ -135,8 +135,8 @@ void F1147_10154 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 #undef arg1
 }
 
-/* {EV_INTEGER_ACTION_SEQUENCE}.wrapper */
-void F1147_10155 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
+/* {EV_VALUE_CHANGE_ACTION_SEQUENCE}.wrapper */
+void F1147_10168 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE arg2x)
 {
 	GTCX
 	char *l_feature_name = "wrapper";
@@ -164,12 +164,12 @@ void F1147_10155 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE 
 	RTLU(SK_REF,&arg2);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1146, Current, 0, 2, 16705);
+	RTEAA(l_feature_name, 1146, Current, 0, 2, 16717);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1146, Current, 16705);
+	RTDBGEAA(1146, Current, 16717);
 	{
 		static EIF_TYPE_INDEX typarr0[] = {0xFF01,275,0xFF01,0xFFF9,0,186,0xFFFF};
 		EIF_TYPE typres0;
@@ -204,8 +204,8 @@ void F1147_10155 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x, EIF_TYPED_VALUE 
 #undef arg1
 }
 
-/* {EV_INTEGER_ACTION_SEQUENCE}.new_filled_list */
-EIF_TYPED_VALUE F1147_10156 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
+/* {EV_VALUE_CHANGE_ACTION_SEQUENCE}.new_filled_list */
+EIF_TYPED_VALUE F1147_10169 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 {
 	GTCX
 	char *l_feature_name = "new_filled_list";
@@ -233,12 +233,12 @@ EIF_TYPED_VALUE F1147_10156 (EIF_REFERENCE Current, EIF_TYPED_VALUE arg1x)
 	RTLU(SK_INT32,&arg1);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1146, Current, 0, 1, 16706);
+	RTEAA(l_feature_name, 1146, Current, 0, 1, 16718);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1146, Current, 16706);
+	RTDBGEAA(1146, Current, 16718);
 	RTIV(Current, RTAL);
 	if ((RTAL & CK_REQUIRE) || RTAC) {
 		RTHOOK(1);

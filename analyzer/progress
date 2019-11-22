@@ -1,0 +1,41 @@
+checklist
+
+add_class - done
+add_attribute - done
+add_command - done
+add_query - done
+add_assignment_instruction - kinda done
+
+
+EXPRESSION (using composite-visitor pattern)
+
+add_call_chain -- ? how to implement
+addition - class setup
+subtraction - class setup
+multiplication - class setup
+quotient - class setup
+modulo - class setup
+
+
+bool_value -- ?
+int_value -- ?
+
+
+-- Events of users adding binary logical operations
+conjunction
+disjunction
+-- Events of users adding binary relational operations
+equals
+greater_than
+less_than
+-- Events of users adding unary numerical or logical operations
+numerical_negation
+logical_negation
+
+  class A {
+    int i;
+    void set_i(int x, int y) {
+      i = ((1 + 2) * 3);
+      i = (i + (x - y));
+    }
+  }

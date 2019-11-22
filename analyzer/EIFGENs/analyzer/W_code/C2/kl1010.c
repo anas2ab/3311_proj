@@ -10,7 +10,7 @@
 extern "C" {
 #endif
 
-extern EIF_TYPED_VALUE F1010_8700(EIF_REFERENCE);
+extern EIF_TYPED_VALUE F1010_8722(EIF_REFERENCE);
 extern void EIF_Minit1010(void);
 
 #ifdef __cplusplus
@@ -33,8 +33,8 @@ extern "C" {
 #endif
 
 /* {KL_SHARED_OPERATING_SYSTEM}.operating_system */
-RTOID (F1010_8700)
-EIF_TYPED_VALUE F1010_8700 (EIF_REFERENCE Current)
+RTOID (F1010_8722)
+EIF_TYPED_VALUE F1010_8722 (EIF_REFERENCE Current)
 {
 	GTCX
 	char *l_feature_name = "operating_system";
@@ -46,7 +46,7 @@ EIF_TYPED_VALUE F1010_8700 (EIF_REFERENCE Current)
 	RTLD;
 	
 #define Result RTOTRR
-	RTOTDR(F1010_8700);
+	RTOTDR(F1010_8722);
 	dtype = Dtype(Current);
 
 	RTLI(2);
@@ -56,12 +56,12 @@ EIF_TYPED_VALUE F1010_8700 (EIF_REFERENCE Current)
 	RTLU (SK_REF, &Result);
 	RTLU (SK_REF, &Current);
 	
-	RTEAA(l_feature_name, 1009, Current, 0, 0, 15022);
+	RTEAA(l_feature_name, 1009, Current, 0, 0, 15044);
 	RTSA(dtype);
 	RTSC;
 	RTME(dtype, 0);
 	RTGC;
-	RTDBGEAA(1009, Current, 15022);
+	RTDBGEAA(1009, Current, 15044);
 	RTIV(Current, RTAL);
 	RTOTP;
 	RTHOOK(1);
@@ -95,7 +95,7 @@ EIF_TYPED_VALUE F1010_8700 (EIF_REFERENCE Current)
 void EIF_Minit1010 (void)
 {
 	GTCX
-	RTOTS (8700,F1010_8700)
+	RTOTS (8722,F1010_8722)
 }
 
 

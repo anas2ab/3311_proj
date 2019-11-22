@@ -19,4 +19,7 @@ feature -- CONSTRUCTOR
 			name := f_name
 			type := f_type
 		end
+
+feature --attributes
+	type:STRING
 end

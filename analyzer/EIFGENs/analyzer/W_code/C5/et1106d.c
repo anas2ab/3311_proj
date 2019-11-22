@@ -1,5 +1,5 @@
 /*
- * Class ETF_CMD_LINE_OUTPUT_HANDLER
+ * Class ETF_STR_ARG
  */
 
 #include "eif_macros.h"
@@ -24,8 +24,6 @@ static const EIF_TYPE_INDEX egt_11_1106 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1106 [] = {0xFF01,1105,0xFFFF};
 static const EIF_TYPE_INDEX egt_13_1106 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_14_1106 [] = {0xFF01,232,0xFFFF};
-static const EIF_TYPE_INDEX egt_15_1106 [] = {0xFF01,982,0xFFFF};
-static const EIF_TYPE_INDEX egt_16_1106 [] = {0xFF01,232,0xFFFF};
 
 
 static const struct desc_info desc_1106[] = {
@@ -51,7 +49,7 @@ static const struct desc_info desc_1106[] = {
 	{EIF_GENERIC(NULL), 18, 0xFFFFFFFF},
 	{EIF_GENERIC(NULL), 19, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_8_1106), 20, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_9_1106), 21, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_9_1106), 15744, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_10_1106), 22, 0xFFFFFFFF},
 	{EIF_GENERIC(NULL), 23, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_11_1106), 24, 0xFFFFFFFF},
@@ -61,22 +59,17 @@ static const struct desc_info desc_1106[] = {
 	{EIF_NON_GENERIC(0x08A3 /*1105*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1106), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(NULL), 15734, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1106), 15724, 0},
-	{EIF_GENERIC(egt_14_1106), 15725, 8},
-	{EIF_GENERIC(NULL), 15737, 0xFFFFFFFF},
-	{EIF_GENERIC(NULL), 15726, 0xFFFFFFFF},
-	{EIF_GENERIC(NULL), 15738, 0xFFFFFFFF},
-	{EIF_GENERIC(NULL), 15728, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_15_1106), 15735, 16},
-	{EIF_GENERIC(egt_16_1106), 15736, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_13_1106), 15714, 0},
+	{EIF_GENERIC(NULL), 15715, 0xFFFFFFFF},
+	{EIF_GENERIC(NULL), 15742, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_14_1106), 15743, 8},
 };
 void Init1106(void)
 {
 	IDSC(desc_1106, 0, 1105);
 	IDSC(desc_1106 + 1, 1, 1105);
-	IDSC(desc_1106 + 32, 385, 1105);
-	IDSC(desc_1106 + 39, 373, 1105);
+	IDSC(desc_1106 + 32, 415, 1105);
+	IDSC(desc_1106 + 34, 420, 1105);
 }
 
 

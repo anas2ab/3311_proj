@@ -57,14 +57,14 @@ static const struct desc_info desc_976[] = {
 	{EIF_NON_GENERIC(0x079F /*975*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_976), 30, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x0985 /*1218*/), 14751, 24},
+	{EIF_NON_GENERIC(0x0991 /*1224*/), 14751, 24},
 	{EIF_GENERIC(NULL), 14752, 0xFFFFFFFF},
 };
 void Init976(void)
 {
 	IDSC(desc_976, 0, 975);
 	IDSC(desc_976 + 1, 1, 975);
-	IDSC(desc_976 + 32, 509, 975);
+	IDSC(desc_976 + 32, 514, 975);
 }
 
 

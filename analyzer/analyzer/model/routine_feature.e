@@ -4,23 +4,24 @@ note
 	date: "$Date$"
 	revision: "$Revision$"
 
-class
+deferred class
 	ROUTINE_FEATURE
 
 inherit
 	FEATURES
 
-create
-	make_command
+--create
+--	make_command
 --	make_query
 
 feature -- Constructors
-	make_command (f_name : STRING; ps : ARRAY[TUPLE[pn: STRING; ft: STRING]])
-		do
-			name := f_name
-			type := "" -- have to figure this out.. don't know if I should make this a local variable or import it from FEATURE class
-			param := ps
-		end
+--	make_command (f_name : STRING; ps : ARRAY[TUPLE[pn: STRING; ft: STRING]])
+--		do
+
+--			name := f_name
+--			type := "" -- have to figure this out.. don't know if I should make this a local variable or import it from FEATURE class
+--			param := ps
+--		end
 
 --	make_query (f_type : STRING; f_name : STRING; ps : ARRAY[TUPLE[pn: STRING; ft: STRING]]; rt: STRING)
 --		do
@@ -32,5 +33,6 @@ feature -- Constructors
 
 feature -- Attributes
 	param : ARRAY[TUPLE[STRING, STRING]]
+
 --	return_type: STRING
 end
