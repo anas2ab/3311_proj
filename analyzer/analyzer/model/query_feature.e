@@ -13,7 +13,7 @@ inherit
 create
 	make
 feature
-	return_type:STRING
+	return_type: STRING
 feature
 	make(f_name : STRING; ps : ARRAY[TUPLE[pn: STRING; ft: STRING]];rt:STRING)
 		do

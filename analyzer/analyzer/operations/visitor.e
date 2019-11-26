@@ -9,7 +9,7 @@ deferred class
 
 feature -- operations
 		-- visit features of all descendants of expression
-	visit_constant (c: CONSTANT) deferred end
+	visit_constant (c: INTEGER_CONSTANT) deferred end
 
 	visit_addition (a: ADDITION) deferred end
 
@@ -20,4 +20,6 @@ feature -- operations
 	visit_quotient (q : QUOTIENT) deferred end
 
 	visit_modulo (mod : MODULO) deferred end
+
+	visit_boolean (b : BOOLEAN_CONSTANT) deferred end
 end

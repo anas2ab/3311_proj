@@ -26,7 +26,19 @@ feature {NONE} -- Initialization
 
 			create class_list.make_empty
 			count := class_list.count
-			status:=TRUE
+			status := TRUE
+
+			create {JAVA_CODE_GENERATOR} v.make
+			create expr.make_empty
+
+			create {INTEGER_CONSTANT} c1.make (0)
+			create {INTEGER_CONSTANT} c2.make (0)
+
+			create {BOOLEAN_CONSTANT} b1.make (true)
+			create {BOOLEAN_CONSTANT} b2.make (true)
+
+			create {ADDITION} e.make (c1,c2)
+
 		end
 
 feature -- model attributes
@@ -34,8 +46,10 @@ feature -- model attributes
 	i : INTEGER
 	class_list : ARRAY[MY_CLASS]
 	count : INTEGER
-	has_assignment_instruction:BOOLEAN
-	status:BOOLEAN
+	has_assignment_instruction, status: BOOLEAN
+	v : VISITOR
+	expr : STRING
+	c1,c2,b1,b2, e : EXPRESSION
 
 feature -- model operations
 	default_update
@@ -48,6 +62,7 @@ feature -- model operations
 			-- Reset model state.
 		do
 			make
+
 		end
 	addition
 		do
@@ -55,12 +70,20 @@ feature -- model operations
 		end
 	add_class (nc: STRING)
 		do
-			class_list.force (create {MY_CLASS}.make (nc), count + 1)
+			class_list.force (create {MY_CLASS}.make (nc), count + 1) -- adds the class `nc` to the `class_list`
 			count := count + 1
 		end
 	add_query(cn: STRING ; fn: STRING ; ps: ARRAY[TUPLE[pn: STRING; pt: STRING]] ; rt: STRING)
 		do
-
+			across
+				class_list is cl
+			loop
+				if
+					cl.name ~ cn
+				then
+					cl.add_query(fn, ps, rt)
+				end
+			end
 		end
 	add_attribute (cn: STRING; fn: STRING; ft: STRING)
 		do
@@ -83,12 +106,14 @@ feature -- model operations
 				if
 					cl.name ~ cn
 				then
-					cl.add_command(cn, ps)
+					cl.add_command(fn, ps)
 				end
 			end
 		end
 
 	add_assignment_instruction(cn: STRING ; fn: STRING ; n: STRING)
+			-- this is not really working at the moment
+			-- changed check attached to if attached... this might work, have to test
 		local
 			q : QUERY_FEATURE
 			c : COMMAND_FEATURE
@@ -96,41 +121,50 @@ feature -- model operations
 			across
 				class_list is cl
 			loop
-				check attached {QUERY_FEATURE} cl.get_query_feature(fn) as q1
+				if attached {QUERY_FEATURE} cl.get_query_feature(fn) as q1
 				then
 					q := q1
 					q.set_rt(n)
 				end
 
-				-- still gotta check for command feature
-				check attached {COMMAND_FEATURE} cl.get_command_feature(fn) as q1
+
+				if attached {COMMAND_FEATURE} cl.get_command_feature(fn) as q1
 				then
 					c := q1
-					-- c.set_rt(n) don't know what to set it as
+					-- c.set_rt(n) don't know what to set it as ( A -> set_i = ?)
+					c.set_expr ("?")
 				end
 			end
+		end
+
+	bool_value (b: BOOLEAN) -- adds `bool` to assignment_instruction
+		do
+
+		end
+
+	int_value (int: INTEGER) -- adds `int` to assignment_instruction
+		do
+			create {INTEGER_CONSTANT} c1.make (int) -- c1.value is `int`
+
 		end
 feature -- queries
 	out : STRING
 		do
 			create Result.make_from_string ("")
 			Result.append ("  Status: ")
-			Result.append (status.out)
-			Result.append ("%N  Number of classes being specified: ")
-			Result.append (count.out)
-			Result.append ("    "+ class_list[class_list.upper].name)
-			Result.append ("%N")
-			Result.append ("Number of attributes: ")
-			Result.append (class_list[class_list.upper].attr_count.out)
-			Result.append (class_list[class_list.upper].attr_count.out)
-			Result.append ("Number of queries: ")
-			Result.append ("Number of commands: ")
---			if count > 0 and class_list[1].count > 0 then
---				Result.append(class_list[1].feature_list[1].type)
---			end
+
+			if count > 0 and class_list[1].query_list.count > 0 then
+				check attached {QUERY_FEATURE} class_list[1].query_list[1] as q1
+				then
+					Result.append(q1.return_type)
+				end
+			end
+
 			Result.append (")")
 		end
 
+invariant
+	same_count: count = class_list.count
 end
 
 

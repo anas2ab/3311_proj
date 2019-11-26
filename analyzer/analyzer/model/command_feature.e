@@ -18,10 +18,17 @@ feature
 		do
 
 			name := f_name
+			create curr_expr.make_empty -- used for assignment_instruction
 
-		--	type := "" -- have to figure this out.. don't know if I should make this a local variable or import it from FEATURE class
 			param := ps
 	end
 
+feature -- commands
+	set_expr (s : STRING)
+		do
+			curr_expr := s
+		end
 
+feature -- attributes
+	curr_expr : STRING
 end

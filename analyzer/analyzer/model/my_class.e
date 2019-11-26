@@ -17,7 +17,7 @@ feature -- Constructor
 			create feature_list.make_empty
 			create query_list.make_empty
 			create command_list.make_empty
-			create 	attribute_list.make_empty
+			create attribute_list.make_empty
 			count := feature_list.count
 
 		end
@@ -25,8 +25,8 @@ feature -- Attributes
 	name : STRING
 	feature_list: ARRAY[FEATURES]
 	command_list: ARRAY[ROUTINE_FEATURE]
-	query_list:ARRAY[ROUTINE_FEATURE]
-	attribute_list:ARRAY[FEATURES]
+	query_list:	ARRAY[ROUTINE_FEATURE]
+	attribute_list:	ARRAY[FEATURES]
 	count, attr_count, command_count, query_count:INTEGER
 
 feature -- Commands
@@ -41,16 +41,17 @@ feature -- Commands
 	add_command(fn: STRING ; ps: ARRAY[TUPLE[pn: STRING; ft: STRING]])
 		do
 			feature_list.force (create {COMMAND_FEATURE}.make(fn, ps), count+1)
+
+			command_list.force(create {COMMAND_FEATURE}.make (fn, ps), command_count+1)
 			command_count := command_count + 1
-			command_list.force(create {COMMAND_FEATURE}.make (fn, ps), count+1)
 			count:=count+1
 		end
 
 	add_query(fn: STRING ; ps: ARRAY[TUPLE[pn: STRING; ft: STRING]]; rt:STRING)
 		do
 			feature_list.force (create {QUERY_FEATURE}.make (fn, ps,rt), count+1)
-			query_list.force(create {QUERY_FEATURE}.make (fn, ps, rt), count+1)
-			command_count := command_count + 1
+			query_list.force(create {QUERY_FEATURE}.make (fn, ps, rt), query_count+1)
+			query_count := query_count + 1
 			count:=count+1
 		end
 
@@ -83,4 +84,9 @@ feature -- Queries
 			end
 
 		end
+
+invariant
+	same_count: count = feature_list.count
+			and query_count = query_list.count
+			and command_count = command_list.count
 end
