@@ -128,9 +128,9 @@ feature -- model operations
 				end
 
 
-				if attached {COMMAND_FEATURE} cl.get_command_feature(fn) as q1
+				if attached {COMMAND_FEATURE} cl.get_command_feature(fn) as comm
 				then
-					c := q1
+					c := comm
 					-- c.set_rt(n) don't know what to set it as ( A -> set_i = ?)
 					c.set_expr ("?")
 				end
@@ -139,7 +139,7 @@ feature -- model operations
 
 	bool_value (b: BOOLEAN) -- adds `bool` to assignment_instruction
 		do
-
+			create {BOOLEAN_CONSTANT} b1.make(b)
 		end
 
 	int_value (int: INTEGER) -- adds `int` to assignment_instruction
@@ -154,11 +154,21 @@ feature -- queries
 			Result.append ("  Status: ")
 
 			if count > 0 and class_list[1].query_list.count > 0 then
-				check attached {QUERY_FEATURE} class_list[1].query_list[1] as q1
+				check attached {QUERY_FEATURE} class_list[1].query_list[1] as q
 				then
-					Result.append(q1.return_type)
+
+					Result.append (q.return_type)
 				end
 			end
+			if count > 0 and class_list[1].command_list.count > 0 then
+				check attached {COMMAND_FEATURE} class_list[1].command_list[1] as q1
+				then
+					Result.append(class_list[1].query_list.count.out)
+					Result.append(q1.curr_expr)
+				end
+
+			end
+
 
 			Result.append (")")
 		end

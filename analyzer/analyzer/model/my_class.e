@@ -19,6 +19,9 @@ feature -- Constructor
 			create command_list.make_empty
 			create attribute_list.make_empty
 			count := feature_list.count
+			query_count := query_list.count
+			command_count := command_list.count
+			attr_count := attribute_list.count
 
 		end
 feature -- Attributes
@@ -33,7 +36,7 @@ feature -- Commands
 	add_attribute (fn : STRING; ft : STRING)
 		do
 			feature_list.force (create {ATTRIBUTE_FEATURE}.make (ft, fn), count+1)
-
+			attribute_list.force (create {ATTRIBUTE_FEATURE}.make (ft, fn), attr_count+1)
 			count := count + 1
 			attr_count := attr_count+1
 		end
@@ -89,4 +92,5 @@ invariant
 	same_count: count = feature_list.count
 			and query_count = query_list.count
 			and command_count = command_list.count
+			and attr_count = attribute_list.count
 end

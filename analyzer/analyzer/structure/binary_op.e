@@ -4,10 +4,16 @@ note
 	date: "$Date$"
 	revision: "$Revision$"
 
-class
+deferred class
 	BINARY_OP
 
 inherit
 	EXPRESSION
+	COMPOSITE[EXPRESSION]
+
+feature -- Queries, represent binary operation
+	left : EXPRESSION deferred end
+
+	right : EXPRESSION deferred end
 
 end

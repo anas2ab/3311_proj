@@ -16,8 +16,5 @@ feature -- Commands
 			children.extend (nc)
 		end
 
-feature -- Queries, represent binary operation
-	left : EXPRESSION deferred end
 
-	right : EXPRESSION deferred end
 end

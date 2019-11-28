@@ -8,9 +8,8 @@ class
 	ADDITION
 
 inherit -- multiple inheritance
-	EXPRESSION
-
-	COMPOSITE[EXPRESSION]
+	
+	BINARY_OP
 
 create
 	make
@@ -45,5 +44,5 @@ feature -- Visitors
 
 invariant
 	binary_operation: children.count = 2
-	
+
 end

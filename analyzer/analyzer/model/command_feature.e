@@ -13,13 +13,13 @@ inherit
 create
 	make
 
-feature
+feature -- constructor
 	make (f_name : STRING; ps : ARRAY[TUPLE[pn: STRING; ft: STRING]])
 		do
 
 			name := f_name
 			create curr_expr.make_empty -- used for assignment_instruction
-
+			
 			param := ps
 	end
 
@@ -29,6 +29,11 @@ feature -- commands
 			curr_expr := s
 		end
 
+feature -- queries
+	get_expr : STRING
+		do
+			Result := curr_expr
+		end
 feature -- attributes
 	curr_expr : STRING
 end

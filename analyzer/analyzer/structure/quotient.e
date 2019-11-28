@@ -8,10 +8,7 @@ class
 	QUOTIENT
 
 inherit -- multiple inheritance
-	EXPRESSION
-
-	COMPOSITE[EXPRESSION]
-
+	BINARY_OP
 create
 	make
 

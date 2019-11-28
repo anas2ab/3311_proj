@@ -8,9 +8,7 @@ class
 	MODULO
 
 inherit -- multiple inheritance
-	EXPRESSION
-
-	COMPOSITE[EXPRESSION]
+	BINARY_OP
 
 create
 	make

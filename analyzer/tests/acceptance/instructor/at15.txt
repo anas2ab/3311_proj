@@ -5,5 +5,6 @@ add_attribute("A", "i", "INTEGER")
 
 add_command ("A", "set_i", <<["x", "INTEGER"], ["y", "INTEGER"]>>)
 
+add_query ("A", "get_i", <<["x", "INTEGER"]>>, "INTEGER")
 add_assignment_instruction("A", "set_i", "i")
 
