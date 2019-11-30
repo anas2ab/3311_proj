@@ -11,7 +11,7 @@ case "$O" in
 esac
 echo "Compiling C code in C16"
 $spitshell >Makefile <<!GROK!THIS!
-INCLUDE_PATH =  -I"\$(ISE_LIBRARY)/library/encoding/implementation/include" -I"\$(ISE_LIBRARY)/library/time/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/implementation/gtk/Clib" `$ISE_LIBRARY/library/encoding/implementation/unix/Clib/iconv-config --include_path` `$ISE_LIBRARY/library/vision2/implementation/gtk/Clib/vision2-gtk-config --include_path`
+INCLUDE_PATH =  -I"\$(ISE_LIBRARY)\library\wel\spec\windows\include" -I"\$(ISE_LIBRARY)\library\time\spec\include" -I"\$(ISE_LIBRARY)\library\vision2\spec\include" -I"\$(ISE_LIBRARY)\C_library\zlib"
 SHELL = /bin/sh
 CC = $cc
 CPP = $cpp
@@ -55,16 +55,16 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 
 OBJECTS = big_file_C16_c.o 
 
-OLDOBJECTS =  ev1474.o ev1474d.o ev1478.o ev1478d.o ev1466.o ev1466d.o ev1465.o \
-	ev1465d.o ev1470.o ev1470d.o ev1462.o ev1462d.o ev1476.o ev1476d.o \
-	ev1461.o ev1461d.o ev1464.o ev1464d.o ev1471.o ev1471d.o ev1467.o \
-	ev1467d.o ev1477.o ev1477d.o ev1481.o ev1481d.o ev1480.o ev1480d.o \
-	ev1459.o ev1459d.o ev1472.o ev1472d.o ev1463.o ev1463d.o ev1460.o \
-	ev1460d.o ev1479.o ev1479d.o ev1486.o ev1486d.o ev1482.o ev1482d.o \
-	ev1456.o ev1456d.o ev1457.o ev1457d.o ev1468.o ev1468d.o ev1458.o \
-	ev1458d.o ev1454.o ev1454d.o ev1475.o ev1475d.o ev1455.o ev1455d.o \
-	ev1485.o ev1485d.o ev1473.o ev1473d.o ev1469.o ev1469d.o ev1484.o \
-	ev1484d.o ev1483.o ev1483d.o 
+OLDOBJECTS =  ev1454.o ev1454d.o we1475.o we1475d.o we1468.o we1468d.o we1472.o \
+	we1472d.o we1480.o we1480d.o we1479.o we1479d.o we1481.o we1481d.o \
+	we1483.o we1483d.o we1455.o we1455d.o we1473.o we1473d.o we1464.o \
+	we1464d.o we1478.o we1478d.o we1465.o we1465d.o we1466.o we1466d.o \
+	we1463.o we1463d.o we1462.o we1462d.o we1471.o we1471d.o we1470.o \
+	we1470d.o we1461.o we1461d.o we1467.o we1467d.o we1482.o we1482d.o \
+	we1477.o we1477d.o ev1459.o ev1459d.o we1469.o we1469d.o we1457.o \
+	we1457d.o we1484.o we1484d.o we1476.o we1476d.o we1474.o we1474d.o \
+	we1460.o we1460d.o we1456.o we1456d.o we1458.o we1458d.o we1486.o \
+	we1486d.o we1485.o we1485d.o 
 
 all: Cobj16.o
 

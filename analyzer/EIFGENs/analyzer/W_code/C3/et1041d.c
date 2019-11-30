@@ -1,5 +1,5 @@
 /*
- * Class ETF_ABSTRACT_UI_INTERFACE
+ * Class ETF_FILE_UTILITY
  */
 
 #include "eif_macros.h"
@@ -10,7 +10,7 @@ extern "C" {
 #endif
 
 static const EIF_TYPE_INDEX egt_0_1041 [] = {0xFF01,232,0xFFFF};
-static const EIF_TYPE_INDEX egt_1_1041 [] = {0xFF01,248,1040,0xFFFF};
+static const EIF_TYPE_INDEX egt_1_1041 [] = {0xFF01,245,1040,0xFFFF};
 static const EIF_TYPE_INDEX egt_2_1041 [] = {0xFF01,1040,0xFFFF};
 static const EIF_TYPE_INDEX egt_3_1041 [] = {0,0xFFFF};
 static const EIF_TYPE_INDEX egt_4_1041 [] = {0,0xFFFF};
@@ -22,8 +22,9 @@ static const EIF_TYPE_INDEX egt_9_1041 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1041 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1041 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1041 [] = {0xFF01,1040,0xFFFF};
-static const EIF_TYPE_INDEX egt_13_1041 [] = {0xFF01,332,0xFF01,1177,0xFFFF};
-static const EIF_TYPE_INDEX egt_14_1041 [] = {0xFF01,1614,0xFF01,0xFFF9,1,186,0xFF01,1177,0xFFFF};
+static const EIF_TYPE_INDEX egt_13_1041 [] = {0xFF01,232,0xFFFF};
+static const EIF_TYPE_INDEX egt_14_1041 [] = {0xFF01,284,0xFF01,232,0xFFFF};
+static const EIF_TYPE_INDEX egt_15_1041 [] = {0xFF01,232,0xFFFF};
 
 
 static const struct desc_info desc_1041[] = {
@@ -59,17 +60,18 @@ static const struct desc_info desc_1041[] = {
 	{EIF_NON_GENERIC(0x0821 /*1040*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1041), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(NULL), 15311, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1041), 15312, 0},
-	{EIF_GENERIC(egt_14_1041), 15313, 8},
-	{EIF_GENERIC(NULL), 15314, 0xFFFFFFFF},
-	{EIF_GENERIC(NULL), 15315, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x0197 /*203*/), 16349, 16},
+	{EIF_GENERIC(egt_13_1041), 16350, 0},
+	{EIF_GENERIC(egt_14_1041), 16351, 8},
+	{EIF_GENERIC(egt_15_1041), 16352, 0xFFFFFFFF},
+	{EIF_GENERIC(NULL), 16353, 0xFFFFFFFF},
+	{EIF_GENERIC(NULL), 16354, 0xFFFFFFFF},
 };
 void Init1041(void)
 {
 	IDSC(desc_1041, 0, 1040);
 	IDSC(desc_1041 + 1, 1, 1040);
-	IDSC(desc_1041 + 32, 379, 1040);
+	IDSC(desc_1041 + 32, 369, 1040);
 }
 
 

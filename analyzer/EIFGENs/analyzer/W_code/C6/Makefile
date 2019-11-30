@@ -1,36 +1,37 @@
-INCLUDE_PATH =  -I"$(ISE_LIBRARY)/library/encoding/implementation/include" -I"$(ISE_LIBRARY)/library/time/spec/include" -I"$(ISE_LIBRARY)/library/vision2/spec/include" -I"$(ISE_LIBRARY)/library/vision2/implementation/gtk/Clib"  -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include
+INCLUDE_PATH =  -I"C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL\library\wel\spec\windows\include" -I"C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL\library\time\spec\include" -I"C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL\library\vision2\spec\include" -I"C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL\C_library\zlib"
 SHELL = /bin/sh
-CC = gcc
-CPP = g++
-CFLAGS = -O0 -pipe -fPIC -D_GNU_SOURCE -m64 -DEIF_THREADS -DEIF_LINUXTHREADS  -DWORKBENCH -I"/usr/include/eiffelstudio-19.05" -I. $(INCLUDE_PATH)
-CPPFLAGS = -O0 -pipe -fPIC -D_GNU_SOURCE -m64 -DEIF_THREADS -DEIF_LINUXTHREADS  -DWORKBENCH -I"/usr/include/eiffelstudio-19.05" -I. $(INCLUDE_PATH)
-LDFLAGS = -m elf_x86_64
-CCLDFLAGS = -m64  
-LDSHAREDFLAGS =  -m elf_x86_64 -shared -o
-EIFLIB = "/usr/lib/eiffelstudio-19.05/libmtwkbench.a"
-EIFTEMPLATES = /usr/share/eiffelstudio-19.05/studio/config/unix/templates
-LIBS = -lm -lpthread
-MAKE = make
-AR = ar
-LD = ld
-MKDEP = \$(EIFFEL_SRC)/C/mkdep $(DPFLAGS) --
-MV = /bin/mv
-CP = /bin/cp
-RANLIB = :
-RM = /bin/rm -f
+CC = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/gcc/win64/mingw/bin/gcc"
+CPP = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/gcc/win64/mingw/bin/gcc"
+CFLAGS = -O0 -pipe -imacros eif_config.mingw.h -D_WIN32_WINNT=0x0500 -DWINVER=0x0500 -D_UNICODE -DUNICODE -DWIN32_LEAN_AND_MEAN  -DEIF_THREADS  -DWORKBENCH -I"C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/studio/spec/win64/include" -I. $(INCLUDE_PATH)
+CPPFLAGS = -O0 -pipe -imacros eif_config.mingw.h -D_WIN32_WINNT=0x0500 -DWINVER=0x0500 -D_UNICODE -DUNICODE -DWIN32_LEAN_AND_MEAN  -DEIF_THREADS  -DWORKBENCH -I"C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/studio/spec/win64/include" -I. $(INCLUDE_PATH)
+LDFLAGS = 
+CCLDFLAGS =   -mwindows
+LDSHAREDFLAGS =  
+EIFLIB = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/studio/spec/win64/lib/mingw/mtwkbench.a"
+EIFTEMPLATES = C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/studio/config/win64/templates
+LIBS = 
+MAKE = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/gcc/win64/msys/1.0/bin/make.exe"
+AR = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/gcc/win64/mingw/bin/ar"
+LD = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/gcc/win64/mingw/bin/ld"
+MKDEP =   --
+MV = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/gcc/win64/msys/1.0/bin/cp"
+CP = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/gcc/win64/msys/1.0/bin/cp"
+RANLIB = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/gcc/win64/mingw/bin/ranlib.exe"
+RM = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/gcc/win64/msys/1.0/bin/rm" -f
 FILE_EXIST = 
-RMDIR = 
-X2C = "/usr/lib/eiffelstudio-19.05/studio/x2c"
-SHAREDLINK = ld
-SHAREDLIBS = -lm
-SHARED_SUFFIX = .so
+RMDIR = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/gcc/win64/msys/1.0/bin/rd"
+X2C = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/studio/spec/win64/bin/x2c.exe"
+SHAREDLINK = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/gcc/win64/mingw/bin/dllwrap"
+SHAREDLIBS = -luser32 -lws2_32 -ladvapi32 -lgdi32 -lshell32 -lmsimg32 -lcomdlg32 -luuid -lole32 -loleaut32 -lcomctl32 -lmpr -lshlwapi -lwinspool -lstdc++ 
+SHARED_SUFFIX = .dll
 COMMAND_MAKEFILE = 
 START_TEST = if [ ! -f finished ] ; then 
 END_TEST = ; fi 
-CREATE_TEST = touch finished 
-SYSTEM_IN_DYNAMIC_LIB = analyzer.so 
+CREATE_TEST = "C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/gcc/win64/msys/1.0/bin/touch" finished
+PATH := C:\Program Files\Eiffel Software\EiffelStudio 19.05 GPL/gcc/win64/mingw/libexec/gcc/mingw32/3.4.2;C:\Program Files (x86)\PC Connectivity Solution\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\Jonathan\AppData\Local\Microsoft\WindowsApps;C:\Users\Jonathan\AppData\Local\atom\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Users\Jonathan\AppData\Local\GitHubDesktop\bin;C:\Users\Jonathan\AppData\Roaming\npm;C:\Users\Jonathan\AppData\Local\Microsoft\WindowsApps;C:\iverilog\bin;C:\Users\Jonathan\AppData\Local\Programs\Microsoft VS Code\bin;C:\MinGW\bin; 
+SYSTEM_IN_DYNAMIC_LIB = analyzer.dll 
 
-.SUFFIXES:.cpp .o
+.SUFFIXES:.cpp .o 
 
 .c.o:
 	$(CC) $(CFLAGS) -c $<
@@ -40,23 +41,25 @@ SYSTEM_IN_DYNAMIC_LIB = analyzer.so
 
 OBJECTS = big_file_C6_c.o 
 
-OLDOBJECTS =  ro1140.o ro1140d.o et1139.o et1139d.o et1138.o et1138d.o ti1128.o \
-	ti1128d.o ab1130.o ab1130d.o da1127.o da1127d.o da1142.o da1142d.o \
-	ev1134.o ev1134d.o du1125.o du1125d.o da1126.o da1126d.o kl1135.o \
-	kl1135d.o ev1143.o ev1143d.o ev1132.o ev1132d.o ev1144.o ev1144d.o \
-	ev1156.o ev1156d.o ev1155.o ev1155d.o ev1154.o ev1154d.o ev1153.o \
-	ev1153d.o ev1152.o ev1152d.o ev1133.o ev1133d.o kl1137.o kl1137d.o \
-	ev1151.o ev1151d.o ev1150.o ev1150d.o ev1124.o ev1124d.o ev1141.o \
-	ev1141d.o uc1131.o uc1131d.o ev1149.o ev1149d.o ev1148.o ev1148d.o \
-	kl1129.o kl1129d.o ki1136.o ki1136d.o ev1147.o ev1147d.o ev1146.o \
-	ev1146d.o ev1145.o ev1145d.o 
+OLDOBJECTS =  ev1156.o ev1156d.o yy1155.o yy1155d.o ev1154.o ev1154d.o ev1153.o \
+	ev1153d.o gr1152.o gr1152d.o kl1145.o kl1145d.o we1151.o we1151d.o \
+	ev1150.o ev1150d.o ev1149.o ev1149d.o we1148.o we1148d.o kl1144.o \
+	kl1144d.o we1143.o we1143d.o we1142.o we1142d.o we1141.o we1141d.o \
+	we1140.o we1140d.o we1139.o we1139d.o we1138.o we1138d.o we1137.o \
+	we1137d.o we1136.o we1136d.o we1135.o we1135d.o we1134.o we1134d.o \
+	we1133.o we1133d.o we1132.o we1132d.o we1131.o we1131d.o we1130.o \
+	we1130d.o we1129.o we1129d.o ev1128.o ev1128d.o ev1127.o ev1127d.o \
+	we1126.o we1126d.o we1125.o we1125d.o ev1124.o ev1124d.o kl1146.o \
+	kl1146d.o uc1147.o uc1147d.o 
 
-all: Cobj6.o
+all::  Cobj6.o
 
 Cobj6.o: $(OBJECTS) Makefile
-	$(LD) $(LDFLAGS) -r -o Cobj6.o $(OBJECTS)
-	$(RM) $(OBJECTS)
+	$(RM) $@
+	$(LD) -r -o $@ $(OBJECTS)
 	$(CREATE_TEST)
+	$(RM) $(OBJECTS)
+
 
 clean: local_clean
 clobber: local_clobber

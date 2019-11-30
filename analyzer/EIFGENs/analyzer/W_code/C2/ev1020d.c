@@ -1,5 +1,5 @@
 /*
- * Class EV_DOCKABLE_SOURCE_ACTION_SEQUENCES_I
+ * Class EV_SCROLL_CONSTANTS
  */
 
 #include "eif_macros.h"
@@ -10,7 +10,7 @@ extern "C" {
 #endif
 
 static const EIF_TYPE_INDEX egt_0_1020 [] = {0xFF01,232,0xFFFF};
-static const EIF_TYPE_INDEX egt_1_1020 [] = {0xFF01,248,1019,0xFFFF};
+static const EIF_TYPE_INDEX egt_1_1020 [] = {0xFF01,245,1019,0xFFFF};
 static const EIF_TYPE_INDEX egt_2_1020 [] = {0xFF01,1019,0xFFFF};
 static const EIF_TYPE_INDEX egt_3_1020 [] = {0,0xFFFF};
 static const EIF_TYPE_INDEX egt_4_1020 [] = {0,0xFFFF};
@@ -22,8 +22,6 @@ static const EIF_TYPE_INDEX egt_9_1020 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1020 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1020 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1020 [] = {0xFF01,1019,0xFFFF};
-static const EIF_TYPE_INDEX egt_13_1020 [] = {0xFF01,1160,0xFFFF};
-static const EIF_TYPE_INDEX egt_14_1020 [] = {0xFF01,1160,0xFFFF};
 
 
 static const struct desc_info desc_1020[] = {
@@ -59,16 +57,22 @@ static const struct desc_info desc_1020[] = {
 	{EIF_NON_GENERIC(0x07F7 /*1019*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1020), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1020), 15079, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_14_1020), 15080, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x0911 /*1160*/), 15081, 0},
-	{EIF_NON_GENERIC(0x0911 /*1160*/), 15082, 8},
+	{EIF_NON_GENERIC(0x01B5 /*218*/), 15659, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01B5 /*218*/), 15660, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01B5 /*218*/), 15661, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01B5 /*218*/), 15662, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01B5 /*218*/), 15663, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01B5 /*218*/), 15664, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01B5 /*218*/), 15665, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01B5 /*218*/), 15666, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x01B5 /*218*/), 15657, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x0197 /*203*/), 15658, 0xFFFFFFFF},
 };
 void Init1020(void)
 {
 	IDSC(desc_1020, 0, 1019);
 	IDSC(desc_1020 + 1, 1, 1019);
-	IDSC(desc_1020 + 32, 771, 1019);
+	IDSC(desc_1020 + 32, 773, 1019);
 }
 
 

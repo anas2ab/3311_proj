@@ -1,5 +1,5 @@
 /*
- * Class EV_DYNAMIC_LIST_CURSOR [G#1]
+ * Class EV_DOCKABLE_TARGET_ACTION_SEQUENCES
  */
 
 #include "eif_macros.h"
@@ -10,25 +10,24 @@ extern "C" {
 #endif
 
 static const EIF_TYPE_INDEX egt_0_1604 [] = {0xFF01,232,0xFFFF};
-static const EIF_TYPE_INDEX egt_1_1604 [] = {0xFF01,248,1603,0xFFF8,1,0xFFFF};
-static const EIF_TYPE_INDEX egt_2_1604 [] = {0xFF01,1603,0xFFF8,1,0xFFFF};
+static const EIF_TYPE_INDEX egt_1_1604 [] = {0xFF01,245,1603,0xFFFF};
+static const EIF_TYPE_INDEX egt_2_1604 [] = {0xFF01,1603,0xFFFF};
 static const EIF_TYPE_INDEX egt_3_1604 [] = {0,0xFFFF};
 static const EIF_TYPE_INDEX egt_4_1604 [] = {0,0xFFFF};
-static const EIF_TYPE_INDEX egt_5_1604 [] = {0xFF01,1603,0xFFF8,1,0xFFFF};
-static const EIF_TYPE_INDEX egt_6_1604 [] = {0xFF01,1603,0xFFF8,1,0xFFFF};
+static const EIF_TYPE_INDEX egt_5_1604 [] = {0xFF01,1603,0xFFFF};
+static const EIF_TYPE_INDEX egt_6_1604 [] = {0xFF01,1603,0xFFFF};
 static const EIF_TYPE_INDEX egt_7_1604 [] = {0,0xFFFF};
 static const EIF_TYPE_INDEX egt_8_1604 [] = {0xFF01,14,0xFFFF};
 static const EIF_TYPE_INDEX egt_9_1604 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1604 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1604 [] = {0xFF01,15,0xFFFF};
-static const EIF_TYPE_INDEX egt_12_1604 [] = {1603,0xFFF8,1,0xFFFF};
-static const EIF_TYPE_INDEX egt_13_1604 [] = {0xFF01,1603,0xFFF8,1,0xFFFF};
-static const EIF_TYPE_INDEX egt_14_1604 [] = {0xFF02,0xFFF8,1,0xFFFF};
-static const EIF_TYPE_INDEX egt_15_1604 [] = {0xFFF8,1,0xFFFF};
+static const EIF_TYPE_INDEX egt_12_1604 [] = {0xFF01,1603,0xFFFF};
+static const EIF_TYPE_INDEX egt_13_1604 [] = {0xFF01,1122,0xFFFF};
+static const EIF_TYPE_INDEX egt_14_1604 [] = {0xFF01,1352,0xFFFF};
 
 
 static const struct desc_info desc_1604[] = {
-	{EIF_GENERIC(NULL), 16262, 0xFFFFFFFF},
+	{EIF_GENERIC(NULL), 0xFFFFFFFF, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_0_1604), 0, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_1_1604), 1, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x0197 /*203*/), 2, 0xFFFFFFFF},
@@ -57,21 +56,17 @@ static const struct desc_info desc_1604[] = {
 	{EIF_GENERIC(NULL), 25, 0xFFFFFFFF},
 	{EIF_GENERIC(NULL), 26, 0xFFFFFFFF},
 	{EIF_GENERIC(NULL), 27, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_12_1604), 28, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x0C87 /*1603*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_13_1604), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(NULL), 16263, 0xFFFFFFFF},
-	{EIF_GENERIC(NULL), 16264, 0xFFFFFFFF},
-	{EIF_GENERIC(egt_14_1604), 16265, 0},
-	{EIF_NON_GENERIC(0x0197 /*203*/), 16266, 8},
-	{EIF_NON_GENERIC(0x0197 /*203*/), 16267, 9},
-	{EIF_GENERIC(egt_15_1604), 0x00, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_12_1604), 30, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_13_1604), 0x00, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_14_1604), 24217, 0xFFFFFFFF},
 };
 void Init1604(void)
 {
 	IDSC(desc_1604, 0, 1603);
 	IDSC(desc_1604 + 1, 1, 1603);
-	IDSC(desc_1604 + 32, 765, 1603);
+	IDSC(desc_1604 + 32, 709, 1603);
 }
 
 

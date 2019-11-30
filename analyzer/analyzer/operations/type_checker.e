@@ -9,16 +9,42 @@ class
 
 inherit
 	VISITOR
+feature--types
+	unknown:BOOLEAN
+	bool:BOOLEAN
+	invalid:BOOLEAN
+	int:BOOLEAN
+feature --type queries
+	is_type_correct:BOOLEAN
+		do
+			Result:= not invalid
+		end
 
 feature -- visitor implementation
 	visit_constant (c : INTEGER_CONSTANT)
 		do
-
+			int := TRUE
 		end
-
+	visit_boolean(b:BOOLEAN_CONSTANT)
+		do
+			bool :=TRUE
+		end
 	visit_addition ( a : ADDITION)
 		do
+			--check leftchild
 
+			if
+				a.left.value 
+			then
+
+			end
+
+			--check rightcihld
+			if
+
+			then
+
+			end
 		end
 
 	visit_subtraction (s : SUBTRACTION)
@@ -35,7 +61,7 @@ feature -- visitor implementation
 		do
 
 		end
-		
+
 	visit_modulo ( mod : MODULO)
 		do
 

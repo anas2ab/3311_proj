@@ -11,7 +11,7 @@ case "$O" in
 esac
 echo "Compiling C code in C12"
 $spitshell >Makefile <<!GROK!THIS!
-INCLUDE_PATH =  -I"\$(ISE_LIBRARY)/library/encoding/implementation/include" -I"\$(ISE_LIBRARY)/library/time/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/implementation/gtk/Clib" `$ISE_LIBRARY/library/encoding/implementation/unix/Clib/iconv-config --include_path` `$ISE_LIBRARY/library/vision2/implementation/gtk/Clib/vision2-gtk-config --include_path`
+INCLUDE_PATH =  -I"\$(ISE_LIBRARY)\library\wel\spec\windows\include" -I"\$(ISE_LIBRARY)\library\time\spec\include" -I"\$(ISE_LIBRARY)\library\vision2\spec\include" -I"\$(ISE_LIBRARY)\C_library\zlib"
 SHELL = /bin/sh
 CC = $cc
 CPP = $cpp
@@ -55,16 +55,16 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 
 OBJECTS = big_file_C12_c.o 
 
-OLDOBJECTS =  et1331.o et1331d.o ev1327.o ev1327d.o et1330.o et1330d.o ev1322.o \
-	ev1322d.o ev1323.o ev1323d.o ev1324.o ev1324d.o ev1332.o ev1332d.o \
-	ev1340.o ev1340d.o ev1347.o ev1347d.o ev1343.o ev1343d.o ev1339.o \
-	ev1339d.o ev1346.o ev1346d.o ev1348.o ev1348d.o ev1342.o ev1342d.o \
-	ev1329.o ev1329d.o ev1345.o ev1345d.o ev1354.o ev1354d.o ev1349.o \
-	ev1349d.o ev1336.o ev1336d.o ev1335.o ev1335d.o ev1341.o ev1341d.o \
-	ev1344.o ev1344d.o ev1353.o ev1353d.o ev1352.o ev1352d.o ev1333.o \
-	ev1333d.o ev1334.o ev1334d.o ev1325.o ev1325d.o ev1328.o ev1328d.o \
-	ev1326.o ev1326d.o ev1338.o ev1338d.o ev1337.o ev1337d.o ev1351.o \
-	ev1351d.o ev1350.o ev1350d.o 
+OLDOBJECTS =  ro1339.o ro1339d.o et1338.o et1338d.o et1337.o et1337d.o da1343.o \
+	da1343d.o ev1329.o ev1329d.o kl1335.o kl1335d.o ev1344.o ev1344d.o \
+	ev1328.o ev1328d.o ev1327.o ev1327d.o ev1345.o ev1345d.o we1326.o \
+	we1326d.o we1342.o we1342d.o we1324.o we1324d.o we1323.o we1323d.o \
+	ev1330.o ev1330d.o we1322.o we1322d.o ev1354.o ev1354d.o ev1353.o \
+	ev1353d.o ev1340.o ev1340d.o we1341.o we1341d.o ev1334.o ev1334d.o \
+	ev1333.o ev1333d.o ev1352.o ev1352d.o we1332.o we1332d.o we1331.o \
+	we1331d.o ev1351.o ev1351d.o we1325.o we1325d.o ev1350.o ev1350d.o \
+	ki1336.o ki1336d.o ev1349.o ev1349d.o ev1348.o ev1348d.o ev1347.o \
+	ev1347d.o ev1346.o ev1346d.o 
 
 all: Cobj12.o
 

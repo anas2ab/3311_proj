@@ -88,6 +88,16 @@ feature -- Visitor implementation
 		do
 			expr := b.value.out
 		end
+	visit_negation(b:NEGATION)
+		local
+			expr_left: JAVA_CODE_GENERATOR
+		do
+
+		end
+	visit_negative(b:NEGATIVE)
+		do
+
+		end
 
 feature -- Attributes
 	expr : STRING

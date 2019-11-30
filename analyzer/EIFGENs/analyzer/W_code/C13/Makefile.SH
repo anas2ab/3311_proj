@@ -11,7 +11,7 @@ case "$O" in
 esac
 echo "Compiling C code in C13"
 $spitshell >Makefile <<!GROK!THIS!
-INCLUDE_PATH =  -I"\$(ISE_LIBRARY)/library/encoding/implementation/include" -I"\$(ISE_LIBRARY)/library/time/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/implementation/gtk/Clib" `$ISE_LIBRARY/library/encoding/implementation/unix/Clib/iconv-config --include_path` `$ISE_LIBRARY/library/vision2/implementation/gtk/Clib/vision2-gtk-config --include_path`
+INCLUDE_PATH =  -I"\$(ISE_LIBRARY)\library\wel\spec\windows\include" -I"\$(ISE_LIBRARY)\library\time\spec\include" -I"\$(ISE_LIBRARY)\library\vision2\spec\include" -I"\$(ISE_LIBRARY)\C_library\zlib"
 SHELL = /bin/sh
 CC = $cc
 CPP = $cpp
@@ -55,16 +55,16 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 
 OBJECTS = big_file_C13_c.o 
 
-OLDOBJECTS =  ev1376.o ev1376d.o ev1378.o ev1378d.o ev1375.o ev1375d.o ev1356.o \
-	ev1356d.o ev1374.o ev1374d.o ev1366.o ev1366d.o ev1387.o ev1387d.o \
-	ev1359.o ev1359d.o ev1358.o ev1358d.o ev1386.o ev1386d.o ev1385.o \
-	ev1385d.o ev1383.o ev1383d.o ev1384.o ev1384d.o ev1380.o ev1380d.o \
-	ev1360.o ev1360d.o ev1382.o ev1382d.o ev1381.o ev1381d.o ev1364.o \
-	ev1364d.o ev1363.o ev1363d.o ev1377.o ev1377d.o ev1362.o ev1362d.o \
-	ev1361.o ev1361d.o ev1379.o ev1379d.o ev1357.o ev1357d.o ev1355.o \
-	ev1355d.o ev1373.o ev1373d.o ev1365.o ev1365d.o ev1369.o ev1369d.o \
-	ev1368.o ev1368d.o ev1370.o ev1370d.o ev1371.o ev1371d.o ev1367.o \
-	ev1367d.o ev1372.o ev1372d.o 
+OLDOBJECTS =  et1385.o et1385d.o et1384.o et1384d.o et1386.o et1386d.o et1387.o \
+	et1387d.o da1383.o da1383d.o ev1364.o ev1364d.o ev1363.o ev1363d.o \
+	ev1382.o ev1382d.o ev1362.o ev1362d.o kl1370.o kl1370d.o kl1368.o \
+	kl1368d.o ev1361.o ev1361d.o ev1381.o ev1381d.o ev1360.o ev1360d.o \
+	ev1359.o ev1359d.o ev1358.o ev1358d.o ev1357.o ev1357d.o ev1356.o \
+	ev1356d.o ev1355.o ev1355d.o kl1379.o kl1379d.o kl1378.o kl1378d.o \
+	we1366.o we1366d.o we1367.o we1367d.o we1365.o we1365d.o ev1369.o \
+	ev1369d.o ki1375.o ki1375d.o ki1376.o ki1376d.o ki1374.o ki1374d.o \
+	ki1373.o ki1373d.o ki1380.o ki1380d.o kl1377.o kl1377d.o kl1372.o \
+	kl1372d.o uc1371.o uc1371d.o 
 
 all: Cobj13.o
 

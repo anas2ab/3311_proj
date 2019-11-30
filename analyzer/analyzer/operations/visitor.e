@@ -22,4 +22,7 @@ feature -- operations
 	visit_modulo (mod : MODULO) deferred end
 
 	visit_boolean (b : BOOLEAN_CONSTANT) deferred end
+
+	visit_negation(n:NEGATION) deferred end
+	visit_negative(n:NEGATIVE) deferred end
 end

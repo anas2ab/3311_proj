@@ -1,5 +1,5 @@
 /*
- * Class EV_DRAWABLE_CONSTANTS
+ * Class EV_RICH_TEXT_ACTION_SEQUENCES_I
  */
 
 #include "eif_macros.h"
@@ -10,7 +10,7 @@ extern "C" {
 #endif
 
 static const EIF_TYPE_INDEX egt_0_1117 [] = {0xFF01,232,0xFFFF};
-static const EIF_TYPE_INDEX egt_1_1117 [] = {0xFF01,248,1116,0xFFFF};
+static const EIF_TYPE_INDEX egt_1_1117 [] = {0xFF01,245,1116,0xFFFF};
 static const EIF_TYPE_INDEX egt_2_1117 [] = {0xFF01,1116,0xFFFF};
 static const EIF_TYPE_INDEX egt_3_1117 [] = {0,0xFFFF};
 static const EIF_TYPE_INDEX egt_4_1117 [] = {0,0xFFFF};
@@ -22,6 +22,9 @@ static const EIF_TYPE_INDEX egt_9_1117 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1117 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1117 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1117 [] = {0xFF01,1116,0xFFFF};
+static const EIF_TYPE_INDEX egt_13_1117 [] = {0xFF01,1354,0xFFFF};
+static const EIF_TYPE_INDEX egt_14_1117 [] = {0xFF01,1362,0xFFFF};
+static const EIF_TYPE_INDEX egt_15_1117 [] = {0xFF01,1354,0xFFFF};
 
 
 static const struct desc_info desc_1117[] = {
@@ -57,18 +60,18 @@ static const struct desc_info desc_1117[] = {
 	{EIF_NON_GENERIC(0x08B9 /*1116*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1117), 30, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x01B5 /*218*/), 15790, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x01B5 /*218*/), 15791, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x01B5 /*218*/), 15792, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x01B5 /*218*/), 15793, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x01B5 /*218*/), 15794, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x0197 /*203*/), 15795, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_13_1117), 17091, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_14_1117), 17092, 0xFFFFFFFF},
+	{EIF_GENERIC(egt_15_1117), 17093, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x0A95 /*1354*/), 17094, 0},
+	{EIF_NON_GENERIC(0x0AA5 /*1362*/), 17095, 8},
+	{EIF_NON_GENERIC(0x0A95 /*1354*/), 17096, 16},
 };
 void Init1117(void)
 {
 	IDSC(desc_1117, 0, 1116);
 	IDSC(desc_1117 + 1, 1, 1116);
-	IDSC(desc_1117 + 32, 780, 1116);
+	IDSC(desc_1117 + 32, 991, 1116);
 }
 
 

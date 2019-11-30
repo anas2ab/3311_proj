@@ -11,7 +11,7 @@ case "$O" in
 esac
 echo "Compiling C code in C19"
 $spitshell >Makefile <<!GROK!THIS!
-INCLUDE_PATH =  -I"\$(ISE_LIBRARY)/library/encoding/implementation/include" -I"\$(ISE_LIBRARY)/library/time/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/implementation/gtk/Clib" `$ISE_LIBRARY/library/encoding/implementation/unix/Clib/iconv-config --include_path` `$ISE_LIBRARY/library/vision2/implementation/gtk/Clib/vision2-gtk-config --include_path`
+INCLUDE_PATH =  -I"\$(ISE_LIBRARY)\library\wel\spec\windows\include" -I"\$(ISE_LIBRARY)\library\time\spec\include" -I"\$(ISE_LIBRARY)\library\vision2\spec\include" -I"\$(ISE_LIBRARY)\C_library\zlib"
 SHELL = /bin/sh
 CC = $cc
 CPP = $cpp
@@ -55,16 +55,16 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 
 OBJECTS = big_file_C19_c.o 
 
-OLDOBJECTS =  da1567.o da1567d.o kl1576.o kl1576d.o fi1566.o fi1566d.o kl1575.o \
-	kl1575d.o yy1565.o yy1565d.o ev1556.o ev1556d.o kl1570.o kl1570d.o \
-	yy1564.o yy1564d.o ev1555.o ev1555d.o ev1554.o ev1554d.o kl1577.o \
-	kl1577d.o kl1572.o kl1572d.o kl1568.o kl1568d.o yy1563.o yy1563d.o \
-	ev1580.o ev1580d.o kl1571.o kl1571d.o kl1585.o kl1585d.o kl1583.o \
-	kl1583d.o kl1584.o kl1584d.o kl1582.o kl1582d.o kl1569.o kl1569d.o \
-	kl1579.o kl1579d.o kl1574.o kl1574d.o kl1578.o kl1578d.o kl1573.o \
-	kl1573d.o ki1581.o ki1581d.o uc1561.o uc1561d.o kl1562.o kl1562d.o \
-	ev1553.o ev1553d.o uc1560.o uc1560d.o uc1559.o uc1559d.o uc1558.o \
-	uc1558d.o uc1557.o uc1557d.o 
+OLDOBJECTS =  ev1584.o ev1584d.o we1567.o we1567d.o we1566.o we1566d.o ev1582.o \
+	ev1582d.o we1565.o we1565d.o we1564.o we1564d.o we1563.o we1563d.o \
+	we1562.o we1562d.o we1561.o we1561d.o we1560.o we1560d.o we1559.o \
+	we1559d.o we1558.o we1558d.o we1557.o we1557d.o we1556.o we1556d.o \
+	we1555.o we1555d.o we1554.o we1554d.o we1553.o we1553d.o we1569.o \
+	we1569d.o we1574.o we1574d.o we1575.o we1575d.o we1577.o we1577d.o \
+	we1570.o we1570d.o we1568.o we1568d.o we1572.o we1572d.o we1571.o \
+	we1571d.o we1573.o we1573d.o we1576.o we1576d.o uc1578.o uc1578d.o \
+	kl1583.o kl1583d.o ev1581.o ev1581d.o ev1580.o ev1580d.o ev1585.o \
+	ev1585d.o ev1579.o ev1579d.o 
 
 all: Cobj19.o
 

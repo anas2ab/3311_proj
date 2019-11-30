@@ -11,7 +11,7 @@ case "$O" in
 esac
 echo "Compiling C code in C7"
 $spitshell >Makefile <<!GROK!THIS!
-INCLUDE_PATH =  -I"\$(ISE_LIBRARY)/library/encoding/implementation/include" -I"\$(ISE_LIBRARY)/library/time/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/implementation/gtk/Clib" `$ISE_LIBRARY/library/encoding/implementation/unix/Clib/iconv-config --include_path` `$ISE_LIBRARY/library/vision2/implementation/gtk/Clib/vision2-gtk-config --include_path`
+INCLUDE_PATH =  -I"\$(ISE_LIBRARY)\library\wel\spec\windows\include" -I"\$(ISE_LIBRARY)\library\time\spec\include" -I"\$(ISE_LIBRARY)\library\vision2\spec\include" -I"\$(ISE_LIBRARY)\C_library\zlib"
 SHELL = /bin/sh
 CC = $cc
 CPP = $cpp
@@ -55,16 +55,16 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 
 OBJECTS = big_file_C7_c.o 
 
-OLDOBJECTS =  et1179.o et1179d.o et1178.o et1178d.o et1188.o et1188d.o et1186.o \
-	et1186d.o et1180.o et1180d.o et1184.o et1184d.o et1182.o et1182d.o \
-	et1189.o et1189d.o et1187.o et1187d.o et1185.o et1185d.o et1183.o \
-	et1183d.o et1181.o et1181d.o da1177.o da1177d.o ev1176.o ev1176d.o \
-	ev1161.o ev1161d.o ev1160.o ev1160d.o ev1159.o ev1159d.o kl1164.o \
-	kl1164d.o kl1162.o kl1162d.o ev1158.o ev1158d.o ev1175.o ev1175d.o \
-	ev1157.o ev1157d.o kl1173.o kl1173d.o kl1172.o kl1172d.o ev1163.o \
-	ev1163d.o ki1169.o ki1169d.o ki1170.o ki1170d.o ki1168.o ki1168d.o \
-	ki1167.o ki1167d.o ki1174.o ki1174d.o kl1171.o kl1171d.o kl1166.o \
-	kl1166d.o uc1165.o uc1165d.o 
+OLDOBJECTS =  es1170.o es1170d.o es1166.o es1166d.o es1169.o es1169d.o es1168.o \
+	es1168d.o et1164.o et1164d.o et1162.o et1162d.o et1167.o et1167d.o \
+	es1165.o es1165d.o et1163.o et1163d.o et1161.o et1161d.o ja1160.o \
+	ja1160d.o vi1159.o vi1159d.o yy1157.o yy1157d.o yy1158.o yy1158d.o \
+	we1189.o we1189d.o we1188.o we1188d.o we1187.o we1187d.o ev1186.o \
+	ev1186d.o we1185.o we1185d.o we1184.o we1184d.o we1183.o we1183d.o \
+	we1182.o we1182d.o we1181.o we1181d.o ev1180.o ev1180d.o we1179.o \
+	we1179d.o we1178.o we1178d.o uc1177.o uc1177d.o we1176.o we1176d.o \
+	we1175.o we1175d.o ev1174.o ev1174d.o we1173.o we1173d.o we1172.o \
+	we1172d.o we1171.o we1171d.o 
 
 all: Cobj7.o
 

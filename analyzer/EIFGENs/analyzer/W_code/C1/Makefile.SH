@@ -11,7 +11,7 @@ case "$O" in
 esac
 echo "Compiling C code in C1"
 $spitshell >Makefile <<!GROK!THIS!
-INCLUDE_PATH =  -I"\$(ISE_LIBRARY)/library/encoding/implementation/include" -I"\$(ISE_LIBRARY)/library/time/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/implementation/gtk/Clib" `$ISE_LIBRARY/library/encoding/implementation/unix/Clib/iconv-config --include_path` `$ISE_LIBRARY/library/vision2/implementation/gtk/Clib/vision2-gtk-config --include_path`
+INCLUDE_PATH =  -I"\$(ISE_LIBRARY)\library\wel\spec\windows\include" -I"\$(ISE_LIBRARY)\library\time\spec\include" -I"\$(ISE_LIBRARY)\library\vision2\spec\include" -I"\$(ISE_LIBRARY)\C_library\zlib"
 SHELL = /bin/sh
 CC = $cc
 CPP = $cpp
@@ -55,14 +55,14 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 
 OBJECTS = big_file_C1_c.o 
 
-OLDOBJECTS =  et985.o et985d.o et984.o et984d.o et982.o et982d.o et983.o et983d.o \
-	et981.o et981d.o my980.o my980d.o c_979.o c_979d.o et978.o et978d.o \
-	et977.o et977d.o va976.o va976d.o ev975.o ev975d.o ev974.o ev974d.o \
-	ev973.o ev973d.o kl972.o kl972d.o gt971.o gt971d.o gt970.o gt970d.o \
-	ev969.o ev969d.o ev968.o ev968d.o ev967.o ev967d.o kl966.o kl966d.o \
-	ev965.o ev965d.o ev964.o ev964d.o ev963.o ev963d.o kl962.o kl962d.o \
-	ev961.o ev961d.o ev960.o ev960d.o ev991.o ev991d.o ev990.o ev990d.o \
-	ev989.o ev989d.o ev988.o ev988d.o ev987.o ev987d.o ev986.o ev986d.o 
+OLDOBJECTS =  we991.o we991d.o we990.o we990d.o we989.o we989d.o we988.o we988d.o \
+	we987.o we987d.o we986.o we986d.o we985.o we985d.o we984.o we984d.o \
+	we983.o we983d.o we982.o we982d.o we981.o we981d.o kl980.o kl980d.o \
+	we979.o we979d.o we978.o we978d.o we977.o we977d.o we976.o we976d.o \
+	we975.o we975d.o we974.o we974d.o we973.o we973d.o we972.o we972d.o \
+	we971.o we971d.o we970.o we970d.o we969.o we969d.o we968.o we968d.o \
+	we967.o we967d.o we966.o we966d.o we965.o we965d.o we964.o we964d.o \
+	we963.o we963d.o we962.o we962d.o we961.o we961d.o we960.o we960d.o 
 
 all: Cobj1.o
 

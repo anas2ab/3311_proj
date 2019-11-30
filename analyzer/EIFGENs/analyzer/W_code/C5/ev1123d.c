@@ -1,5 +1,5 @@
 /*
- * Class EV_GTK_TREE_ITER_STRUCT
+ * Class EV_DOCKABLE_TARGET_ACTION_SEQUENCES_I
  */
 
 #include "eif_macros.h"
@@ -10,7 +10,7 @@ extern "C" {
 #endif
 
 static const EIF_TYPE_INDEX egt_0_1123 [] = {0xFF01,232,0xFFFF};
-static const EIF_TYPE_INDEX egt_1_1123 [] = {0xFF01,248,1122,0xFFFF};
+static const EIF_TYPE_INDEX egt_1_1123 [] = {0xFF01,245,1122,0xFFFF};
 static const EIF_TYPE_INDEX egt_2_1123 [] = {0xFF01,1122,0xFFFF};
 static const EIF_TYPE_INDEX egt_3_1123 [] = {0,0xFFFF};
 static const EIF_TYPE_INDEX egt_4_1123 [] = {0,0xFFFF};
@@ -22,6 +22,7 @@ static const EIF_TYPE_INDEX egt_9_1123 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_10_1123 [] = {0xFF01,232,0xFFFF};
 static const EIF_TYPE_INDEX egt_11_1123 [] = {0xFF01,15,0xFFFF};
 static const EIF_TYPE_INDEX egt_12_1123 [] = {0xFF01,1122,0xFFFF};
+static const EIF_TYPE_INDEX egt_13_1123 [] = {0xFF01,1352,0xFFFF};
 
 
 static const struct desc_info desc_1123[] = {
@@ -57,20 +58,14 @@ static const struct desc_info desc_1123[] = {
 	{EIF_NON_GENERIC(0x08C5 /*1122*/), 28, 0xFFFFFFFF},
 	{EIF_NON_GENERIC(0x01C7 /*227*/), 29, 0xFFFFFFFF},
 	{EIF_GENERIC(egt_12_1123), 30, 0xFFFFFFFF},
-	{EIF_GENERIC(NULL), 1117, 0xFFFFFFFF},
-	{EIF_GENERIC(NULL), 1118, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x0197 /*203*/), 1119, 8},
-	{EIF_NON_GENERIC(0x01C7 /*227*/), 1120, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x0197 /*203*/), 1121, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x01B5 /*218*/), 16083, 0xFFFFFFFF},
-	{EIF_NON_GENERIC(0x01C7 /*227*/), 1122, 16},
-	{EIF_NON_GENERIC(0x0147 /*163*/), 1115, 0},
+	{EIF_GENERIC(egt_13_1123), 17335, 0xFFFFFFFF},
+	{EIF_NON_GENERIC(0x0A91 /*1352*/), 17336, 0},
 };
 void Init1123(void)
 {
 	IDSC(desc_1123, 0, 1122);
 	IDSC(desc_1123 + 1, 1, 1122);
-	IDSC(desc_1123 + 32, 330, 1122);
+	IDSC(desc_1123 + 32, 969, 1122);
 }
 
 

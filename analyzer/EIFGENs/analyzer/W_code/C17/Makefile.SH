@@ -11,7 +11,7 @@ case "$O" in
 esac
 echo "Compiling C code in C17"
 $spitshell >Makefile <<!GROK!THIS!
-INCLUDE_PATH =  -I"\$(ISE_LIBRARY)/library/encoding/implementation/include" -I"\$(ISE_LIBRARY)/library/time/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/implementation/gtk/Clib" `$ISE_LIBRARY/library/encoding/implementation/unix/Clib/iconv-config --include_path` `$ISE_LIBRARY/library/vision2/implementation/gtk/Clib/vision2-gtk-config --include_path`
+INCLUDE_PATH =  -I"\$(ISE_LIBRARY)\library\wel\spec\windows\include" -I"\$(ISE_LIBRARY)\library\time\spec\include" -I"\$(ISE_LIBRARY)\library\vision2\spec\include" -I"\$(ISE_LIBRARY)\C_library\zlib"
 SHELL = /bin/sh
 CC = $cc
 CPP = $cpp
@@ -53,18 +53,18 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 .cpp.o:
 	$(CPP) $(CPPFLAGS) -c $<
 
-OBJECTS = big_file_C17_c.o 
+OBJECTS = big_file_C17_c.o big_file_C17_cpp.o 
 
-OLDOBJECTS =  ev1487.o ev1487d.o ev1504.o ev1504d.o ev1514.o ev1514d.o ev1497.o \
-	ev1497d.o ev1490.o ev1490d.o ev1507.o ev1507d.o ev1495.o ev1495d.o \
-	ev1512.o ev1512d.o ev1498.o ev1498d.o ev1515.o ev1515d.o ev1489.o \
-	ev1489d.o ev1506.o ev1506d.o ev1511.o ev1511d.o ev1494.o ev1494d.o \
-	ev1503.o ev1503d.o ev1516.o ev1516d.o ev1519.o ev1519d.o ev1499.o \
-	ev1499d.o ev1508.o ev1508d.o ev1488.o ev1488d.o ev1505.o ev1505d.o \
-	ev1502.o ev1502d.o ev1491.o ev1491d.o ev1513.o ev1513d.o ev1501.o \
-	ev1501d.o ev1500.o ev1500d.o ev1518.o ev1518d.o ev1496.o ev1496d.o \
-	ev1509.o ev1509d.o ev1517.o ev1517d.o ev1510.o ev1510d.o ev1492.o \
-	ev1492d.o ev1493.o ev1493d.o 
+OLDOBJECTS =  we1494.o we1494d.o we1493.o we1493d.o we1495.o we1495d.o we1496.o \
+	we1496d.o we1491.o we1491d.o we1492.o we1492d.o we1490.o we1490d.o \
+	we1489.o we1489d.o we1488.o we1488d.o we1487.o we1487d.o we1519.o \
+	we1519d.o we1518.o we1518d.o we1517.o we1517d.o we1516.o we1516d.o \
+	we1515.o we1515d.o we1514.o we1514d.o we1513.o we1513d.o we1512.o \
+	we1512d.o we1511.o we1511d.o we1510.o we1510d.o we1509.o we1509d.o \
+	we1508.o we1508d.o we1507.o we1507d.o we1506.o we1506d.o we1505.o \
+	we1505d.o we1504.o we1504d.o we1503.o we1503d.o we1502.o we1502d.o \
+	we1501.o we1501d.o we1500.o we1500d.o we1499.o we1499d.o we1498.o \
+	we1498d.o we1497.o we1497d.o 
 
 all: Cobj17.o
 

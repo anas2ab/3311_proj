@@ -11,7 +11,7 @@ case "$O" in
 esac
 echo "Compiling C code in C9"
 $spitshell >Makefile <<!GROK!THIS!
-INCLUDE_PATH =  -I"\$(ISE_LIBRARY)/library/encoding/implementation/include" -I"\$(ISE_LIBRARY)/library/time/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/implementation/gtk/Clib" `$ISE_LIBRARY/library/encoding/implementation/unix/Clib/iconv-config --include_path` `$ISE_LIBRARY/library/vision2/implementation/gtk/Clib/vision2-gtk-config --include_path`
+INCLUDE_PATH =  -I"\$(ISE_LIBRARY)\library\wel\spec\windows\include" -I"\$(ISE_LIBRARY)\library\time\spec\include" -I"\$(ISE_LIBRARY)\library\vision2\spec\include" -I"\$(ISE_LIBRARY)\C_library\zlib"
 SHELL = /bin/sh
 CC = $cc
 CPP = $cpp
@@ -55,16 +55,16 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 
 OBJECTS = big_file_C9_c.o 
 
-OLDOBJECTS =  et1224.o et1224d.o va1225.o va1225d.o va1226.o va1226d.o et1223.o \
-	et1223d.o ki1233.o ki1233d.o kl1241.o kl1241d.o ki1240.o ki1240d.o \
-	ev1247.o ev1247d.o ev1252.o ev1252d.o ki1234.o ki1234d.o kl1227.o \
-	kl1227d.o ki1238.o ki1238d.o ki1235.o ki1235d.o ev1248.o ev1248d.o \
-	ev1243.o ev1243d.o ev1250.o ev1250d.o kl1232.o kl1232d.o kl1231.o \
-	kl1231d.o kl1237.o kl1237d.o ev1245.o ev1245d.o ev1246.o ev1246d.o \
-	ki1239.o ki1239d.o ev1244.o ev1244d.o ev1242.o ev1242d.o uc1249.o \
-	uc1249d.o kl1251.o kl1251d.o uc1230.o uc1230d.o uc1229.o uc1229d.o \
-	uc1228.o uc1228d.o kl1236.o kl1236d.o ev1255.o ev1255d.o ev1254.o \
-	ev1254d.o ev1253.o ev1253d.o 
+OLDOBJECTS =  et1253.o et1253d.o et1252.o et1252d.o et1254.o et1254d.o et1251.o \
+	et1251d.o qu1235.o qu1235d.o co1234.o co1234d.o et1255.o et1255d.o \
+	et1236.o et1236d.o et1250.o et1250d.o et1249.o et1249d.o et1239.o \
+	et1239d.o et1238.o et1238d.o et1248.o et1248d.o et1247.o et1247d.o \
+	et1246.o et1246d.o et1245.o et1245d.o et1244.o et1244d.o et1243.o \
+	et1243d.o et1242.o et1242d.o et1241.o et1241d.o et1240.o et1240d.o \
+	fe1231.o fe1231d.o at1232.o at1232d.o ro1233.o ro1233d.o da1223.o \
+	da1223d.o da1225.o da1225d.o da1226.o da1226d.o et1237.o et1237d.o \
+	kl1230.o kl1230d.o kl1229.o kl1229d.o ev1228.o ev1228d.o co1227.o \
+	co1227d.o da1224.o da1224d.o 
 
 all: Cobj9.o
 

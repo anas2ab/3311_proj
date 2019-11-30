@@ -11,7 +11,7 @@ case "$O" in
 esac
 echo "Compiling C code in C14"
 $spitshell >Makefile <<!GROK!THIS!
-INCLUDE_PATH =  -I"\$(ISE_LIBRARY)/library/encoding/implementation/include" -I"\$(ISE_LIBRARY)/library/time/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/spec/include" -I"\$(ISE_LIBRARY)/library/vision2/implementation/gtk/Clib" `$ISE_LIBRARY/library/encoding/implementation/unix/Clib/iconv-config --include_path` `$ISE_LIBRARY/library/vision2/implementation/gtk/Clib/vision2-gtk-config --include_path`
+INCLUDE_PATH =  -I"\$(ISE_LIBRARY)\library\wel\spec\windows\include" -I"\$(ISE_LIBRARY)\library\time\spec\include" -I"\$(ISE_LIBRARY)\library\vision2\spec\include" -I"\$(ISE_LIBRARY)\C_library\zlib"
 SHELL = /bin/sh
 CC = $cc
 CPP = $cpp
@@ -55,16 +55,16 @@ $spitshell >>Makefile <<'!NO!SUBS!'
 
 OBJECTS = big_file_C14_c.o 
 
-OLDOBJECTS =  ev1401.o ev1401d.o ev1399.o ev1399d.o ev1398.o ev1398d.o ev1397.o \
-	ev1397d.o ev1396.o ev1396d.o ev1400.o ev1400d.o ev1413.o ev1413d.o \
-	ev1412.o ev1412d.o ev1406.o ev1406d.o ev1411.o ev1411d.o ev1402.o \
-	ev1402d.o ev1416.o ev1416d.o ev1414.o ev1414d.o ev1395.o ev1395d.o \
-	ev1394.o ev1394d.o ev1393.o ev1393d.o ev1410.o ev1410d.o ev1391.o \
-	ev1391d.o ev1392.o ev1392d.o ev1389.o ev1389d.o ev1390.o ev1390d.o \
-	ev1415.o ev1415d.o ev1417.o ev1417d.o ev1409.o ev1409d.o ev1404.o \
-	ev1404d.o ev1403.o ev1403d.o ev1405.o ev1405d.o ev1408.o ev1408d.o \
-	ev1388.o ev1388d.o ev1419.o ev1419d.o ev1420.o ev1420d.o ev1418.o \
-	ev1418d.o ev1407.o ev1407d.o 
+OLDOBJECTS =  et1420.o et1420d.o et1418.o et1418d.o et1416.o et1416d.o et1414.o \
+	et1414d.o et1412.o et1412d.o et1410.o et1410d.o et1408.o et1408d.o \
+	et1406.o et1406d.o et1404.o et1404d.o et1402.o et1402d.o et1400.o \
+	et1400d.o et1398.o et1398d.o et1396.o et1396d.o et1394.o et1394d.o \
+	et1392.o et1392d.o et1390.o et1390d.o et1388.o et1388d.o et1419.o \
+	et1419d.o et1417.o et1417d.o et1415.o et1415d.o et1413.o et1413d.o \
+	et1411.o et1411d.o et1409.o et1409d.o et1407.o et1407d.o et1405.o \
+	et1405d.o et1403.o et1403d.o et1401.o et1401d.o et1399.o et1399d.o \
+	et1397.o et1397d.o et1395.o et1395d.o et1393.o et1393d.o et1391.o \
+	et1391d.o et1389.o et1389d.o 
 
 all: Cobj14.o
 
