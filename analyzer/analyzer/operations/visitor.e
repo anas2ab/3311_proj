@@ -25,4 +25,9 @@ feature -- operations
 
 	visit_negation(n:NEGATION) deferred end
 	visit_negative(n:NEGATIVE) deferred end
+	visit_greater_than(n:GREATER_THAN)deferred end
+	visit_less_than(n:LESS_THAN)deferred end
+	visit_equivalent(e:EQUIVALENT)deferred end
+	visit_conjunction(c:CONJUNCTION)deferred end
+	visit_disjunction(c:DISJUNCTION)deferred end
 end

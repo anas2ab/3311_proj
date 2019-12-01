@@ -83,6 +83,51 @@ feature -- Visitor implementation
 			mod.right.accept (expr_right)
 			expr := expr_left.expr + " %% " + expr_right.expr
 		end
+	visit_conjunction (c:CONJUNCTION)
+		local
+			expr_left: JAVA_CODE_GENERATOR
+			expr_right: JAVA_CODE_GENERATOR
+		do
+			create expr_left.make
+			create expr_right.make
+			c.left.accept (expr_left)
+			c.right.accept (expr_right)
+			expr := expr_left.expr + " && " + expr_right.expr
+		end
+	visit_disjunction (d:DISJUNCTION)
+		local
+			expr_left: JAVA_CODE_GENERATOR
+			expr_right: JAVA_CODE_GENERATOR
+		do
+			create expr_left.make
+			create expr_right.make
+			d.left.accept (expr_left)
+			d.right.accept (expr_right)
+			expr := expr_left.expr + " || " + expr_right.expr
+		end
+	visit_greater_than (gt : GREATER_THAN)
+		local
+			expr_left: JAVA_CODE_GENERATOR
+			expr_right: JAVA_CODE_GENERATOR
+		do
+			create expr_left.make
+			create expr_right.make
+			gt.left.accept (expr_left)
+			gt.right.accept (expr_right)
+			expr := expr_left.expr + " > " + expr_right.expr
+		end
+
+	visit_less_than (lt:LESS_THAN)
+		local
+			expr_left: JAVA_CODE_GENERATOR
+			expr_right: JAVA_CODE_GENERATOR
+		do
+			create expr_left.make
+			create expr_right.make
+			lt.left.accept (expr_left)
+			lt.right.accept (expr_right)
+			expr := expr_left.expr + " < " + expr_right.expr
+		end
 
 	visit_boolean (b : BOOLEAN_CONSTANT)
 		do
@@ -92,12 +137,34 @@ feature -- Visitor implementation
 		local
 			expr_left: JAVA_CODE_GENERATOR
 		do
+			create expr_left.make
 
+			b.left.accept (expr_left)
+			expr:= "!"+ expr_left.expr
 		end
 	visit_negative(b:NEGATIVE)
-		do
 
-		end
+			local
+				expr_left: JAVA_CODE_GENERATOR
+			do
+				create expr_left.make
+
+				b.left.accept (expr_left)
+				expr:= "~"+ expr_left.expr
+			end
+	visit_equivalent(e:EQUIVALENT)
+
+			local
+				expr_left: JAVA_CODE_GENERATOR
+				expr_right: JAVA_CODE_GENERATOR
+			do
+				create expr_left.make
+				create expr_right.make
+				e.left.accept (expr_left)
+				e.right.accept (expr_right)
+				expr := expr_left.expr + " == " + expr_right.expr
+			end
+
 
 feature -- Attributes
 	expr : STRING
