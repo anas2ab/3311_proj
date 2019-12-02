@@ -36,7 +36,7 @@ feature {NONE} -- Initialization
 
 			create {BOOLEAN_CONSTANT} b1.make (true)
 			create {BOOLEAN_CONSTANT} b2.make (true)
-
+			create {TYPE_CHECKER} t.make
 			create {ADDITION} e.make (c1,c2)
 
 		end
@@ -50,6 +50,7 @@ feature -- model attributes
 	v : VISITOR
 	expr : STRING
 	c1,c2,b1,b2, e : EXPRESSION
+	t:TYPE_CHECKER
 
 feature -- model operations
 	default_update

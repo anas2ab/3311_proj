@@ -33,5 +33,6 @@ feature
 		do
 			v.visit_negative (Current)
 		end
-
+invariant
+	children: children.count = 1
 end
