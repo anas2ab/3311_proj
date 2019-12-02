@@ -23,6 +23,8 @@ feature -- Constructor
 			command_count := command_list.count
 			attr_count := attribute_list.count
 
+			create call_chain.make_empty
+
 		end
 feature -- Attributes
 	name : STRING
@@ -32,11 +34,14 @@ feature -- Attributes
 	attribute_list:	ARRAY[FEATURES]
 	count, attr_count, command_count, query_count:INTEGER
 
+	call_chain : ARRAY[STRING]
+
 feature -- Commands
 	add_attribute (fn : STRING; ft : STRING)
 		do
-			feature_list.force (create {ATTRIBUTE_FEATURE}.make (ft, fn), count+1)
-			attribute_list.force (create {ATTRIBUTE_FEATURE}.make (ft, fn), attr_count+1)
+			feature_list.force (create {ATTRIBUTE_FEATURE}.make (fn, ft), count+1)
+			attribute_list.force (create {ATTRIBUTE_FEATURE}.make (fn, ft), attr_count+1)
+			call_chain.force (fn, call_chain.count+1)
 			count := count + 1
 			attr_count := attr_count+1
 		end
@@ -46,6 +51,11 @@ feature -- Commands
 			feature_list.force (create {COMMAND_FEATURE}.make(fn, ps), count+1)
 
 			command_list.force(create {COMMAND_FEATURE}.make (fn, ps), command_count+1)
+			across
+				ps is param
+			loop
+				check attached {STRING} param.pn as p then call_chain.force (p, call_chain.count + 1) end
+			end
 			command_count := command_count + 1
 			count:=count+1
 		end

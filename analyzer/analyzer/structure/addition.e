@@ -8,7 +8,7 @@ class
 	ADDITION
 
 inherit -- multiple inheritance
-	
+
 	BINARY_OP
 
 create
@@ -42,6 +42,11 @@ feature -- Visitors
 			v.visit_addition (Current)
 		end
 
+feature -- command from Expression
+	set_expr
+		do
+			
+		end
 invariant
 	binary_operation: children.count = 2
 

@@ -10,4 +10,9 @@ deferred class
 feature -- accept
 
 	accept (v : VISITOR) deferred end
+
+feature -- commands
+
+	set_expr deferred end
+
 end

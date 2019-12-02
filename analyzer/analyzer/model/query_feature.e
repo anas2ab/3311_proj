@@ -1,3 +1,4 @@
+
 note
 	description: "Summary description for {QUERY_FEATURE}."
 	author: ""

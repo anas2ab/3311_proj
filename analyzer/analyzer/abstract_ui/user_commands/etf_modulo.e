@@ -6,15 +6,15 @@ note
 
 class
 	ETF_MODULO
-inherit 
+inherit
 	ETF_MODULO_INTERFACE
 create
 	make
-feature -- command 
+feature -- command
 	modulo
     	do
 			-- perform some update on the model state
-			model.default_update
+			model.modulo
 			etf_cmd_container.on_change.notify ([Current])
     	end
 

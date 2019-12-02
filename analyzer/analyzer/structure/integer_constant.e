@@ -19,7 +19,7 @@ feature -- Attributes
 feature -- Constructors
 	make (nv : INTEGER)
 		require
-			nv > 0
+			nv >= 0
 		do
 			value := nv
 		end
@@ -32,6 +32,12 @@ feature -- Visitors
 		do
 			v.visit_constant (Current)
 		end
+
+feature -- command from Expression
+	set_expr
+		do
+
+		end
 invariant
-	value > 0
+	value >= 0
 end

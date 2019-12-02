@@ -6,15 +6,15 @@ note
 
 class
 	ETF_ADDITION
-inherit 
+inherit
 	ETF_ADDITION_INTERFACE
 create
 	make
-feature -- command 
+feature -- command
 	addition
     	do
 			-- perform some update on the model state
-			model.default_update
+			model.addition
 			etf_cmd_container.on_change.notify ([Current])
     	end
 

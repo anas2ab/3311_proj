@@ -35,13 +35,38 @@ feature -- visitor implementation
 		do
 
 		end
-		
+
 	visit_modulo ( mod : MODULO)
 		do
 
 		end
 
 	visit_boolean ( b : BOOLEAN_CONSTANT)
+		do
+
+		end
+
+	visit_greater_than ( g : GREATER_THAN)
+		do
+
+		end
+
+	visit_less_than (l : LESS_THAN)
+		do
+
+		end
+
+	visit_equals ( e : EQUALS)
+		do
+
+		end
+
+	visit_conjunction ( c : CONJUNCTION)
+		do
+
+		end
+
+	visit_disjunction ( d : DISJUNCTION)
 		do
 
 		end

@@ -21,5 +21,17 @@ feature -- operations
 
 	visit_modulo (mod : MODULO) deferred end
 
+	-- BOOLEAN OPERANDS
+	
 	visit_boolean (b : BOOLEAN_CONSTANT) deferred end
+
+	visit_greater_than ( g : GREATER_THAN) deferred end
+
+	visit_less_than (l : LESS_THAN) deferred end
+
+	visit_equals ( e : EQUALS) deferred end
+
+	visit_conjunction ( c : CONJUNCTION) deferred end
+
+	visit_disjunction ( d : DISJUNCTION) deferred end
 end

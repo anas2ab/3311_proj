@@ -14,7 +14,8 @@ create
 	make
 
 feature -- CONSTRUCTOR
-	make (f_type : STRING; f_name: STRING)
+	make ( f_name: STRING;
+	f_type : STRING;)
 		do
 			name := f_name
 			type := f_type

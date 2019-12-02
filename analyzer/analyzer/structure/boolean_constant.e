@@ -32,5 +32,10 @@ feature -- Visitors
 			v.visit_boolean (Current)
 		end
 
+feature -- command from Expression
+	set_expr
+		do
+
+		end
 end
 

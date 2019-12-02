@@ -6,15 +6,15 @@ note
 
 class
 	ETF_CONJUNCTION
-inherit 
+inherit
 	ETF_CONJUNCTION_INTERFACE
 create
 	make
-feature -- command 
+feature -- command
 	conjunction
     	do
 			-- perform some update on the model state
-			model.default_update
+			model.conjunction
 			etf_cmd_container.on_change.notify ([Current])
     	end
 

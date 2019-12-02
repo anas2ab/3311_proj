@@ -41,6 +41,12 @@ feature -- Visitors
 			v.visit_multiplication (Current)
 		end
 
+feature -- command from Expression
+	set_expr
+		do
+
+		end
+		
 invariant
 	binary_operation: children.count = 2
 end
