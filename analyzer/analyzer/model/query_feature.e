@@ -21,6 +21,8 @@ feature
 			param:= ps
 			name := f_name
 			return_type := rt
+			num_of_params := ps.count
+			create curr_expr.make_empty
 		end
 
 feature -- Commands
@@ -30,4 +32,16 @@ feature -- Commands
 			return_type:=s
 		end
 
+	set_expr (s : STRING)
+		do
+			curr_expr := s
+		end
+feature -- queries
+	get_expr : STRING
+		do
+			Result := curr_expr
+		end
+feature -- attributes
+	num_of_params : INTEGER
+	curr_expr : STRING
 end

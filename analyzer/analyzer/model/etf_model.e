@@ -28,7 +28,7 @@ feature {NONE} -- Initialization
 			count := class_list.count
 			full := false
 
-			create {JAVA_CODE_GENERATOR} pretty_printer.make
+			create {PRETTY_PRINTER} pretty_printer.make
 			create expr.make_empty
 
 			create {INTEGER_CONSTANT} c1.make (0)
@@ -51,6 +51,14 @@ feature {NONE} -- Initialization
 			create stored_expression.make_empty
 			create java_code.make_empty
 
+
+			create error_msg.make
+
+			create curr_routine.make_empty
+			create curr_class.make_empty
+
+			create clashing_array.make_empty
+			create duplicate_checker.make_empty
 		end
 
 feature -- model attributes
@@ -64,13 +72,12 @@ feature -- model attributes
 	c1,c2,c3,b1,b2,b3, e : EXPRESSION
 	c_chain, stored_expression : ARRAY[STRING]
 	att_name, an, assignment_instruction, java_code: STRING
-
+	error_msg : ERRORS
+	curr_routine, curr_class : STRING
+	clashing_array : ARRAY[STRING]
+	curr_bool : BOOLEAN
+	duplicate_checker : ARRAY[STRING]
 feature -- model operations
-	default_update
-			-- Perform update to the model state.
-		do
-			i := i + 1
-		end
 
 	reset
 			-- Reset model state.
@@ -78,13 +85,191 @@ feature -- model operations
 			make
 
 		end
-	add_class (nc: STRING)
+feature -- errors
+	implementation_exists (n : STRING) : BOOLEAN
 		do
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
+			across
+				class_list is cl
+			loop
+				across cl.feature_list is ftr loop
+					if attached {COMMAND_FEATURE} ftr as c then
+						if c.name ~ n then
+							Result := true
+						end
+					end
+					if attached {QUERY_FEATURE} ftr as q then
+						if q.name ~ n then
+							Result := true
+						end
+					end
+				end
+			end
+		end
+	class_exists (nc: STRING) : BOOLEAN
+		do
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
+			if count > 0 then
+				across
+					class_list is cl
+				loop
+					if cl.name ~ nc then
+						Result := true
+					end
+				end
+			end
+		end
+	feature_exists (fn: STRING) : BOOLEAN
+		do
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
+			if count > 0 then
+				across
+					class_list is cl
+				loop
+					across cl.feature_list is ftr loop
+					 if ftr.name ~ fn then Result := true end
+					end
+				end
+			end
+		end
+	clashing (ps: ARRAY[TUPLE[pn: STRING; pt: STRING]]) : BOOLEAN
+		do
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
+			create clashing_array.make_empty
+			across
+				class_list is cl
+			loop
+					across ps is tpl
+					loop
+						if cl.name ~ tpl.pn or tpl.pn ~ "INTEGER" or tpl.pn ~ "BOOLEAN" then
+
+							clashing_array.force (tpl.pn, clashing_array.count+1)
+							Result := true
+						end
+					end
+			end
+		end
+
+	duplicate_pn (ps: ARRAY[TUPLE[pn: STRING; pt: STRING]]) : BOOLEAN
+
+		do
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
+			create clashing_array.make_empty
+			create duplicate_checker.make_empty
+			duplicate_checker.compare_objects
+
+					across ps is tpl
+					loop
+						if duplicate_checker.has (tpl.pn) then
+							Result := true
+							clashing_array.force (tpl.pn, clashing_array.count+1)
+						end
+						duplicate_checker.force (tpl.pn, duplicate_checker.count+1)
+
+					end
+		end
+
+	non_existing_pt (ps: ARRAY[TUPLE[pn: STRING; pt: STRING]]) : BOOLEAN
+		do
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
+			create clashing_array.make_empty
+			create duplicate_checker.make_empty
+			across
+				class_list is cl
+			loop
+				across
+					ps is tpl
+				loop
+					if not (cl.name ~ tpl.pt) then
+						if duplicate_checker.has (tpl.pt) then
+							clashing_array.force (tpl.pt, clashing_array.count+1)
+
+						end
+						duplicate_checker.force (tpl.pn, duplicate_checker.count+1)
+						Result := True
+					end
+
+				end
+--					across ps is tpl
+--					loop
+--						if not (cl.name ~ tpl.pt) or not (tpl.pt ~ "INTEGER") or not (tpl.pt ~ "BOOLEAN") then
+
+--							clashing_array.force (tpl.pt, clashing_array.count+1)
+--							Result := true
+--						end
+--					end
+			end
+		end
+
+	wrong_rt (rt : STRING): BOOLEAN
+		do
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
+			create clashing_array.make_empty
+			across class_list is cl loop
+						if not (cl.name ~ rt)then
+
+							clashing_array.force (rt, clashing_array.count+1)
+							Result := true
+						end
+
+			end
+			if  not (rt ~ "INTEGER") then
+				clashing_array.force (rt, clashing_array.count+1)
+				Result := true
+			end
+			if not (rt ~ "BOOLEAN") then
+				clashing_array.force (rt, clashing_array.count+1)
+				Result := true
+			end
+		end
+
+	wrong_p_rt (ps: ARRAY[TUPLE[pn: STRING; pt: STRING]]) : BOOLEAN
+		do
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
+			create clashing_array.make_empty
+			across
+				class_list is cl
+			loop
+					across ps is tpl
+					loop
+						if not (cl.name ~ tpl.pt)then
+
+							clashing_array.force (tpl.pt, clashing_array.count+1)
+							Result := true
+						end
+						if  not (tpl.pt ~ "INTEGER") then
+							clashing_array.force (tpl.pt, clashing_array.count+1)
+							Result := true
+						end
+						if not (tpl.pt ~ "BOOLEAN") then
+							clashing_array.force (tpl.pt, clashing_array.count+1)
+							Result := true
+						end
+					end
+			end
+		end
+feature -- model ops
+	add_class (nc: STRING)
+		require
+			unique_class: not class_exists(nc)
+		do
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
 			class_list.force (create {MY_CLASS}.make (nc), count + 1) -- adds the class `nc` to the `class_list`
 			count := count + 1
 		end
 	add_query(cn: STRING ; fn: STRING ; ps: ARRAY[TUPLE[pn: STRING; pt: STRING]] ; rt: STRING)
 		do
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
 			across
 				class_list is cl
 			loop
@@ -97,6 +282,11 @@ feature -- model operations
 		end
 	add_attribute (cn: STRING; fn: STRING; ft: STRING)
 		do
+			full := false
+			assignment_instruction := ""
+			val := 0
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
 			across
 				class_list is cl
 			loop
@@ -110,7 +300,14 @@ feature -- model operations
 		end
 
 	add_command(cn: STRING ; fn: STRING ; ps: ARRAY[TUPLE[pn: STRING; ft: STRING]])
+
 		do
+			full := false
+			assignment_instruction := ""
+			val := 0
+
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
 			across
 				class_list is cl
 			loop
@@ -123,37 +320,47 @@ feature -- model operations
 		end
 
 	add_assignment_instruction(cn: STRING ; fn: STRING ; n: STRING)
-			-- this is not really working at the moment
-			-- changed check attached to if attached... this might work, have to test
+
 		local
 			q : QUERY_FEATURE
 			c : COMMAND_FEATURE
 		do
+			error_msg.set_s ("OK.")
 			stored_expression.force (expr, stored_expression.count+1)
+			assignment_instruction := ""
 			op := ""
 			op2 := ""
 			val := 0
 			expr := ""
 			full := false
+			create java_code.make_empty
 			across
 				class_list is cl
 			loop
-				if attached {QUERY_FEATURE} cl.get_query_feature(fn) as q1
-				then
-					q := q1
-					q.set_rt(n)
-				end
+				if cl.name ~ cn then
+					if attached {QUERY_FEATURE} cl.get_query_feature(fn) as q1  -- need to implement
+					then
+						q := q1
+						q.set_expr ( n + " := ?")
+						att_name := fn
+						an := n
+						assignment_instruction := "Routine currently being implemented: {" + cl.name + "}." + fn
+						stored_expression.force(q.get_expr+";", stored_expression.count+1)
+					end
 
 
-				if attached {COMMAND_FEATURE} cl.get_command_feature(fn) as comm
-				then
-					c := comm
-					-- c.set_rt(n) don't know what to set it as ( A -> set_i -> i := ?)
-					c.set_expr ( n + " := ")
-					att_name := fn
-					an := n
-					assignment_instruction := "Routine currently being implemented: {" + cl.name + "}." + fn
+					if attached {COMMAND_FEATURE} cl.get_command_feature(fn) as comm
+					then
+						c := comm
+						-- c.set_rt(n) don't know what to set it as ( A -> set_i -> i := ?)
+						c.set_expr ( n + " := ")
+						att_name := fn
+						an := n
+						assignment_instruction := "Routine currently being implemented: {" + cl.name + "}." + fn
+
+					end
 				end
+
 			end
 		end
 
@@ -162,7 +369,11 @@ feature -- model operations
 			operation : EXPRESSION
 
 		do
-
+			error_msg.set_s ("OK.")
+			curr_bool := b
+			if b ~ True or b ~ False then
+				expr := an + " := " +b.out
+			end
 		end
 
 	int_value (int: INTEGER) -- adds `int` to assignment_instruction
@@ -170,7 +381,10 @@ feature -- model operations
 			operation : EXPRESSION
 
 		do
+			error_msg.set_s ("OK.")
+
 			-- ADDITION
+
 			if op ~ "+" then
 
 				if attached {INTEGER_CONSTANT} c1 as cons then
@@ -186,9 +400,9 @@ feature -- model operations
 						end
 
 						create {ADDITION} operation.make (c1, c2)
-						create {JAVA_CODE_GENERATOR} pretty_printer.make
+						create {PRETTY_PRINTER} pretty_printer.make
 						operation.accept (pretty_printer)
-						check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+						check attached {PRETTY_PRINTER} pretty_printer as printer
 						then
 							expr := an +  " := (" + printer.expr
 						end
@@ -198,10 +412,10 @@ feature -- model operations
 					end
 				end
 				create {ADDITION} operation.make (c1, c2)
-				create {JAVA_CODE_GENERATOR} pretty_printer.make
+				create {PRETTY_PRINTER} pretty_printer.make
 				operation.accept (pretty_printer)
 
-				check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+				check attached {PRETTY_PRINTER} pretty_printer as printer
 				then
 					expr := an + " := " + printer.expr -- `an` is the attribute name being changed
 				end
@@ -210,10 +424,10 @@ feature -- model operations
 
 
 					create {ADDITION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -223,10 +437,10 @@ feature -- model operations
 
 
 					create {MULTIPLICATION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -234,10 +448,10 @@ feature -- model operations
 				if op2 ~ "/" then
 
 					create {QUOTIENT} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -245,10 +459,10 @@ feature -- model operations
 				if op2 ~ "-" then
 
 					create {SUBTRACTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -256,10 +470,10 @@ feature -- model operations
 				if op2 ~ "%%" then
 
 					create {MODULO} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -267,10 +481,10 @@ feature -- model operations
 				if op2 ~ ">" then
 
 					create {GREATER_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -279,10 +493,10 @@ feature -- model operations
 				if op2 ~ "<" then
 
 					create {LESS_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -291,10 +505,10 @@ feature -- model operations
 				if op2 ~ "==" then
 
 					create {EQUALS} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -303,10 +517,10 @@ feature -- model operations
 				if op2 ~ "||" then
 
 					create {DISJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -315,13 +529,25 @@ feature -- model operations
 				if op2 ~ "&&" then
 
 					create {CONJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
+				end
+				-- switching around operands
+				if expr.substring (15, 15) ~ expr.substring (16,16) then -- if one is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (17, expr.count) -- switching around operands for proper implementation
+				elseif expr.substring (10, 10) ~ expr.substring (11, 11) then -- if left operand is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (17, expr.count)
+				elseif op ~ op2 then -- if both same operands do nothing
+
+				elseif op.count = 2 and op2.count=2 then -- if both are boolean operands
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (18, expr.count)  -- switching around operands for proper implementation
+				else
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (16, expr.count)  -- switching around operands for proper implementation
 				end
 			end
 			-- END ADDITION
@@ -339,9 +565,9 @@ feature -- model operations
 							end
 						end
 						create {MULTIPLICATION} operation.make (c1, c2)
-						create {JAVA_CODE_GENERATOR} pretty_printer.make
+						create {PRETTY_PRINTER} pretty_printer.make
 						operation.accept (pretty_printer)
-						check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+						check attached {PRETTY_PRINTER} pretty_printer as printer
 						then
 							expr := an +  " := (" + printer.expr
 						end
@@ -351,10 +577,10 @@ feature -- model operations
 					end
 				end
 				create {MULTIPLICATION} operation.make (c1, c2)
-				create {JAVA_CODE_GENERATOR} pretty_printer.make
+				create {PRETTY_PRINTER} pretty_printer.make
 				operation.accept (pretty_printer)
 
-				check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+				check attached {PRETTY_PRINTER} pretty_printer as printer
 				then
 					expr := an + " := " + printer.expr -- `an` is the attribute name being changed
 				end
@@ -363,10 +589,10 @@ feature -- model operations
 
 
 					create {ADDITION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -376,10 +602,10 @@ feature -- model operations
 
 
 					create {MULTIPLICATION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -387,10 +613,10 @@ feature -- model operations
 				if op2 ~ "/" then
 
 					create {QUOTIENT} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -398,10 +624,10 @@ feature -- model operations
 				if op2 ~ "-" then
 
 					create {SUBTRACTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -409,10 +635,10 @@ feature -- model operations
 				if op2 ~ "%%" then
 
 					create {MODULO} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -420,10 +646,10 @@ feature -- model operations
 				if op2 ~ ">" then
 
 					create {GREATER_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -432,10 +658,10 @@ feature -- model operations
 				if op2 ~ "<" then
 
 					create {LESS_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -444,10 +670,10 @@ feature -- model operations
 				if op2 ~ "==" then
 
 					create {EQUALS} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -456,10 +682,10 @@ feature -- model operations
 				if op2 ~ "||" then
 
 					create {DISJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -468,13 +694,25 @@ feature -- model operations
 				if op2 ~ "&&" then
 
 					create {CONJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
+				end
+				-- switching around operands
+				if expr.substring (15, 15) ~ expr.substring (16,16) then -- if one is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (17, expr.count) -- switching around operands for proper implementation
+				elseif expr.substring (10, 10) ~ expr.substring (11, 11) then -- if left operand is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (17, expr.count)
+				elseif op ~ op2 then -- if both same operands do nothing
+
+				elseif op.count = 2 and op2.count=2 then -- if both are boolean operands
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (18, expr.count)  -- switching around operands for proper implementation
+				else
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (16, expr.count)  -- switching around operands for proper implementation
 				end
 			end
 			-- END MULTIPLICATION
@@ -492,9 +730,9 @@ feature -- model operations
 							end
 						end
 						create {SUBTRACTION} operation.make (c1, c2)
-						create {JAVA_CODE_GENERATOR} pretty_printer.make
+						create {PRETTY_PRINTER} pretty_printer.make
 						operation.accept (pretty_printer)
-						check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+						check attached {PRETTY_PRINTER} pretty_printer as printer
 						then
 							expr := an +  " := (" + printer.expr
 						end
@@ -504,10 +742,10 @@ feature -- model operations
 					end
 				end
 				create {SUBTRACTION} operation.make (c1, c2)
-				create {JAVA_CODE_GENERATOR} pretty_printer.make
+				create {PRETTY_PRINTER} pretty_printer.make
 				operation.accept (pretty_printer)
 
-				check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+				check attached {PRETTY_PRINTER} pretty_printer as printer
 				then
 					expr := an + " := " + printer.expr -- `an` is the attribute name being changed
 				end
@@ -516,10 +754,10 @@ feature -- model operations
 
 
 					create {ADDITION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -529,10 +767,10 @@ feature -- model operations
 
 
 					create {MULTIPLICATION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -540,10 +778,10 @@ feature -- model operations
 				if op2 ~ "/" then
 
 					create {QUOTIENT} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -551,10 +789,10 @@ feature -- model operations
 				if op2 ~ "-" then
 
 					create {SUBTRACTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -562,10 +800,10 @@ feature -- model operations
 				if op2 ~ "%%" then
 
 					create {MODULO} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -573,10 +811,10 @@ feature -- model operations
 				if op2 ~ ">" then
 
 					create {GREATER_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -585,10 +823,10 @@ feature -- model operations
 				if op2 ~ "<" then
 
 					create {LESS_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -597,10 +835,10 @@ feature -- model operations
 				if op2 ~ "==" then
 
 					create {EQUALS} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -609,10 +847,10 @@ feature -- model operations
 				if op2 ~ "||" then
 
 					create {DISJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -621,13 +859,25 @@ feature -- model operations
 				if op2 ~ "&&" then
 
 					create {CONJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
+				end
+				-- switching around operands
+				if expr.substring (15, 15) ~ expr.substring (16,16) then -- if one is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (17, expr.count) -- switching around operands for proper implementation
+				elseif expr.substring (10, 10) ~ expr.substring (11, 11) then -- if left operand is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (17, expr.count)
+				elseif op ~ op2 then -- if both same operands do nothing
+
+				elseif op.count = 2 and op2.count=2 then -- if both are boolean operands
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (18, expr.count)  -- switching around operands for proper implementation
+				else
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (16, expr.count)  -- switching around operands for proper implementation
 				end
 			end
 			-- END SUBTRACTION
@@ -645,9 +895,9 @@ feature -- model operations
 							end
 						end
 						create {QUOTIENT} operation.make (c1, c2)
-						create {JAVA_CODE_GENERATOR} pretty_printer.make
+						create {PRETTY_PRINTER} pretty_printer.make
 						operation.accept (pretty_printer)
-						check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+						check attached {PRETTY_PRINTER} pretty_printer as printer
 						then
 							expr := an +  " := (" + printer.expr
 						end
@@ -657,10 +907,10 @@ feature -- model operations
 					end
 				end
 				create {QUOTIENT} operation.make (c1, c2)
-				create {JAVA_CODE_GENERATOR} pretty_printer.make
+				create {PRETTY_PRINTER} pretty_printer.make
 				operation.accept (pretty_printer)
 
-				check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+				check attached {PRETTY_PRINTER} pretty_printer as printer
 				then
 					expr := an + " := " + printer.expr -- `an` is the attribute name being changed
 				end
@@ -669,10 +919,10 @@ feature -- model operations
 
 
 					create {ADDITION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -682,10 +932,10 @@ feature -- model operations
 
 
 					create {MULTIPLICATION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -693,10 +943,10 @@ feature -- model operations
 				if op2 ~ "/" then
 
 					create {QUOTIENT} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -704,10 +954,10 @@ feature -- model operations
 				if op2 ~ "-" then
 
 					create {SUBTRACTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -715,10 +965,10 @@ feature -- model operations
 				if op2 ~ "%%" then
 
 					create {MODULO} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -726,10 +976,10 @@ feature -- model operations
 				if op2 ~ ">" then
 
 					create {GREATER_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -738,10 +988,10 @@ feature -- model operations
 				if op2 ~ "<" then
 
 					create {LESS_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -750,10 +1000,10 @@ feature -- model operations
 				if op2 ~ "==" then
 
 					create {EQUALS} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -762,10 +1012,10 @@ feature -- model operations
 				if op2 ~ "||" then
 
 					create {DISJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -774,13 +1024,25 @@ feature -- model operations
 				if op2 ~ "&&" then
 
 					create {CONJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
+				end
+				-- switching around operands
+				if expr.substring (15, 15) ~ expr.substring (16,16) then -- if one is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (17, expr.count) -- switching around operands for proper implementation
+				elseif expr.substring (10, 10) ~ expr.substring (11, 11) then -- if left operand is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (17, expr.count)
+				elseif op ~ op2 then -- if both same operands do nothing
+
+				elseif op.count = 2 and op2.count=2 then -- if both are boolean operands
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (18, expr.count)  -- switching around operands for proper implementation
+				else
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (16, expr.count)  -- switching around operands for proper implementation
 				end
 			end
 			-- END QUOTIENT
@@ -798,9 +1060,9 @@ feature -- model operations
 							end
 						end
 						create {MODULO} operation.make (c1, c2)
-						create {JAVA_CODE_GENERATOR} pretty_printer.make
+						create {PRETTY_PRINTER} pretty_printer.make
 						operation.accept (pretty_printer)
-						check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+						check attached {PRETTY_PRINTER} pretty_printer as printer
 						then
 							expr := an +  " := (" + printer.expr
 						end
@@ -810,10 +1072,10 @@ feature -- model operations
 					end
 				end
 				create {MODULO} operation.make (c1, c2)
-				create {JAVA_CODE_GENERATOR} pretty_printer.make
+				create {PRETTY_PRINTER} pretty_printer.make
 				operation.accept (pretty_printer)
 
-				check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+				check attached {PRETTY_PRINTER} pretty_printer as printer
 				then
 					expr := an + " := " + printer.expr -- `an` is the attribute name being changed
 				end
@@ -822,10 +1084,10 @@ feature -- model operations
 
 
 					create {ADDITION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -835,10 +1097,10 @@ feature -- model operations
 
 
 					create {MULTIPLICATION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -846,10 +1108,10 @@ feature -- model operations
 				if op2 ~ "/" then
 
 					create {QUOTIENT} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -857,10 +1119,10 @@ feature -- model operations
 				if op2 ~ "-" then
 
 					create {SUBTRACTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -868,10 +1130,10 @@ feature -- model operations
 				if op2 ~ "%%" then
 
 					create {MODULO} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -879,10 +1141,10 @@ feature -- model operations
 				if op2 ~ ">" then
 
 					create {GREATER_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -891,10 +1153,10 @@ feature -- model operations
 				if op2 ~ "<" then
 
 					create {LESS_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -903,10 +1165,10 @@ feature -- model operations
 				if op2 ~ "==" then
 
 					create {EQUALS} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -915,10 +1177,10 @@ feature -- model operations
 				if op2 ~ "||" then
 
 					create {DISJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -927,13 +1189,25 @@ feature -- model operations
 				if op2 ~ "&&" then
 
 					create {CONJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
+				end
+				-- switching around operands
+				if expr.substring (15, 15) ~ expr.substring (16,16) then -- if one is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (17, expr.count) -- switching around operands for proper implementation
+				elseif expr.substring (10, 10) ~ expr.substring (11, 11) then -- if left operand is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (17, expr.count)
+				elseif op ~ op2 then -- if both same operands do nothing
+
+				elseif op.count = 2 and op2.count=2 then -- if both are boolean operands
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (18, expr.count)  -- switching around operands for proper implementation
+				else
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (16, expr.count)  -- switching around operands for proper implementation
 				end
 			end
 			-- END MODULO
@@ -951,9 +1225,9 @@ feature -- model operations
 							end
 						end
 						create {GREATER_THAN} operation.make (c1, c2)
-						create {JAVA_CODE_GENERATOR} pretty_printer.make
+						create {PRETTY_PRINTER} pretty_printer.make
 						operation.accept (pretty_printer)
-						check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+						check attached {PRETTY_PRINTER} pretty_printer as printer
 						then
 							expr := an +  " := (" + printer.expr
 						end
@@ -963,10 +1237,10 @@ feature -- model operations
 					end
 				end
 				create {GREATER_THAN} operation.make (c1, c2)
-				create {JAVA_CODE_GENERATOR} pretty_printer.make
+				create {PRETTY_PRINTER} pretty_printer.make
 				operation.accept (pretty_printer)
 
-				check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+				check attached {PRETTY_PRINTER} pretty_printer as printer
 				then
 					expr := an + " := " + printer.expr -- `an` is the attribute name being changed
 				end
@@ -975,10 +1249,10 @@ feature -- model operations
 
 
 					create {ADDITION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -988,10 +1262,10 @@ feature -- model operations
 
 
 					create {MULTIPLICATION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -999,10 +1273,10 @@ feature -- model operations
 				if op2 ~ "/" then
 
 					create {QUOTIENT} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1010,10 +1284,10 @@ feature -- model operations
 				if op2 ~ "-" then
 
 					create {SUBTRACTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1021,10 +1295,10 @@ feature -- model operations
 				if op2 ~ "%%" then
 
 					create {MODULO} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1033,10 +1307,10 @@ feature -- model operations
 				if op2 ~ ">" then
 
 					create {GREATER_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1045,10 +1319,10 @@ feature -- model operations
 				if op2 ~ "<" then
 
 					create {LESS_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1057,10 +1331,10 @@ feature -- model operations
 				if op2 ~ "==" then
 
 					create {EQUALS} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1069,10 +1343,10 @@ feature -- model operations
 				if op2 ~ "||" then
 
 					create {DISJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1081,13 +1355,25 @@ feature -- model operations
 				if op2 ~ "&&" then
 
 					create {CONJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
+				end
+				-- switching around operands
+				if expr.substring (15, 15) ~ expr.substring (16,16) then -- if one is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (17, expr.count) -- switching around operands for proper implementation
+				elseif expr.substring (10, 10) ~ expr.substring (11, 11) then -- if left operand is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (17, expr.count)
+				elseif op ~ op2 then -- if both same operands do nothing
+
+				elseif op.count = 2 and op2.count=2 then -- if both are boolean operands
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (18, expr.count)  -- switching around operands for proper implementation
+				else
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (16, expr.count)  -- switching around operands for proper implementation
 				end
 			end
 			-- end GREATER_THAN
@@ -1105,9 +1391,9 @@ feature -- model operations
 							end
 						end
 						create {LESS_THAN} operation.make (c1, c2)
-						create {JAVA_CODE_GENERATOR} pretty_printer.make
+						create {PRETTY_PRINTER} pretty_printer.make
 						operation.accept (pretty_printer)
-						check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+						check attached {PRETTY_PRINTER} pretty_printer as printer
 						then
 							expr := an +  " := (" + printer.expr
 						end
@@ -1117,10 +1403,10 @@ feature -- model operations
 					end
 				end
 				create {LESS_THAN} operation.make (c1, c2)
-				create {JAVA_CODE_GENERATOR} pretty_printer.make
+				create {PRETTY_PRINTER} pretty_printer.make
 				operation.accept (pretty_printer)
 
-				check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+				check attached {PRETTY_PRINTER} pretty_printer as printer
 				then
 					expr := an + " := " + printer.expr -- `an` is the attribute name being changed
 				end
@@ -1129,10 +1415,10 @@ feature -- model operations
 
 
 					create {ADDITION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1142,10 +1428,10 @@ feature -- model operations
 
 
 					create {MULTIPLICATION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1153,10 +1439,10 @@ feature -- model operations
 				if op2 ~ "/" then
 
 					create {QUOTIENT} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1164,10 +1450,10 @@ feature -- model operations
 				if op2 ~ "-" then
 
 					create {SUBTRACTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1175,10 +1461,10 @@ feature -- model operations
 				if op2 ~ "%%" then
 
 					create {MODULO} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1187,10 +1473,10 @@ feature -- model operations
 				if op2 ~ ">" then
 
 					create {GREATER_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1199,10 +1485,10 @@ feature -- model operations
 				if op2 ~ "<" then
 
 					create {LESS_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1211,10 +1497,10 @@ feature -- model operations
 				if op2 ~ "==" then
 
 					create {EQUALS} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1223,10 +1509,10 @@ feature -- model operations
 				if op2 ~ "||" then
 
 					create {DISJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1235,13 +1521,25 @@ feature -- model operations
 				if op2 ~ "&&" then
 
 					create {CONJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
+				end
+				-- switching around operands
+				if expr.substring (15, 15) ~ expr.substring (16,16) then -- if one is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (17, expr.count) -- switching around operands for proper implementation
+				elseif expr.substring (10, 10) ~ expr.substring (11, 11) then -- if left operand is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (17, expr.count)
+				elseif op ~ op2 then -- if both same operands do nothing
+
+				elseif op.count = 2 and op2.count=2 then -- if both are boolean operands
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (18, expr.count)  -- switching around operands for proper implementation
+				else
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (16, expr.count)  -- switching around operands for proper implementation
 				end
 			end
 			-- end LESS_THAN
@@ -1259,9 +1557,9 @@ feature -- model operations
 							end
 						end
 						create {EQUALS} operation.make (c1, c2)
-						create {JAVA_CODE_GENERATOR} pretty_printer.make
+						create {PRETTY_PRINTER} pretty_printer.make
 						operation.accept (pretty_printer)
-						check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+						check attached {PRETTY_PRINTER} pretty_printer as printer
 						then
 							expr := an +  " := (" + printer.expr
 						end
@@ -1271,10 +1569,10 @@ feature -- model operations
 					end
 				end
 				create {EQUALS} operation.make (c1, c2)
-				create {JAVA_CODE_GENERATOR} pretty_printer.make
+				create {PRETTY_PRINTER} pretty_printer.make
 				operation.accept (pretty_printer)
 
-				check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+				check attached {PRETTY_PRINTER} pretty_printer as printer
 				then
 					expr := an + " := " + printer.expr -- `an` is the attribute name being changed
 				end
@@ -1283,10 +1581,10 @@ feature -- model operations
 
 
 					create {ADDITION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1296,10 +1594,10 @@ feature -- model operations
 
 
 					create {MULTIPLICATION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1307,10 +1605,10 @@ feature -- model operations
 				if op2 ~ "/" then
 
 					create {QUOTIENT} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1318,10 +1616,10 @@ feature -- model operations
 				if op2 ~ "-" then
 
 					create {SUBTRACTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1329,10 +1627,10 @@ feature -- model operations
 				if op2 ~ "%%" then
 
 					create {MODULO} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1341,10 +1639,10 @@ feature -- model operations
 				if op2 ~ ">" then
 
 					create {GREATER_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1353,10 +1651,10 @@ feature -- model operations
 				if op2 ~ "<" then
 
 					create {LESS_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1365,10 +1663,10 @@ feature -- model operations
 				if op2 ~ "==" then
 
 					create {EQUALS} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1377,10 +1675,10 @@ feature -- model operations
 				if op2 ~ "||" then
 
 					create {DISJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1389,13 +1687,25 @@ feature -- model operations
 				if op2 ~ "&&" then
 
 					create {CONJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
+				end
+				-- switching around operands
+				if expr.substring (15, 15) ~ expr.substring (16,16) then -- if one is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (17, expr.count) -- switching around operands for proper implementation
+				elseif expr.substring (10, 10) ~ expr.substring (11, 11) then -- if left operand is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (17, expr.count)
+				elseif op ~ op2 then -- if both same operands do nothing
+
+				elseif op.count = 2 and op2.count=2 then -- if both are boolean operands
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (18, expr.count)  -- switching around operands for proper implementation
+				else
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (16, expr.count)  -- switching around operands for proper implementation
 				end
 			end
 			-- end EQUALS
@@ -1413,9 +1723,9 @@ feature -- model operations
 							end
 						end
 						create {DISJUNCTION} operation.make (c1, c2)
-						create {JAVA_CODE_GENERATOR} pretty_printer.make
+						create {PRETTY_PRINTER} pretty_printer.make
 						operation.accept (pretty_printer)
-						check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+						check attached {PRETTY_PRINTER} pretty_printer as printer
 						then
 							expr := an +  " := (" + printer.expr
 						end
@@ -1425,10 +1735,10 @@ feature -- model operations
 					end
 				end
 				create {DISJUNCTION} operation.make (c1, c2)
-				create {JAVA_CODE_GENERATOR} pretty_printer.make
+				create {PRETTY_PRINTER} pretty_printer.make
 				operation.accept (pretty_printer)
 
-				check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+				check attached {PRETTY_PRINTER} pretty_printer as printer
 				then
 					expr := an + " := " + printer.expr -- `an` is the attribute name being changed
 				end
@@ -1437,10 +1747,10 @@ feature -- model operations
 
 
 					create {ADDITION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1450,10 +1760,10 @@ feature -- model operations
 
 
 					create {MULTIPLICATION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1461,10 +1771,10 @@ feature -- model operations
 				if op2 ~ "/" then
 
 					create {QUOTIENT} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1472,10 +1782,10 @@ feature -- model operations
 				if op2 ~ "-" then
 
 					create {SUBTRACTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1483,10 +1793,10 @@ feature -- model operations
 				if op2 ~ "%%" then
 
 					create {MODULO} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1495,10 +1805,10 @@ feature -- model operations
 				if op2 ~ ">" then
 
 					create {GREATER_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1507,10 +1817,10 @@ feature -- model operations
 				if op2 ~ "<" then
 
 					create {LESS_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1519,10 +1829,10 @@ feature -- model operations
 				if op2 ~ "==" then
 
 					create {EQUALS} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1531,10 +1841,10 @@ feature -- model operations
 				if op2 ~ "||" then
 
 					create {DISJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1543,13 +1853,25 @@ feature -- model operations
 				if op2 ~ "&&" then
 
 					create {CONJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
+				end
+				-- switching around operands
+				if expr.substring (15, 15) ~ expr.substring (16,16) then -- if one is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (17, expr.count) -- switching around operands for proper implementation
+				elseif expr.substring (10, 10) ~ expr.substring (11, 11) then -- if left operand is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (17, expr.count)
+				elseif op ~ op2 then -- if both same operands do nothing
+
+				elseif op.count = 2 and op2.count=2 then -- if both are boolean operands
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (18, expr.count)  -- switching around operands for proper implementation
+				else
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (16, expr.count)  -- switching around operands for proper implementation
 				end
 			end
 			-- end DISJUNCTION
@@ -1567,9 +1889,9 @@ feature -- model operations
 							end
 						end
 						create {CONJUNCTION} operation.make (c1, c2)
-						create {JAVA_CODE_GENERATOR} pretty_printer.make
+						create {PRETTY_PRINTER} pretty_printer.make
 						operation.accept (pretty_printer)
-						check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+						check attached {PRETTY_PRINTER} pretty_printer as printer
 						then
 							expr := an +  " := (" + printer.expr
 						end
@@ -1579,10 +1901,10 @@ feature -- model operations
 					end
 				end
 				create {CONJUNCTION} operation.make (c1, c2)
-				create {JAVA_CODE_GENERATOR} pretty_printer.make
+				create {PRETTY_PRINTER} pretty_printer.make
 				operation.accept (pretty_printer)
 
-				check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+				check attached {PRETTY_PRINTER} pretty_printer as printer
 				then
 					expr := an + " := " + printer.expr -- `an` is the attribute name being changed
 				end
@@ -1591,10 +1913,10 @@ feature -- model operations
 
 
 					create {ADDITION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1604,10 +1926,10 @@ feature -- model operations
 
 
 					create {MULTIPLICATION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1615,10 +1937,10 @@ feature -- model operations
 				if op2 ~ "/" then
 
 					create {QUOTIENT} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1626,10 +1948,10 @@ feature -- model operations
 				if op2 ~ "-" then
 
 					create {SUBTRACTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1637,10 +1959,10 @@ feature -- model operations
 				if op2 ~ "%%" then
 
 					create {MODULO} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1649,10 +1971,10 @@ feature -- model operations
 				if op2 ~ ">" then
 
 					create {GREATER_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1661,10 +1983,10 @@ feature -- model operations
 				if op2 ~ "<" then
 
 					create {LESS_THAN} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1673,10 +1995,10 @@ feature -- model operations
 				if op2 ~ "==" then
 
 					create {EQUALS} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1685,10 +2007,10 @@ feature -- model operations
 				if op2 ~ "||" then
 
 					create {DISJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
@@ -1697,13 +2019,25 @@ feature -- model operations
 				if op2 ~ "&&" then
 
 					create {CONJUNCTION} operation.make (operation, c3)
-					create {JAVA_CODE_GENERATOR} pretty_printer.make
+					create {PRETTY_PRINTER} pretty_printer.make
 					operation.accept (pretty_printer)
 
-					check attached {JAVA_CODE_GENERATOR} pretty_printer as printer
+					check attached {PRETTY_PRINTER} pretty_printer as printer
 					then
 						expr := an + " := " + printer.expr
 					end
+				end
+				-- switching around operands
+				if expr.substring (15, 15) ~ expr.substring (16,16) then -- if one is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (17, expr.count) -- switching around operands for proper implementation
+				elseif expr.substring (10, 10) ~ expr.substring (11, 11) then -- if left operand is a boolean operand
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (17, expr.count)
+				elseif op ~ op2 then -- if both same operands do nothing
+
+				elseif op.count = 2 and op2.count=2 then -- if both are boolean operands
+					expr := expr.substring (1, 9) + op2 + expr.substring (12,15) + op + expr.substring (18, expr.count)  -- switching around operands for proper implementation
+				else
+					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (16, expr.count)  -- switching around operands for proper implementation
 				end
 			end
 			-- end CONJUNCTION
@@ -1712,7 +2046,16 @@ feature -- model operations
 	add_call_chain (call_chain: ARRAY[STRING])
 			-- `call_chain` is an array that stores the attributes of the class and also the parameters of commands
 		do
-			c_chain.force(call_chain[1], c_chain.count+1)
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
+
+			create stored_expression.make_empty
+			if call_chain.count > 1 then
+				full := true
+				expr := an + " := " + call_chain[1] + "." + call_chain[2] + ";"
+				c_chain.force(expr, c_chain.count + 1)
+
+			end
 			if op ~ "+" then
 				if op2 ~ "" then
 					expr := an + " := (" + call_chain[1] + " + ?)"
@@ -1879,6 +2222,7 @@ feature -- model operations
 		local
 			str : STRING
 		do
+			error_msg.set_s ("OK.")
 			if op.is_empty then
 				op := "+"
 			else
@@ -1897,9 +2241,18 @@ feature -- model operations
 				end
 				expr := expr + "(? + nil)"
 			else
-				str := expr.substring (1,5)
-				expr := expr.substring (6, expr.count)
-				expr := str + "(" + expr + " + nil)"
+				if not expr.substring (7, 7).is_equal ("?") then -- used for add_call_chain
+					if expr.substring (9, 9).is_equal (expr.substring (10,10)) then -- for operands conjunction, equals, disjunction
+						expr := expr.substring (1, 10) + " (? + nil))"
+					else
+						expr := expr.substring (1, 9) + " (? + nil))"
+					end
+				else
+					str := expr.substring (1,5)
+					expr := expr.substring (6, expr.count)
+					expr := expr.substring (4, expr.count)
+					expr := str + "((? + nil) " + expr
+				end
 
 			end
 		end
@@ -1908,6 +2261,7 @@ feature -- model operations
 		local
 			str : STRING
 		do
+			error_msg.set_s ("OK.")
 			if op.is_empty then
 				op := "*"
 			else
@@ -1927,9 +2281,18 @@ feature -- model operations
 				end
 				expr := expr + "(? * nil)"
 			else
-				str := expr.substring (1,5)
-				expr := expr.substring (6, expr.count)
-				expr := str + "(" + expr + " * nil)"
+				if not expr.substring (7, 7).is_equal ("?") then -- used for add_call_chain
+					if expr.substring (9, 9).is_equal (expr.substring (10,10)) then -- for operands conjunction, equals, disjunction
+						expr := expr.substring (1, 10) + " (? * nil))"
+					else
+						expr := expr.substring (1, 9) + " (? * nil))"
+					end
+				else
+					str := expr.substring (1,5)
+					expr := expr.substring (6, expr.count)
+					expr := expr.substring (4, expr.count)
+					expr := str + "((? * nil) " + expr
+				end
 			end
 		end
 
@@ -1937,6 +2300,7 @@ feature -- model operations
 		local
 			str : STRING
 		do
+			error_msg.set_s ("OK.")
 			if op.is_empty then
 				op := "/"
 			else
@@ -1955,9 +2319,18 @@ feature -- model operations
 				end
 				expr := expr + "(? / nil)"
 			else
-				str := expr.substring (1,5)
-				expr := expr.substring (6, expr.count)
-				expr := str + "(" + expr + " / nil)"
+				if not expr.substring (7, 7).is_equal ("?") then -- used for add_call_chain
+					if expr.substring (9, 9).is_equal (expr.substring (10,10)) then -- for operands conjunction, equals, disjunction
+						expr := expr.substring (1, 10) + " (? / nil))"
+					else
+						expr := expr.substring (1, 9) + " (? / nil))"
+					end
+				else
+					str := expr.substring (1,5)
+					expr := expr.substring (6, expr.count)
+					expr := expr.substring (4, expr.count)
+					expr := str + "((? / nil) " + expr
+				end
 			end
 		end
 
@@ -1965,11 +2338,13 @@ feature -- model operations
 		local
 			str : STRING
 		do
+			error_msg.set_s ("OK.")
 			if op.is_empty then
 				op := "-"
 			else
 				op2 := "-"
 			end
+
 			if expr.is_empty then
 				across
 					class_list is cl
@@ -1983,9 +2358,19 @@ feature -- model operations
 				end
 				expr := expr + "(? - nil)"
 			else
-				str := expr.substring (1,5)
-				expr := expr.substring (6, expr.count)
-				expr := str + "(" + expr + " - nil)"
+				if not expr.substring (7, 7).is_equal ("?") then -- used for add_call_chain
+					if expr.substring (9, 9).is_equal (expr.substring (10,10)) then -- for operands conjunction, equals, disjunction
+						expr := expr.substring (1, 10) + " (? - nil))"
+					else
+						expr := expr.substring (1, 9) + " (? - nil))"
+					end
+				else
+					str := expr.substring (1,5)
+					expr := expr.substring (6, expr.count)
+					expr := expr.substring (4, expr.count)
+
+					expr := str + "((? - nil) " + expr
+				end
 			end
 		end
 
@@ -1993,6 +2378,7 @@ feature -- model operations
 		local
 			str : STRING
 		do
+			error_msg.set_s ("OK.")
 			if op.is_empty then
 				op := "%%"
 			else
@@ -2011,9 +2397,18 @@ feature -- model operations
 				end
 				expr := expr + "(? %% nil)"
 			else
-				str := expr.substring (1,5)
-				expr := expr.substring (6, expr.count)
-				expr := str + "(" + expr + " %% nil)"
+				if not expr.substring (7, 7).is_equal ("?") then -- used for add_call_chain
+					if expr.substring (9, 9).is_equal (expr.substring (10,10)) then -- for operands conjunction, equals, disjunction
+						expr := expr.substring (1, 10) + " (? %% nil))"
+					else
+						expr := expr.substring (1, 9) + " (? %% nil))"
+					end
+				else
+					str := expr.substring (1,5)
+					expr := expr.substring (6, expr.count)
+					expr := expr.substring (4, expr.count)
+					expr := str + "((? %% nil) " + expr
+				end
 			end
 		end
 	-- BOOLEAN OPERANDS
@@ -2021,6 +2416,7 @@ feature -- model operations
 		local
 			str : STRING
 		do
+			error_msg.set_s ("OK.")
 			if op.is_empty then
 				op := "&&"
 			else
@@ -2039,9 +2435,18 @@ feature -- model operations
 				end
 				expr := expr + "(? && nil)"
 			else
-				str := expr.substring (1,5)
-				expr := expr.substring (6, expr.count)
-				expr := str + "(" + expr + " && nil)"
+				if not expr.substring (7, 7).is_equal ("?") then -- used for add_call_chain
+					if expr.substring (9, 9).is_equal (expr.substring (10,10)) then -- for operands conjunction, equals, disjunction
+						expr := expr.substring (1, 10) + " (? && nil))"
+					else
+						expr := expr.substring (1, 9) + " (? && nil))"
+					end
+				else
+					str := expr.substring (1,5)
+					expr := expr.substring (6, expr.count)
+					expr := expr.substring (4, expr.count)
+					expr := str + "((? && nil) " + expr
+				end
 			end
 		end
 
@@ -2049,6 +2454,7 @@ feature -- model operations
 		local
 			str : STRING
 		do
+			error_msg.set_s ("OK.")
 			if op.is_empty then
 				op := "||"
 			else
@@ -2067,9 +2473,18 @@ feature -- model operations
 				end
 				expr := expr + "(? || nil)"
 			else
-				str := expr.substring (1,5)
-				expr := expr.substring (6, expr.count)
-				expr := str + "(" + expr + " || nil)"
+				if not expr.substring (7, 7).is_equal ("?") then -- used for add_call_chain
+					if expr.substring (9, 9).is_equal (expr.substring (10,10)) then -- for operands conjunction, equals, disjunction
+						expr := expr.substring (1, 10) + " (? || nil))"
+					else
+						expr := expr.substring (1, 9) + " (? || nil))"
+					end
+				else
+					str := expr.substring (1,5)
+					expr := expr.substring (6, expr.count)
+					expr := expr.substring (4, expr.count)
+					expr := str + "((? || nil) " + expr
+				end
 			end
 		end
 
@@ -2077,6 +2492,7 @@ feature -- model operations
 		local
 			str : STRING
 		do
+			error_msg.set_s ("OK.")
 			if op.is_empty then
 				op := "=="
 			else
@@ -2095,9 +2511,18 @@ feature -- model operations
 				end
 				expr := expr + "(? == nil)"
 			else
-				str := expr.substring (1,5)
-				expr := expr.substring (6, expr.count)
-				expr := str + "(" + expr + " == nil)"
+				if not expr.substring (7, 7).is_equal ("?") then -- used for add_call_chain
+					if expr.substring (9, 9).is_equal (expr.substring (10,10)) then -- for operands conjunction, equals, disjunction
+						expr := expr.substring (1, 10) + " (? == nil))"
+					else
+						expr := expr.substring (1, 9) + " (? == nil))"
+					end
+				else
+					str := expr.substring (1,5)
+					expr := expr.substring (6, expr.count)
+					expr := expr.substring (4, expr.count)
+					expr := str + "((? == nil) " + expr
+				end
 			end
 		end
 
@@ -2105,6 +2530,7 @@ feature -- model operations
 		local
 			str : STRING
 		do
+			error_msg.set_s ("OK.")
 			if op.is_empty then
 				op := ">"
 			else
@@ -2123,9 +2549,18 @@ feature -- model operations
 				end
 				expr := expr + "(? > nil)"
 			else
-				str := expr.substring (1,5)
-				expr := expr.substring (6, expr.count)
-				expr := str + "(" + expr + " > nil)"
+				if not expr.substring (7, 7).is_equal ("?") then -- used for add_call_chain
+					if expr.substring (9, 9).is_equal (expr.substring (10,10)) then -- for operands conjunction, equals, disjunction
+						expr := expr.substring (1, 10) + " (? > nil))"
+					else
+						expr := expr.substring (1, 9) + " (? > nil))"
+					end
+				else
+					str := expr.substring (1,5)
+					expr := expr.substring (6, expr.count)
+					expr := expr.substring (4, expr.count)
+					expr := str + "((? > nil) " + expr
+				end
 			end
 		end
 
@@ -2133,6 +2568,7 @@ feature -- model operations
 		local
 			str : STRING
 		do
+			error_msg.set_s ("OK.")
 			if op.is_empty then
 				op := "<"
 			else
@@ -2151,9 +2587,18 @@ feature -- model operations
 				end
 				expr := expr + "(? < nil)"
 			else
-				str := expr.substring (1,5)
-				expr := expr.substring (6, expr.count)
-				expr := str + "(" + expr + " < nil)"
+				if not expr.substring (7, 7).is_equal ("?") then -- used for add_call_chain
+					if expr.substring (9, 9).is_equal (expr.substring (10,10)) then -- for operands conjunction, equals, disjunction
+						expr := expr.substring (1, 10) + " (? < nil))"
+					else
+						expr := expr.substring (1, 9) + " (? < nil))"
+					end
+				else
+					str := expr.substring (1,5)
+					expr := expr.substring (6, expr.count)
+					expr := expr.substring (4, expr.count)
+					expr := str + "((? < nil) " + expr
+				end
 			end
 		end
 
@@ -2161,19 +2606,20 @@ feature -- model operations
 
 	numerical_negation
 		do
-
+			error_msg.set_s ("OK.")
 		end
 
 	logical_negation
 		do
-
+			error_msg.set_s ("OK.")
 		end
 
 	-- TYPE CHECK
 
 	type_check
 		do
-
+			create java_code.make_empty
+			error_msg.set_s ("OK.")
 		end
 
 	-- JAVA CODE
@@ -2181,13 +2627,28 @@ feature -- model operations
 	generate_java_code
 		local
 			looper : INTEGER
+			class_looper : INTEGER
+			q_looper : INTEGER
+			q_rt: STRING
+			q_expr_counter, c_expr_counter : INTEGER
 		do
+			create q_rt.make_empty
+			error_msg.set_s ("OK.")
 			looper := 1
+			class_looper := 1
+			q_looper := 1
+			c_expr_counter := 1
+			q_expr_counter := 1
 			across
 				class_list is cl
 			loop
+				if class_looper > 1 then
+					java_code.append("%N")
+				end
 				java_code.append("  ")
 				java_code.append ("class ")
+
+				class_looper := class_looper + 1
 				java_code.append (cl.name)
 				java_code.append (" {%N")
 				if cl.attr_count > 0 then
@@ -2196,16 +2657,88 @@ feature -- model operations
 							java_code.append ("    ")
 							if att.type ~ "INTEGER" then
 								java_code.append ("int " + att.name + ";")
-							else
+							elseif att.type ~ "BOOLEAN" then
+
 								java_code.append ("bool " + att.name + ";")
+							else
+								across class_list is cla loop
+									if cla.name ~ att.type then
+										java_code.append (cla.name +" " + att.name + ";")
+									end
+								end
 							end
-							java_code.append("%N")
+					--		java_code.append("%N")
 						end
 					end
 				end -- end cl.attr_count
+				if cl.query_count > 0 then -- printing query features
+					across
+						cl.query_list is query
+					loop
+						check attached {QUERY_FEATURE} query as q then
+							q_rt := q.return_type
+							java_code.append ("%N")
+							java_code.append ("    "+ q.return_type +" ")
+							java_code.append (q.name + "(")
+							across q.param is que loop
+								check attached {TUPLE[pn: STRING; ft: STRING]} que as qu then
+									if qu.ft ~ "INTEGER" then
+										java_code.append("int " + qu.pn)
+									else
+										java_code.append("bool " + qu.pn)
+									end
+									if q_looper = q.param.count then
 
+									else
+										java_code.append(", ")
+									end
+									q_looper := q_looper + 1 -- used for ","
+								end
+							end -- end across q.param
+
+							java_code.append(") {")
+						end
+					end
+						java_code.append ("%N")
+						java_code.append("      " + q_rt + " Result" + " = null;")
+
+					across
+						1 |..| c_chain.upper is store
+					loop
+					--	java_code.append ("      ")
+
+						if c_chain[store].is_empty then
+
+						else
+							if c_chain[store].starts_with ("R") then
+								java_code.append("%N")
+								java_code.append ("      "+c_chain[store].substring (1,7)+c_chain[store].substring (9,c_chain[store].count))
+							end
+						end
+
+						q_expr_counter := q_expr_counter+1
+					end
+					if c_chain.count = 0 then
+					across
+						1 |..| stored_expression.upper is st
+					loop
+						if stored_expression[st].is_empty then
+
+						else
+							java_code.append("%N")
+							java_code.append ("      "+stored_expression[st].substring (1,7)+stored_expression[st].substring (9,stored_expression[st].count))
+						end
+					end
+					end
+					java_code.append ("%N    ")
+					java_code.append("  return Result;")
+					java_code.append ("%N    ")
+					java_code.append ("}")
+
+				end -- end query
 				if cl.command_count > 0 then -- printing the command features
 					across cl.command_list is command loop
+							java_code.append ("%N")
 						check attached {COMMAND_FEATURE} command as c then
 							java_code.append ("    void ")
 							java_code.append (c.name + "(")
@@ -2228,29 +2761,58 @@ feature -- model operations
 							java_code.append(") {")
 						end
 					end
+
+					across
+						1 |..| c_chain.upper is store
+					loop
+					--	java_code.append ("      ")
+
+						if c_chain[store].is_empty then
+
+						else
+							if not c_chain[store].starts_with ("R") then
+								java_code.append("%N")
+								java_code.append ("      "+c_chain[store].substring (1,2)+c_chain[store].substring (4,c_chain[store].count))
+							end
+
+						end
+
+						q_expr_counter := q_expr_counter+1
+					end
 					across
 						1 |..| stored_expression.upper is store
 					loop
-						java_code.append ("      ")
+					--	java_code.append ("      ")
+						if stored_expression[store].is_empty then
 
-						java_code.append (stored_expression[store])
-						if store > 1 then
-							java_code.append(";")
-						end
-						if store = stored_expression.upper then
-							java_code.append ("%N")
-							java_code.append ("    ")
-							java_code.append ("}")
 						else
-							java_code.append ("%N")
-						end
-					end
+							if stored_expression[store].starts_with ("R") then
 
+							else
+								java_code.append("%N")
+								java_code.append ("      "+stored_expression[store].substring (1,2)+stored_expression[store].substring (4,stored_expression[store].count))
+							end
+						end
+						if c_expr_counter > 2 then
+
+							java_code.append(";")
+
+						end
+
+						c_expr_counter := c_expr_counter + 1
+					end
+					java_code.append ("%N")
+					java_code.append ("    ")
+					java_code.append ("}")
 				end -- end cl.command_count
 
+				if cl.is_empty then
 
+				else
 				java_code.append ("%N")
+				end
 				java_code.append ("  ")
+
 				java_code.append ("}")
 			end
 		end
@@ -2258,21 +2820,37 @@ feature -- queries
 	out : STRING
 		local
 			looper : INTEGER
+			class_looper : INTEGER
 		do
 			looper := 1
+			class_looper := 1
 			create Result.make_empty
 
 			if java_code.is_empty then
+
+				if count = 0 then
+					Result.append ("  ")
+					Result.append ("Status: "+ error_msg.error + "%N")
+					Result.append("  Number of classes being specified: ")
+					Result.append(count.out)
+				end
+
+
 				if count > 0 then
 					Result.append ("  ")
-					Result.append ("Status: OK.%N")
+					Result.append ("Status: " + error_msg.error + "%N")
 					Result.append("  Number of classes being specified: ")
 					Result.append(count.out)
 					Result.append("%N")
 					across
 						 class_list is cl
 					loop
+						curr_class := cl.name
+						if class_looper > 1 then
+							Result.append("%N")
+						end
 						Result.append("    "+ cl.name +"%N")
+						class_looper := class_looper + 1
 						Result.append("      ")
 						Result.append("Number of attributes: " + cl.attr_count.out +"%N")
 						if cl.attr_count > 0 then -- printing the attribute
@@ -2293,44 +2871,55 @@ feature -- queries
 								check attached {QUERY_FEATURE} query as q then
 									Result.append("        + ")
 									Result.append(q.name)
+									if q.num_of_params = 0 then
+
+									else
 									Result.append("(")
 									across q.param is par loop
 										check attached {TUPLE[pn: STRING; ft: STRING]} par as p then
 											Result.append(p.ft)
 										end
 									end
-									Result.append("): ")
+									Result.append(")")
+									end -- end param checking
+									Result.append (": ")
 									Result.append(q.return_type)
 									Result.append("%N")
 								end
 							end
 						end
 						Result.append("      ")
-						Result.append("Number of commands: " + cl.command_count.out + "%N")
+						Result.append("Number of commands: " + cl.command_count.out )
 						if cl.command_count > 0 then -- printing the command features
 							across cl.command_list is command loop
 								check attached {COMMAND_FEATURE} command as c then
+									curr_routine := c.name
+									Result.append("%N")
 									Result.append("        + ")
-									Result.append(c.name)
-									Result.append("(")
-									across c.param is comm loop
-										check attached {TUPLE[pn: STRING; ft: STRING]} comm as co then
-											Result.append(co.ft)
-											if looper = c.param.count then
+									Result.append(c.name) -- command feature name
+									if c.num_of_param ~ 0 then
+										-- if no params, then dont print them
+									else
+										Result.append("(")
+										across c.param is comm loop
+											check attached {TUPLE[pn: STRING; ft: STRING]} comm as co then
+												Result.append(co.ft)
+												if looper = c.param.count then
 
-											else
-												Result.append(", ")
+												else
+													Result.append(", ")
+												end
+												looper := looper + 1
 											end
-											looper := looper + 1
 										end
-									end
-									Result.append(")")
+										Result.append(")")
+									end -- end param checking
 
 								end
 							end
 						end
 						                                                                                                                                                                                                                                                                                                       end
-						if assignment_instruction.is_empty then
+						if assignment_instruction.is_empty or curr_bool = True then
 
 						elseif val > 0 or full then
 
@@ -2347,9 +2936,11 @@ feature -- queries
 							end
 						end
 				end
+
 			else
 				Result.append(java_code)
 			end
+
 		end
 
 invariant

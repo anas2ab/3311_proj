@@ -22,7 +22,7 @@ feature -- operations
 	visit_modulo (mod : MODULO) deferred end
 
 	-- BOOLEAN OPERANDS
-	
+
 	visit_boolean (b : BOOLEAN_CONSTANT) deferred end
 
 	visit_greater_than ( g : GREATER_THAN) deferred end
@@ -34,4 +34,8 @@ feature -- operations
 	visit_conjunction ( c : CONJUNCTION) deferred end
 
 	visit_disjunction ( d : DISJUNCTION) deferred end
+
+	visit_negation(n:NEGATION) deferred end
+	visit_negative(n:NEGATIVE) deferred end
+
 end

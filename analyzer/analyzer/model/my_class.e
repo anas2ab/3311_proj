@@ -97,7 +97,10 @@ feature -- Queries
 			end
 
 		end
-
+	is_empty : BOOLEAN
+		do
+			Result := count = 0
+		end
 invariant
 	same_count: count = feature_list.count
 			and query_count = query_list.count

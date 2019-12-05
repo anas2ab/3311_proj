@@ -1,0 +1,133 @@
+  Status: OK.
+  Number of classes being specified: 0
+->add_class("A")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("A","i","INTEGER")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->add_command("A","set_i",<<["x", "INTEGER"], ["y", "INTEGER"]>>)
+  Status: Error (Parameter types do not refer to primitive types or existing classes: INTEGER, INTEGER).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->add_assignment_instruction("A","set_i","i")
+  Status: Error (set_i is not an existing feature name in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->multiplication
+  Status: Error (An assignment instruction is not currently being specified).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->addition
+  Status: Error (An assignment instruction is not currently being specified).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->int_value(1)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->int_value(2)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->int_value(3)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->add_assignment_instruction("A","set_i","i")
+  Status: Error (set_i is not an existing feature name in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->addition
+  Status: Error (An assignment instruction is not currently being specified).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->add_call_chain(<<"i">>)
+  Status: Error (An assignment instruction is not currently being specified).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->subtraction
+  Status: Error (An assignment instruction is not currently being specified).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->add_call_chain(<<"x">>)
+  Status: Error (An assignment instruction is not currently being specified).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->add_call_chain(<<"y">>)
+  Status: Error (An assignment instruction is not currently being specified).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->type_check
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + i: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->generate_java_code
+  class A {
+    int i;
+  }

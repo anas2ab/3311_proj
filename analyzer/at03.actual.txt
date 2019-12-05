@@ -1,0 +1,76 @@
+  Status: OK.
+  Number of classes being specified: 0
+->add_class("A")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_class("A")
+  Status: Error (A is already an existing class name).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("B","att","INTEGER")
+  Status: Error (B is not an existing class name).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_command("B","c",<<>>)
+  Status: Error (B is not an existing class name).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_query("B","q",<<>>,"BOOLEAN")
+  Status: Error (B is not an existing class name).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_assignment_instruction("B","c","x")
+  Status: Error (B is not an existing class name).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("A","f","INTEGER")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + f: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->add_attribute("A","f","BOOLEAN")
+  Status: Error (f is already an existing feature name in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + f: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->add_command("A","f",<<>>)
+  Status: Error (f is already an existing feature name in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + f: INTEGER
+      Number of queries: 0
+      Number of commands: 0
+->add_query("A","f",<<>>,"A")
+  Status: Error (f is already an existing feature name in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 1
+        + f: INTEGER
+      Number of queries: 0
+      Number of commands: 0

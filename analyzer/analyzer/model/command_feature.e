@@ -19,7 +19,7 @@ feature -- constructor
 
 			name := f_name
 			create curr_expr.make_empty -- used for assignment_instruction
-			
+			num_of_param := ps.count
 			param := ps
 	end
 
@@ -36,4 +36,5 @@ feature -- queries
 		end
 feature -- attributes
 	curr_expr : STRING
+	num_of_param : INTEGER
 end

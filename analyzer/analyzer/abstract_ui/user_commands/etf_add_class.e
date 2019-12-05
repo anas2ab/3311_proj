@@ -16,7 +16,13 @@ feature -- command
 			add_class_precond(cn)
     	do
 			-- perform some update on the model state
-			model.add_class(cn)
+			if not model.assignment_instruction.is_empty then
+				model.error_msg.set_s ("Error (An assignment instruction is currently being specified for routine " + model.curr_routine + " in class " + model.curr_class + ").")
+			elseif model.class_exists (cn) then
+				model.error_msg.set_s ("Error ("+cn+" is already an existing class name).")
+			else
+				model.add_class(cn)
+			end
 			etf_cmd_container.on_change.notify ([Current])
     	end
 

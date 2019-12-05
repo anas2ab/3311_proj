@@ -1,0 +1,117 @@
+  Status: OK.
+  Number of classes being specified: 0
+->add_class("A")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 0
+->add_command("A","c",<<>>)
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 1
+        + c
+->add_assignment_instruction("A","c","x")
+  Status: OK.
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 1
+        + c
+  Routine currently being implemented: {A}.c
+  Assignment being specified: x := ?
+->type_check
+  Status: Error (An assignment instruction is currently being specified for routine c in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 1
+        + c
+  Routine currently being implemented: {A}.c
+  Assignment being specified: x := ?
+->add_class("B")
+  Status: Error (An assignment instruction is currently being specified for routine c in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 1
+        + c
+  Routine currently being implemented: {A}.c
+  Assignment being specified: x := ?
+->add_class("A")
+  Status: Error (An assignment instruction is currently being specified for routine c in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 1
+        + c
+  Routine currently being implemented: {A}.c
+  Assignment being specified: x := ?
+->add_attribute("A","att","int")
+  Status: Error (An assignment instruction is currently being specified for routine c in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 1
+        + c
+  Routine currently being implemented: {A}.c
+  Assignment being specified: x := ?
+->add_attribute("B","att","INTEGER")
+  Status: Error (An assignment instruction is currently being specified for routine c in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 1
+        + c
+  Routine currently being implemented: {A}.c
+  Assignment being specified: x := ?
+->add_command("A","c",<<>>)
+  Status: Error (An assignment instruction is currently being specified for routine c in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 1
+        + c
+  Routine currently being implemented: {A}.c
+  Assignment being specified: x := ?
+->add_command("A","c2",<<>>)
+  Status: Error (An assignment instruction is currently being specified for routine c in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 1
+        + c
+  Routine currently being implemented: {A}.c
+  Assignment being specified: x := ?
+->add_assignment_instruction("B","c","x")
+  Status: Error (An assignment instruction is currently being specified for routine c in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 1
+        + c
+  Routine currently being implemented: {A}.c
+  Assignment being specified: x := ?
+->add_assignment_instruction("A","d","x")
+  Status: Error (An assignment instruction is currently being specified for routine c in class A).
+  Number of classes being specified: 1
+    A
+      Number of attributes: 0
+      Number of queries: 0
+      Number of commands: 1
+        + c
+  Routine currently being implemented: {A}.c
+  Assignment being specified: x := ?
