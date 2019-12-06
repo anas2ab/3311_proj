@@ -47,27 +47,27 @@ feature -- command
 					end
 				end
 				model.error_msg.set_s (model.error_msg.error +").")
-			elseif not model.non_existing_pt (ps) then -- could be wrong logic
+			elseif model.non_existing_pt (ps) then
 				model.error_msg.set_s ("Error (Parameter types do not refer to primitive types or existing classes:")
 				across
-					1 |..| model.clashing_array.count is i
+					1 |..| model.duplicate_checker.count is i
 				loop
 					if i > 1 then
-						model.error_msg.set_s (model.error_msg.error + ", " + model.clashing_array[i])
+						model.error_msg.set_s (model.error_msg.error + ", " + model.duplicate_checker[i])
 					else
-						model.error_msg.set_s (model.error_msg.error + " " + model.clashing_array[i])
+						model.error_msg.set_s (model.error_msg.error + " " + model.duplicate_checker[i])
 					end
 				end
 				model.error_msg.set_s (model.error_msg.error +").")
-			elseif not model.wrong_p_rt (ps) then -- could be wrong logic
+			elseif model.wrong_p_rt (rt) then
 				model.error_msg.set_s ("Error (Return type does not refer to a primitive type or an existing class:")
 				across
-					1 |..| model.clashing_array.count is i
+					1 |..| model.duplicate_checker.count is i
 				loop
 					if i > 1 then
-						model.error_msg.set_s (model.error_msg.error + ", " + model.clashing_array[i])
+						model.error_msg.set_s (model.error_msg.error + ", " + model.duplicate_checker[i])
 					else
-						model.error_msg.set_s (model.error_msg.error + " " + model.clashing_array[i])
+						model.error_msg.set_s (model.error_msg.error + " " + model.duplicate_checker[i])
 					end
 				end
 				model.error_msg.set_s (model.error_msg.error +").")

@@ -22,15 +22,15 @@ feature -- command
 				model.error_msg.set_s ("Error ("+cn+" is not an existing class name).")
 			elseif model.feature_exists (fn) then
 				model.error_msg.set_s ("Error ("+fn+ " is already an existing feature name in class "+cn+").")
-			elseif not model.wrong_rt (ft) then
+			elseif model.wrong_p_rt (ft) then
 				model.error_msg.set_s ("Error (Return type does not refer to a primitive type or an existing class:")
 				across
-					1 |..| model.clashing_array.count is i
+					1 |..| model.duplicate_checker.count is i
 				loop
 					if i > 1 then
-						model.error_msg.set_s (model.error_msg.error + ", " + model.clashing_array[i])
+						model.error_msg.set_s (model.error_msg.error + ", " + model.duplicate_checker[i])
 					else
-						model.error_msg.set_s (model.error_msg.error + " " + model.clashing_array[i])
+						model.error_msg.set_s (model.error_msg.error + " " + model.duplicate_checker[i])
 					end
 				end
 				model.error_msg.set_s (model.error_msg.error +").")

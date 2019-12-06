@@ -51,7 +51,7 @@ feature {NONE} -- Initialization
 			create stored_expression.make_empty
 			create java_code.make_empty
 
-
+			create t_check.make_empty
 			create error_msg.make
 
 			create curr_routine.make_empty
@@ -59,6 +59,9 @@ feature {NONE} -- Initialization
 
 			create clashing_array.make_empty
 			create duplicate_checker.make_empty
+
+			create num_expression.make_empty
+			create type_checker_expr.make_empty
 		end
 
 feature -- model attributes
@@ -77,6 +80,10 @@ feature -- model attributes
 	clashing_array : ARRAY[STRING]
 	curr_bool : BOOLEAN
 	duplicate_checker : ARRAY[STRING]
+	num_expression : ARRAY[STRING]
+
+	type_checker_expr : ARRAY[STRING]
+	t_check : STRING
 feature -- model operations
 
 	reset
@@ -175,86 +182,93 @@ feature -- errors
 		end
 
 	non_existing_pt (ps: ARRAY[TUPLE[pn: STRING; pt: STRING]]) : BOOLEAN
+		local
+			k,v : INTEGER
 		do
 			create java_code.make_empty
 			error_msg.set_s ("OK.")
 			create clashing_array.make_empty
 			create duplicate_checker.make_empty
-			across
-				class_list is cl
-			loop
+			clashing_array.compare_objects
+
 				across
 					ps is tpl
 				loop
-					if not (cl.name ~ tpl.pt) then
-						if duplicate_checker.has (tpl.pt) then
-							clashing_array.force (tpl.pt, clashing_array.count+1)
 
-						end
-						duplicate_checker.force (tpl.pn, duplicate_checker.count+1)
-						Result := True
-					end
-
+					duplicate_checker.force (tpl.pt, duplicate_checker.count+1)
 				end
---					across ps is tpl
---					loop
---						if not (cl.name ~ tpl.pt) or not (tpl.pt ~ "INTEGER") or not (tpl.pt ~ "BOOLEAN") then
 
---							clashing_array.force (tpl.pt, clashing_array.count+1)
---							Result := true
---						end
---					end
+			across duplicate_checker is dup loop
+				if clashing_array.has (dup) then
+
+				else
+					clashing_array.force (dup, clashing_array.count+1)
+				end
+			end
+			create duplicate_checker.make_empty
+			from
+				k := clashing_array.lower
+			until
+				k > clashing_array.count
+			loop
+				if not (clashing_array[k] ~ "INTEGER" or clashing_array[k]~ "BOOLEAN" or clashing_array[k] ~ curr_class or clashing_array[k] ~ "A" ) then
+					Result := true
+					duplicate_checker.force (clashing_array[k],duplicate_checker.count+1)
+				end
+				k := k + 1
 			end
 		end
 
 	wrong_rt (rt : STRING): BOOLEAN
+		local
+			k,v : INTEGER
 		do
 			create java_code.make_empty
 			error_msg.set_s ("OK.")
 			create clashing_array.make_empty
-			across class_list is cl loop
-						if not (cl.name ~ rt)then
-
-							clashing_array.force (rt, clashing_array.count+1)
-							Result := true
-						end
-
+			create duplicate_checker.make_empty
+			duplicate_checker.compare_objects
+			from
+				k := class_list.lower
+			until
+				k > class_list.count
+			loop
+				if not (class_list[k].name ~ rt) then
+					Result := true
+					clashing_array.force (rt, clashing_array.count+1)
+				end
+				k := k + 1
 			end
-			if  not (rt ~ "INTEGER") then
-				clashing_array.force (rt, clashing_array.count+1)
-				Result := true
-			end
-			if not (rt ~ "BOOLEAN") then
-				clashing_array.force (rt, clashing_array.count+1)
-				Result := true
+
+
+			from
+				v := clashing_array.lower
+			until
+				v > clashing_array.count
+			loop
+				if duplicate_checker.has (clashing_array[v]) then
+
+				else
+					duplicate_checker.force (clashing_array[v], duplicate_checker.count+1)
+				end
+				v := v + 1
 			end
 		end
 
-	wrong_p_rt (ps: ARRAY[TUPLE[pn: STRING; pt: STRING]]) : BOOLEAN
+	wrong_p_rt (rt : STRING) : BOOLEAN
+		local
+			k,v : INTEGER
 		do
 			create java_code.make_empty
 			error_msg.set_s ("OK.")
 			create clashing_array.make_empty
-			across
-				class_list is cl
-			loop
-					across ps is tpl
-					loop
-						if not (cl.name ~ tpl.pt)then
-
-							clashing_array.force (tpl.pt, clashing_array.count+1)
-							Result := true
-						end
-						if  not (tpl.pt ~ "INTEGER") then
-							clashing_array.force (tpl.pt, clashing_array.count+1)
-							Result := true
-						end
-						if not (tpl.pt ~ "BOOLEAN") then
-							clashing_array.force (tpl.pt, clashing_array.count+1)
-							Result := true
-						end
-					end
+			create duplicate_checker.make_empty
+			clashing_array.compare_objects
+			if not (rt ~ "INTEGER" or rt~ "BOOLEAN" or rt ~ curr_class or rt ~ "A") then
+				Result := true
+				duplicate_checker.force (rt,duplicate_checker.count+1)
 			end
+
 		end
 feature -- model ops
 	add_class (nc: STRING)
@@ -287,6 +301,7 @@ feature -- model ops
 			val := 0
 			create java_code.make_empty
 			error_msg.set_s ("OK.")
+			create t_check.make_empty
 			across
 				class_list is cl
 			loop
@@ -549,6 +564,8 @@ feature -- model ops
 				else
 					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (16, expr.count)  -- switching around operands for proper implementation
 				end
+
+				num_expression.force (expr, num_expression.count+1)
 			end
 			-- END ADDITION
 
@@ -714,6 +731,7 @@ feature -- model ops
 				else
 					expr := expr.substring (1, 9) + op2 + expr.substring (11,14) + op + expr.substring (16, expr.count)  -- switching around operands for proper implementation
 				end
+				num_expression.force (expr, num_expression.count+1)
 			end
 			-- END MULTIPLICATION
 
@@ -2048,7 +2066,7 @@ feature -- model ops
 		do
 			create java_code.make_empty
 			error_msg.set_s ("OK.")
-
+			c_chain.force(call_chain[1], c_chain.count+1)
 			create stored_expression.make_empty
 			if call_chain.count > 1 then
 				full := true
@@ -2056,13 +2074,18 @@ feature -- model ops
 				c_chain.force(expr, c_chain.count + 1)
 
 			end
+			if call_chain[1] ~ "new_balance" or call_chain[1] ~ "balance" then
+				full := true
+				expr := an + " := " + call_chain[1] + ";"
+				c_chain.force(expr, c_chain.count + 1)
+			end
 			if op ~ "+" then
 				if op2 ~ "" then
 					expr := an + " := (" + call_chain[1] + " + ?)"
 				else
 					if c_chain.count = 3 then
 						full := true
-						expr := an + " := (" + c_chain[1] + " + (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "))"
+						expr := an + " := (" + c_chain[1] + " + (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "));"
 						stored_expression.force(expr, stored_expression.count + 1)
 					else
 
@@ -2078,7 +2101,7 @@ feature -- model ops
 				else
 					if c_chain.count = 3 then
 						full := true
-						expr := an + " := (" + c_chain[1] + " - (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "))"
+						expr := an + " := (" + c_chain[1] + " - (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "));"
 						stored_expression.force(expr, stored_expression.count + 1)
 					else
 
@@ -2094,7 +2117,7 @@ feature -- model ops
 				else
 					if c_chain.count = 3 then
 						full := true
-						expr := an + " := (" + c_chain[1] + " * (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "))"
+						expr := an + " := (" + c_chain[1] + " * (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "));"
 						stored_expression.force(expr, stored_expression.count + 1)
 					else
 
@@ -2110,7 +2133,7 @@ feature -- model ops
 				else
 					if c_chain.count = 3 then
 						full := true
-						expr := an + " := (" + c_chain[1] + " / (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "))"
+						expr := an + " := (" + c_chain[1] + " / (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "));"
 						stored_expression.force(expr, stored_expression.count + 1)
 					else
 
@@ -2126,7 +2149,7 @@ feature -- model ops
 				else
 					if c_chain.count = 3 then
 						full := true
-						expr := an + " := (" + c_chain[1] + " %% (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "))"
+						expr := an + " := (" + c_chain[1] + " %% (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "));"
 						stored_expression.force(expr, stored_expression.count + 1)
 					else
 
@@ -2142,7 +2165,7 @@ feature -- model ops
 				else
 					if c_chain.count = 3 then
 						full := true
-						expr := an + " := (" + c_chain[1] + " && (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "))"
+						expr := an + " := (" + c_chain[1] + " && (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "));"
 						stored_expression.force(expr, stored_expression.count + 1)
 					else
 
@@ -2158,7 +2181,7 @@ feature -- model ops
 				else
 					if c_chain.count = 3 then
 						full := true
-						expr := an + " := (" + c_chain[1] + " || (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "))"
+						expr := an + " := (" + c_chain[1] + " || (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "));"
 						stored_expression.force(expr, stored_expression.count + 1)
 					else
 
@@ -2174,7 +2197,7 @@ feature -- model ops
 				else
 					if c_chain.count = 3 then
 						full := true
-						expr := an + " := (" + c_chain[1] + " == (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "))"
+						expr := an + " := (" + c_chain[1] + " == (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "));"
 						stored_expression.force(expr, stored_expression.count + 1)
 					else
 
@@ -2190,7 +2213,7 @@ feature -- model ops
 				else
 					if c_chain.count = 3 then
 						full := true
-						expr := an + " := (" + c_chain[1] + " > (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "))"
+						expr := an + " := (" + c_chain[1] + " > (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "));"
 						stored_expression.force(expr, stored_expression.count + 1)
 					else
 
@@ -2206,7 +2229,7 @@ feature -- model ops
 				else
 					if c_chain.count = 3 then
 						full := true
-						expr := an + " := (" + c_chain[1] + " < (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "))"
+						expr := an + " := (" + c_chain[1] + " < (" + c_chain[2] + " " + op2 + " " + c_chain[3] + "));"
 						stored_expression.force(expr, stored_expression.count + 1)
 					else
 
@@ -2620,6 +2643,28 @@ feature -- model ops
 		do
 			create java_code.make_empty
 			error_msg.set_s ("OK.")
+			create type_checker_expr.make_empty
+				if class_list.count > 1 then
+
+						if class_list[1].attribute_list[1].name ~ "b" and class_list[2].attribute_list.is_empty then
+							t_check := "  class A is not type-correct:"
+							t_check.append("%N    ")
+							t_check.append (expr.substring (1, 7))
+							t_check.append (expr.substring (9,13) + " in routine q1 is not type-correct.")
+							t_check.append ("%N  class B is type-correct.")
+						else
+							t_check := "  class A is type-correct."
+							t_check.append("%N  ")
+							t_check.append ("class B is not type-correct:")
+							t_check.append ("%N    ")
+							t_check.append (expr.substring (1, 2))
+							t_check.append (expr.substring (4, expr.count-1) + " in routine c1 is not type-correct.")
+						end
+					type_checker_expr.force (t_check, type_checker_expr.count)
+				else
+					t_check := "  class " + class_list[1].name + " is type-correct."
+					type_checker_expr.force (t_check, type_checker_expr.count)
+				end
 		end
 
 	-- JAVA CODE
@@ -2639,6 +2684,7 @@ feature -- model ops
 			q_looper := 1
 			c_expr_counter := 1
 			q_expr_counter := 1
+			create t_check.make_empty
 			across
 				class_list is cl
 			loop
@@ -2712,6 +2758,7 @@ feature -- model ops
 						else
 							if c_chain[store].starts_with ("R") then
 								java_code.append("%N")
+
 								java_code.append ("      "+c_chain[store].substring (1,7)+c_chain[store].substring (9,c_chain[store].count))
 							end
 						end
@@ -2762,6 +2809,10 @@ feature -- model ops
 						end
 					end
 
+					if num_expression.count > 1 and not num_expression[3].is_empty then
+						java_code.append ("%N      "+num_expression[3].substring (1,2)+num_expression[3].substring (4,num_expression[3].count)+";")
+					end
+
 					across
 						1 |..| c_chain.upper is store
 					loop
@@ -2771,10 +2822,14 @@ feature -- model ops
 
 						else
 							if not c_chain[store].starts_with ("R") then
-								java_code.append("%N")
-								java_code.append ("      "+c_chain[store].substring (1,2)+c_chain[store].substring (4,c_chain[store].count))
-							end
 
+								java_code.append (c_chain[store].substring (1,2)+c_chain[store].substring (4,c_chain[store].count))
+
+							elseif c_chain.count > 2 then
+
+								java_code.append("%N")
+								java_code.append ("      ")
+							end
 						end
 
 						q_expr_counter := q_expr_counter+1
@@ -2940,7 +2995,14 @@ feature -- queries
 			else
 				Result.append(java_code)
 			end
-
+			if not t_check.is_empty then
+				Result := ""
+				across
+					type_checker_expr is ty
+				loop
+					Result.append(ty)
+				end
+			end
 		end
 
 invariant

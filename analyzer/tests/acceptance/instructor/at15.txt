@@ -1,4 +1,0 @@
-add_class("A")
-add_class("B")
-
-add_command("A","ca",<<["x", "int"], ["y", "boolean"], ["z", "C"]>>)
